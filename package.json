@@ -1,0 +1,17 @@
+{
+  "name": "sfotipy",
+  "version": "0.0.0",
+  "description": "A Spotify Clone (?)",
+  "main": "server.js",
+  "scripts": {
+    "stylus": "stylus -u nib -c -w -o  css/ stylus/estilos.styl",
+    "server": "http-server . "
+  },
+  "author": "Julian Duque",
+  "license": "MIT",
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "handlebars": "^4.0.5",
+    "jquery": "^1.11.0"
+  }
+}
