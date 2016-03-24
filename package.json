@@ -1,17 +1,24 @@
 {
   "name": "sfotipy",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A Spotify Clone (?)",
   "main": "server.js",
   "scripts": {
-    "stylus": "stylus -u nib -c -w -o  css/ stylus/estilos.styl",
+    "public": "mkdir public",
+    "copy-files": "NODE_PATH=. cp -r ./src/assets/  ./public && cp ./src/index.html ./public && npm run stylus ",
+    "stylus": "NODE_PATH=. stylus ./src/stylus/app.styl -u nib -c -o  ./public ",
     "server": "http-server . "
   },
   "author": "Julian Duque",
   "license": "MIT",
   "dependencies": {
-    "backbone": "^1.2.3",
+    "backbone": "^1.3.2",
     "handlebars": "^4.0.5",
-    "jquery": "^1.11.0"
+    "jquery": "^1.12.2"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.6.0",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0"
   }
 }
