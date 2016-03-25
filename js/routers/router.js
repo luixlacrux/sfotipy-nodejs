@@ -16,7 +16,7 @@ Sfotipy.Router = Backbone.Router.extend({
     Backbone.history.start();
   },
 
-  index: function () {
+  this.index: function () {
     this.fetchData();
   },
 
