@@ -7,8 +7,9 @@ import Song from '../models/song'
 import Albums from '../collections/albums'
 import Songs from '../collections/songs'
 
-import Index from '../views/index'
+import Player from '../views/player'
 import AlbumsView from '../views/albums'
+import List from '../views/list'
 
 class Router extends Backbone.Router {
   get routes () {
@@ -23,13 +24,16 @@ class Router extends Backbone.Router {
     this.jsonData = {}
     this.albums = new Albums()
     this.songs = new Songs()
-    this.index = new Index()
+    //this.index = new Index()
+    this.playlist = new List({ collection: this.songs })
+    this.player = new Player({ model: new Song })
     this.albumlist = new AlbumsView({ collection: this.albums}) 
     Backbone.history.start()
   }
 
   start () {
-    this.fetchData()
+    if (!Object.keys(this.jsonData).length)
+      this.fetchData()
   }
 
   album (name) {

@@ -7,52 +7,52 @@
       {
         "id": 1,
         "name": "Revival",
-        "source": "./songs/Revival/01 Revival.mp3"
+        "source": "../../songs/Revival/01 Revival.mp3"
       },
       {
         "id": 2,
         "name": "Kill Em With Kindness",
-        "source": "./songs/Revival/02 Kill Em With Kindness.mp3"
+        "source": "../../songs/Revival/02 Kill Em With Kindness.mp3"
       },
       {
         "id": 3,
         "name": "Hands to myself",
-        "source": "./songs/Revival/03 Hands To Myself.mp3"
+        "source": "../../songs/Revival/03 Hands To Myself.mp3"
       },
       {
         "id": 4,
         "name": "Same Old Love",
-        "source": "./songs/Revival/04 Same Old Love.mp3"
+        "source": "../../songs/Revival/04 Same Old Love.mp3"
       },
       {
         "id": 5,
         "name": "Sober",
-        "source": "./songs/Revival/05 Sober.mp3"
+        "source": "../../songs/Revival/05 Sober.mp3"
       },
       {
         "id": 6,
         "name": "Good For You (feat A$AP Rocky)",
-        "source": "./songs/Revival/06 Good For You (feat. A$AP Rocky).mp3"
+        "source": "../../songs/Revival/06 Good For You (feat. A$AP Rocky).mp3"
       },
       {
         "id": 7,
         "name": "Camouflage",
-        "source": "./songs/Revival/07 Camouflage.mp3"
+        "source": "../../songs/Revival/07 Camouflage.mp3"
       },
       {
         "id": 8,
         "name": "Me & the Rhythm",
-        "source": "./songs/Revival/08 Me & the Rhythm.mp3"
+        "source": "../../songs/Revival/08 Me & the Rhythm.mp3"
       },
       {
         "id": 9,
         "name": "Survivors",
-        "source": "./songs/Revival/09 Survivors.mp3"
+        "source": "../../songs/Revival/09 Survivors.mp3"
       },
       {
         "id": 10,
         "name": "Body Heat",
-        "source": "./songs/Revival/10 Body Heat.mp3"
+        "source": "../../songs/Revival/10 Body Heat.mp3"
       }
 
     ]
@@ -64,43 +64,43 @@
     "songs": [
       { "id": 1,
         "name": "Confident",
-        "source": "./songs/Confident/01 Confident.m4a"
+        "source": "../../songs/Confident/01 Confident.m4a"
       },
       { "id": 2,
         "name": "Cool for the Summer",
-        "source": "./songs/Confident/02 Cool for the Summer.m4a"
+        "source": "../../songs/Confident/02 Cool for the Summer.m4a"
       },
       { "id": 3,
         "name": "Old Ways",
-        "source": "./songs/Confident/03 Old Ways.m4a"
+        "source": "../../songs/Confident/03 Old Ways.m4a"
       },
       { "id": 4,
         "name": "For you",
-        "source": "./songs/Confident/04 For You.m4a"
+        "source": "../../songs/Confident/04 For You.m4a"
       },
       { "id": 5,
         "name": "Stone Cold",
-        "source": "./songs/Confident/05 Stone Cold.m4a"
+        "source": "../../songs/Confident/05 Stone Cold.m4a"
       },
       { "id": 6,
         "name": "Kingdom Come (feat. Iggy Azalea)",
-        "source": "./songs/Confident/06 Kingdom Come (feat. Iggy Azalea).m4a"
+        "source": "../../songs/Confident/06 Kingdom Come (feat. Iggy Azalea).m4a"
       },
       { "id": 7,
         "name": "Waitin for You (feat. Sirah)",
-        "source": "./songs/Confident/07 Waitin for You (feat. Sirah).m4a"
+        "source": "../../songs/Confident/07 Waitin for You (feat. Sirah).m4a"
       },
       { "id": 8,
         "name": "Wildfire",
-        "source": "./songs/Confident/08 Wildfire.m4a"
+        "source": "../../songs/Confident/08 Wildfire.m4a"
       },
       { "id": 9,
         "name": "Lionheart",
-        "source": "./songs/Confident/09 Lionheart.m4a"
+        "source": "../../songs/Confident/09 Lionheart.m4a"
       },
       { "id": 10,
         "name": "Yes",
-        "source": "./songs/Confident/10 Yes.m4a"
+        "source": "../../songs/Confident/10 Yes.m4a"
       }
     ]
   }

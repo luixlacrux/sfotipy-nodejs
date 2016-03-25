@@ -4,11 +4,11 @@
   "description": "A Spotify Clone (?)",
   "main": "server.js",
   "scripts": {
-    "public": "mkdir public",
+    "public": "mkdir -p public",
     "lint": "standard",
-    "copy-files": "NODE_PATH=. cp -r ./src/assets/  ./public && cp ./src/index.html ./public && npm run stylus ",
+    "copy-files": "NODE_PATH=. cp -r ./src/assets/  ./public/assets && cp ./src/index.html ./public && npm run stylus ",
     "stylus": "NODE_PATH=. stylus ./src/stylus/app.styl -u nib -c -o  ./public ",
-    "build-js": "NODE_PATH=. browserify -t hbsfy -t babelify ./src/backbone/app.js > ./public/app.js",
+    "build-js": "NODE_PATH=. browserify -t [ hbsfy -e html,htm] -t babelify ./src/backbone/app.js > ./public/app.js",
     "build": "npm run public && npm run copy-files && npm run build-js",
     "server": "http-server ./public"
   },

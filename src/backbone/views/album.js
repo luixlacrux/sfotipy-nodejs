@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from '../../templates/album.hbs'
+import template from '../../templates/album.html'
 
 class AlbumView extends Backbone.View {
   get tagName() { return 'article' } 
@@ -11,7 +11,6 @@ class AlbumView extends Backbone.View {
       }
   }
   
-
   initialize () {
     this.listenTo(this.model, 'change', this.render, this)
   }
