@@ -7,6 +7,7 @@ import Song from '../models/song'
 import Albums from '../collections/albums'
 import Songs from '../collections/songs'
 
+import Main from '../views/main'
 import loginBasic from '../views/loginBasic'
 import Player from '../views/player'
 import AlbumsView from '../views/albums'
@@ -25,6 +26,7 @@ class Router extends Backbone.Router {
     this.jsonData = {}
     this.albums = new Albums()
     this.songs = new Songs()
+    this.mainView = new Main()
     this.loginBasic = new loginBasic()
     this.playlist = new List({ collection: this.songs })
     this.player = new Player({ model: new Song })
