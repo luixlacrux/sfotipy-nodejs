@@ -27,6 +27,14 @@ img
 ul
     margin 0
     padding 0
+    
+//utilitis
+wrap()
+    width 1000px
+fixed()
+    position fixed
+    
+
 //buttons
 .button-menu
     color gris_oscuro
@@ -93,7 +101,42 @@ ul
 .name
     color gris_oscuro
 .menu
-    display none
+    fixed()
+    border none
+    display block
+    z-index 1
+    width 80%
+    left -80%
+    height 100%
+    background rgba(#000, 0.9)
+    .search-mobile
+        padding 2em 0
+        margin 0 auto
+        width 85%
+        input
+            outline none
+            border none
+            border-radius .5em
+            padding .5em
+            width 70%
+        .icon-search
+            color white
+            font-size 2em
+            position: absolute
+            right 0
+    .item
+        list-style none
+        width 85%
+        margin 0 auto
+        a
+            display block
+            padding 1em 0
+            color gris_mas_claro
+            border-bottom 1px gris_mas_claro solid
+            transition .4s color
+            &:hover
+            &:active
+                color rojo
 .relative
     position relative
 //.author
@@ -114,8 +157,7 @@ ul
     float left
 .right
     float right
-.wrap
-    width 1000px
+
 .round
     border-radius 50%
     overflow hidden
@@ -246,6 +288,8 @@ ul
     padding 1.3em 0
     display none
     clearfix()
+    .center-block
+        wrap()
 .avatar
     width 38px
     height 38px
@@ -447,11 +491,15 @@ ul
             width 62.5em
             overflow hidden
     .menu
-        display block
+        position static
+        margin 0 auto
+        height auto
         background gris_mas_claro
         overflow hidden
-        border-top 1px solid gris_claro
+        .search-mobile
+            display none
         .item
+            width auto
             float left
             list-style none
             a
