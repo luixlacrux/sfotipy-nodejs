@@ -14,6 +14,8 @@ gris_oscuro = #333333
 gris_claro = #818181
 rojo = #BD255B
 gris_mas_claro = #F0F0F0
+facebook = #3B5998
+twitter = #5EA9DD
 
 a
     text-decoration none
@@ -33,7 +35,17 @@ wrap()
     width 1000px
 fixed()
     position fixed
-    
+btn-submit()
+    margin 0 auto
+    display block
+    background rojo
+    height 2em
+    line-height 2em
+    border-radius .3em
+    text-align center
+    width 90%
+    color #fefefe
+    font-size 1.4em
 
 //buttons
 .button-menu
@@ -305,6 +317,75 @@ fixed()
         content ""
             display inline-block
             margin-left .4em
+.share
+    background rgba(#000, 0.9)
+    position fixed
+    top 0
+    right -80%
+    z-index 3
+    width 80%
+    max-width 520px
+    height 100%
+    &-container
+        padding-top 1em
+        padding-left 1em
+        width 15em
+    &-item
+        border-color #fefefe
+        font-weight normal
+        text-decoration none
+        color #fefefe
+        display block
+        padding .5em
+        margin 0
+        span
+            position: relative 
+            margin-right .5em
+    &-list
+        list-style none
+        margin 0
+        li
+            border-bottom 1px #fefefe solid
+            a
+                margin-left 1em
+    &-close
+        display block
+        font-family arial
+        font-weight 100
+        font-size 2em
+        color #fefefe
+        text-decoration none
+        margin-bottom .4em
+    &-text
+        border none
+        outline none
+        border-radius .4em
+        padding 1em .5em
+        width 94%
+        margin 0 auto
+        display block
+    &-btns
+        padding-top 1em
+    &-btn
+        btn-submit()
+        float right
+        border none
+        display inline-block
+        width 50%
+    &-social
+        display inline-block
+        text-decoration none
+        color #fefefe
+        font-size 1.5em
+        padding .4em
+        
+        border-radius 50%
+    .icon-facebook
+        background facebook
+        margin-right .2em
+    .icon-twitter
+        background twitter
+        
 
 /*======= Home ========*/
 
@@ -320,16 +401,7 @@ fixed()
     top 0
     width 90%
 .btn-submit
-    margin 0 auto
-    display block
-    background rojo
-    height 2em
-    line-height 2em
-    border-radius .3em
-    text-align center
-    width 90%
-    color #fefefe
-    font-size 1.4em
+    btn-submit()
 
 .home
     background white
