@@ -32,7 +32,7 @@ ul
     
 //utilitis
 wrap()
-    width 1000px
+    max-width 980px
 fixed()
     position fixed
 btn-submit()
@@ -408,7 +408,7 @@ btn-submit()
     position relative
     .logo
         background-image url('assets/img/cover.jpg')
-        background-size auto
+        background-size cover
         background-position center
         background-repeat no-repeat
         color #fefefe
@@ -560,7 +560,7 @@ btn-submit()
         text-align center
         &.large
             margin 0 auto
-            width 62.5em
+            wrap()
             overflow hidden
     .menu
         position static
