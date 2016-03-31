@@ -6,13 +6,15 @@ class Player extends Backbone.View {
   get el () { return $('.music') }
   get events () {
     return {
+      'click .action.icon-share': 'share',
+      
+      //Controls
       'click .action.gray.icon-play': 'pause',
       'click .action.gray.icon-next': 'changeSong',
       'click .action.gray.icon-prev': 'restart',
       'click .action.gray.icon-random': 'reproRandom',
       'dblclick .action.gray.icon-prev': 'changeSong',
       'change  .range-vol': 'volume',
-
       'click .progress': 'progressPointer'
     }
   }
@@ -129,6 +131,11 @@ class Player extends Backbone.View {
 
   restart () {
     this.audio.currentTime = 0
+  }
+
+  share () {
+    Sfotipy.events.trigger('share', this.model)
+    return false
   }
 }
 

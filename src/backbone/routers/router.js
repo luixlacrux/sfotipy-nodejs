@@ -1,5 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
+import _ from 'underscore'
 
 import Album from '../models/album'
 import Song from '../models/song'
@@ -12,6 +13,8 @@ import loginBasic from '../views/loginBasic'
 import Player from '../views/player'
 import AlbumsView from '../views/albums'
 import List from '../views/list'
+import Share from '../views/share'
+
 
 class Router extends Backbone.Router {
   get routes () {
@@ -22,6 +25,8 @@ class Router extends Backbone.Router {
   }
   
   initialize () {
+    this.initEvents()
+
     this.current = {}
     this.jsonData = {}
     this.albums = new Albums()
@@ -30,8 +35,20 @@ class Router extends Backbone.Router {
     this.loginBasic = new loginBasic()
     this.playlist = new List({ collection: this.songs })
     this.player = new Player({ model: new Song })
-    this.albumlist = new AlbumsView({ collection: this.albums}) 
+    this.albumlist = new AlbumsView({ collection: this.albums})
+
+    
     Backbone.history.start()
+
+  }
+
+  initEvents () {
+    this.events = {}
+    _.extend(this.events, Backbone.Events)
+
+    this.events.on('share', (model) => this.share(model))
+    this.events.on('share:hide', () => this.mainView.hideShare())
+    this.events.on('share:show', () => this.mainView.showShare())
   }
 
   start () {
@@ -85,6 +102,10 @@ class Router extends Backbone.Router {
       cover: album.cover,
       year: album.year
     }))
+  }
+
+  share (model) {
+    this.shareView = new Share({ model: model })
   }
 }
 

@@ -9,7 +9,7 @@ class Song extends Backbone.View {
     return {
       'click': 'select',
       'click .action.icon-love': 'love',
-      'click .action.icon.share': 'share'
+      'click .action.icon-share': 'share'
     }
   }
 
@@ -34,8 +34,10 @@ class Song extends Backbone.View {
 
   }
 
-  share(){
-    
+  share (ev) {
+    ev.stopPropagation()
+    Sfotipy.events.trigger('share', this.model)
+    return false
   }
 }  
 

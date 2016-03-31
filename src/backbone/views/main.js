@@ -5,14 +5,16 @@ class Main extends Backbone.View {
   get el () { return 'body' }
   get events () { 
     return {
-      'click': 'hideMenu',
+      'click': 'hide',
       'click .menu': 'stopEvent',
+      'click .share': 'stopEvent',
       'click .button-menu': 'showMenu'
     }
   }
 
   initialize () {
     this.$menu = $('.menu')
+    this.$share = $('.share')
   }
 
   stopEvent (ev) {
@@ -20,17 +22,36 @@ class Main extends Backbone.View {
   }
 
   showMenu (ev) {
-    ev.preventDefault()
+    this.stopEvent(ev)
+    this.hideShare()
     this.$menu.animate({
       left: '0px'
     }, 500)
-    ev.stopPropagation()
+    return false
   }
 
-  hideMenu (ev) {
-    console.log(ev.offsetX)
+  showShare () {
+    this.hideMenu()
+    this.$share.animate({
+      right: '0px'
+    }, 500)
+  }
+
+  hide () {
+    this.hideMenu()
+    this.hideShare()
+  }
+
+  hideMenu () {
     this.$menu.animate({
       left: '-80%'
+    }, 500)
+  }
+
+  hideShare () {
+    var width = this.$share.width()
+    this.$share.animate({
+      right: -width
     }, 500)
   }
 
