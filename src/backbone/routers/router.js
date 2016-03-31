@@ -79,6 +79,7 @@ class Router extends Backbone.Router {
   addSongs (name) {
     this.songs.reset()
     this.current.album = this.jsonData[name]
+    this.current.album.name = name
     this.current.album.songs.forEach(this.addSong, this)
   }
 

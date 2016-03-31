@@ -15,6 +15,7 @@ class Player extends Backbone.View {
       'click .action.gray.icon-random': 'reproRandom',
       'dblclick .action.gray.icon-prev': 'changeSong',
       'change  .range-vol': 'volume',
+      'mousemove  .range-vol': 'volume',
       'click .progress': 'progressPointer'
     }
   }
