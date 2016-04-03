@@ -7,6 +7,7 @@ class Player extends Backbone.View {
   get events () {
     return {
       'click .action.icon-share': 'share',
+      'click .action.icon-add': 'add',
       
       //Controls
       'click .action.gray.icon-play': 'pause',
@@ -136,6 +137,11 @@ class Player extends Backbone.View {
 
   share () {
     Sfotipy.events.trigger('share', this.model)
+    return false
+  }
+
+  add () {
+    Sfotipy.events.trigger('playlist', this.model)
     return false
   }
 }

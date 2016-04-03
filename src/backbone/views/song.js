@@ -8,6 +8,7 @@ class Song extends Backbone.View {
   get events () {
     return {
       'click': 'select',
+      'click .action.icon-add': 'add',
       'click .action.icon-love': 'love',
       'click .action.icon-share': 'share'
     }
@@ -37,6 +38,12 @@ class Song extends Backbone.View {
   share (ev) {
     ev.stopPropagation()
     Sfotipy.events.trigger('share', this.model)
+    return false
+  }
+
+  add (ev) {
+    ev.stopPropagation()
+    Sfotipy.events.trigger('playlist', this.model)
     return false
   }
 }  
