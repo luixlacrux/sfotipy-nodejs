@@ -136,6 +136,9 @@ btn-submit()
             font-size 2em
             position: absolute
             right 0
+    .list
+        overflow-y auto
+        max-height 70vh
     .item
         list-style none
         width 85%
@@ -186,6 +189,7 @@ btn-submit()
     .max
         right 0
     .total
+        cursor pointer
         background gris_claro
         border-radius 5px
         height 5px
@@ -278,17 +282,19 @@ btn-submit()
     right .5em
     font-size 1.2em
 .playlist
-    border-color none
-    //border-left 1px solid gris_claro
+    border-color transparent
     padding 0 2em
     width 22em
-    display inline
+    display initial
     .list
         list-style none
     .item
         cursor pointer
         padding 1em 0
         span 
+            display inline-block
+            max-width 60%
+            overflow hidden
             white-space nowrap
             text-overflow ellipsis
     .action
@@ -327,6 +333,8 @@ btn-submit()
     max-width 520px
     height 100%
     &-container
+        max-height 95%
+        overflow-y auto
         padding-top 1em
         padding-left 1em
         width 15em
@@ -351,6 +359,8 @@ btn-submit()
             position: relative 
             margin-right .5em
     &-list
+        max-height 60vh
+        overflow-y auto
         list-style none
         margin 0
         li
@@ -370,7 +380,7 @@ btn-submit()
         outline none
         border-radius .4em
         padding 1em .5em
-        width 94%
+        width 92%
         margin 0 auto
         display block
     &-btns
@@ -571,6 +581,11 @@ btn-submit()
             margin 0 auto
             wrap()
             overflow hidden
+        .playlist
+            border-radius .2em
+            box-shadow inset -10px 1px 15px gris_claro
+            max-height 39em
+            overflow-y auto
     .menu
         position static
         margin 0 auto

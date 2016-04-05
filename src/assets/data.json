@@ -1,7 +1,8 @@
-{
-  "Revival": {
+[
+  { 
+    "name": "Revival",
     "author": "Selena Gomez",
-    "cover": "https://upload.wikimedia.org/wikipedia/en/4/42/Selena_Gomez_-_Revival_(Official_Deluxe_Cover).png",
+    "cover": "../../songs/Revival/cover.jpeg",
     "year": 2015,
     "songs": [
       {
@@ -53,13 +54,45 @@
         "id": 10,
         "name": "Body Heat",
         "source": "../../songs/Revival/10 Body Heat.mp3"
+      },
+      {
+        "id": 11,
+        "name": "Rise",
+        "source": "../../songs/Revival/11 Rise.mp3"
+      },
+      {
+        "id": 12,
+        "name": "Me & My Girls",
+        "source": "../../songs/Revival/12 Me & My Girls.mp3"
+      },
+      {
+        "id": 13,
+        "name": "Nobody",
+        "source": "../../songs/Revival/13 Nobody.mp3"
+      },
+      {
+        "id": 14,
+        "name": "Perfect",
+        "source": "../../songs/Revival/14 Perfect.mp3"
+      },
+      {
+        "id": 15,
+        "name": "Outta My Hands (Loco)",
+        "source": "../../songs/Revival/15 Outta My Hands (Loco).mp3"
+      },
+      {
+        "id": 16,
+        "name": "Cologne",
+        "source": "../../songs/Revival/16 Cologne.mp3"
       }
 
     ]
   },
-  "Confident": {
+
+  {
+    "name": "Confident",
     "author": "Demi Lovato",
-    "cover": "https://upload.wikimedia.org/wikipedia/en/d/d8/Demi_Lovato_-_Confident_(Official_Album_Cover).png",
+    "cover": "../../songs/Confident/Demi-Lovato-Confident-Deluxe-Edition-Album.png",
     "year": 2015,
     "songs": [
       { "id": 1,
@@ -101,7 +134,28 @@
       { "id": 10,
         "name": "Yes",
         "source": "../../songs/Confident/10 Yes.m4a"
+      },
+      { "id": 11,
+        "name": "Father",
+        "source": "../../songs/Confident/11 Father.m4a"
+      },
+      { "id": 12,
+        "name": "Stars",
+        "source": "../../songs/Confident/12 Stars.m4a"
+      },
+      { "id": 13,
+        "name": "Mr. Hughes",
+        "source": "../../songs/Confident/13 Mr. Hughes.m4a"
+      },
+      { "id": 14,
+        "name": "Cool for the Summer (Jump Smokers)",
+        "source": "../../songs/Confident/14 Cool for the Summer (Jump Smokers.m4a"
+      },
+      { "id": 15,
+        "name": "Cool for the Summer (Suraci Remix)",
+        "source": "../../songs/Confident/15 Cool for the Summer (Suraci Remix.m4a"
       }
     ]
   }
-}
+]
+

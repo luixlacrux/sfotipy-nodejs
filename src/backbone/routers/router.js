@@ -31,7 +31,6 @@ class Router extends Backbone.Router {
     this.initEvents()
 
     this.current = {}
-    this.jsonData = {}
     this.albums = new Albums()
     this.songs = new Songs()
     this.library = new Library()
@@ -60,37 +59,30 @@ class Router extends Backbone.Router {
   }
 
   start () {
-    if (!Object.keys(this.jsonData).length)
-      this.fetchData(this.dataUrl, this.addAlbum.bind(this))
+    if (this.albums.length === 0 || this.library.length === 0)
+      this.fetchData()
   }
 
-  album (name) {
-    $('.music').show()
-    if (!Object.keys(this.jsonData).length)
-      this.fetchData(this.dataUrl, this.addAlbum.bind(this))
-        .done(() =>  this.addSongs(name))
-      else
-        this.addSongs(name)
-  }
-
-  fetchData () {
+  fetchData (callback) {
     this.library.fetch()
-    return $.getJSON('assets/data.json')
-      .then(data => {
-        this.jsonData = data
-
-        for (var name in data) {
-          if (data.hasOwnProperty(name))
-            this.addAlbum(name, data[name])
-        }
-      })
+    this.albums.fetch()
+      .done(callback)
   }
   
-  addSongs (name) {
-    this.songs.reset()
-    this.current.album = this.jsonData[name]
-    this.current.album.name = name
-    this.current.album.songs.forEach(this.addSong, this)
+  album (name) {
+    var self = this
+    $('.music').show()
+    if (this.albums.length === 0)
+      this.fetchData(addSongs)
+      else
+        addSongs()
+      
+    function addSongs () {
+      self.songs.reset()
+      self.current.album = self.albums.findWhere({ name: name })
+      self.current.album.songs = self.current.album.get('songs')
+      self.current.album.songs.forEach(self.addSong, self)
+    }
   }
 
   addSong (song) {
@@ -98,20 +90,11 @@ class Router extends Backbone.Router {
 
     this.songs.add(new Song({
       id: song.id,
-      album_cover: album.cover,
-      album_name: album.name,
-      author: album.author,
+      album_cover: album.get('cover'),
+      album_name: album.get('name'),
+      author: album.get('author'),
       name: song.name,
       source: song.source
-    }))
-  }
-
-  addAlbum (name, album) {
-    this.albums.add( new Album({
-      name: name,
-      author: album.author,
-      cover: album.cover,
-      year: album.year
     }))
   }
 
@@ -129,24 +112,30 @@ class Router extends Backbone.Router {
     let songs = playlist.get('songs')
     let newSong = this.current.songActually
 
-    if (songs.indexOf(newSong) === -1 ) {
+    if (songs.find( song => song.get('name') === newSong.get('name') ))  
+      if (songs.find( song => song.get('author') === newSong.get('author') )) 
+        console.log('La cancion ya existe')
+        else 
+          add()
+      else 
+        add()
+
+    function add () {
       songs.push(newSong)
-      playlist.set('songs', songs) 
-    } else {
-      alert('La cancion ya existe')
+      playlist.set('songs', songs)
     }
 
   }
   newPlaylist (name) {
-    let model = new Playlist({
+    let playlist = new Playlist({
       name: name,
       cover: undefined,
       creator: 'luixlacrux',
       songs: []
     })
 
-    this.library.add( model )
-    this.events.trigger('playlist:add', model)
+    this.library.add( playlist )
+    this.events.trigger('playlist:add', playlist)
   }
 }
 
