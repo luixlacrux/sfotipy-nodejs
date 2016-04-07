@@ -5,6 +5,7 @@ class Main extends Backbone.View {
   get el () { return 'body' }
   get events () { 
     return {
+      'submit #form-search': 'search',
       'click': 'hide',
       'click .menu': 'stopEvent',
       'click .share': 'stopEvent',
@@ -53,6 +54,13 @@ class Main extends Backbone.View {
     this.$share.animate({
       right: -width
     }, 500)
+  }
+
+  search (ev) {
+    ev.preventDefault()
+    let query = $('#form-search').find('.input').val()   
+    Sfotipy.navigate(`search/?q=${query}`, {trigger:true})
+    return false
   }
 
 }

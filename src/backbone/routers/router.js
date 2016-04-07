@@ -23,7 +23,8 @@ class Router extends Backbone.Router {
   get routes () {
     return {
       "": "start",
-      "album/:name": "album"
+      "album/:name": "album",
+      "search/?q=:query": "search"
     }
   }
   
@@ -136,6 +137,21 @@ class Router extends Backbone.Router {
 
     this.library.add( playlist )
     this.events.trigger('playlist:add', playlist)
+  }
+
+  search (query) {
+    $.ajax({
+      url: 'https://api.spotify.com/v1/search',
+      method: 'GET',
+      dataType: 'json',
+      data: {
+        q: query,
+        type: 'playlist'
+      },
+
+      error: err => console.log(err),
+      success: data => console.log(data)
+    })
   }
 }
 
