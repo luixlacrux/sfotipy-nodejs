@@ -1,0 +1,31 @@
+.Header
+    height auto
+    border none
+    &-logo
+        display block 
+    &-title
+        display none
+    &-btnMenu
+        display none
+    &-menu
+        position static
+        margin 0 auto
+        height auto
+        background gris_mas_claro
+        overflow hidden
+        .search-mobile
+            display none
+        .item
+            width auto
+            float left
+            list-style none
+            a
+                color gris_oscuro
+                cursor pointer
+                display block
+                padding 1em
+                text-transform uppercase
+                border-top 5px solid transparent
+                transition .3s border-top
+                &:hover
+                    border-top 5px solid gris_claro

@@ -4,7 +4,7 @@ import PlaylistItem from './playlist_Item'
 import template from '../../templates/playlist_item.html'
 
 class LibraryView extends Backbone.View {
-  get el () { return $('.share-list') }
+  get el () { return $('.Share-list') }
 
   initialize () {
     this.listenTo(this.collection, 'add', this.addOne, this)

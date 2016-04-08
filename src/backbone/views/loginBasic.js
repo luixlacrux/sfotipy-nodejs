@@ -4,7 +4,7 @@ import template_signIn from '../../templates/sign_in.html'
 import $ from 'jquery'
 
 class LoginBasic extends Backbone.View {
-  get el () { return $('.basic') }
+  get el () { return $('.Home-loginBasic') }
   get events () {
     return {
       'click #login': 'showLogin',

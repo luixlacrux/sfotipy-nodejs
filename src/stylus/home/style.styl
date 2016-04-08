@@ -1,0 +1,138 @@
+.btn-submit
+    btn-submit()
+.Home
+    background white
+    position relative
+    &-logo
+        background-image url('assets/img/cover.jpg')
+        background-size cover
+        background-position center
+        background-repeat no-repeat
+        color #fefefe
+        display block
+        text-align center
+        padding-top 100px
+        height 400px
+        width 100%
+        figcaption
+            font-size 1.7em
+    &-login
+        width 100%
+        top 300px
+        text-align center
+        position absolute
+    
+    &-loginSocial
+        list-style none
+        padding-bottom 95px
+        
+        .btn
+            text-align left
+            span
+                top .2em
+                position: relative
+                font-size 1.8em
+                margin-right .3em
+                padding-right .3em
+                border-right 2px rgba(0, 0, 0, 0.3) solid
+            .facebook
+                background #3B5998
+                margin-bottom .4em
+            .twitter
+                background #5EA9DD
+            a
+                padding .3em .5em
+                border-radius .4em
+                text-decoration none
+                color #fefefe
+                max-width 16em
+                height 3em
+                line-height 3em
+                display block
+                margin 0 auto
+    
+    &-loginBasic
+        border red solid 1px
+        li
+            display inline-block
+            width 48%
+            &:first-child
+                border-right rgba(0, 0, 0, .4) 2px solid 
+            a
+                display block
+                padding 1em 0
+                text-decoration underline
+                color gris_oscuro
+                transition .4s color
+                &:hover
+                    color rojo
+                
+    &-createAccount
+        max-width 31em
+        display none
+        padding-top 7em
+        legend
+            padding-bottom .5em
+            font-size 1.4em
+            margin 0 auto
+            text-align center
+        .input
+            margin 0 auto
+            margin-bottom .5em
+            padding 0
+            position relative
+            width 90%    
+            span
+                color gris_claro
+                left .4em
+                position: absolute            
+                top 25%
+    &-landing
+        padding-top 5em
+        .cover-hit
+            display block
+            overflow hidden
+            max-height 400px
+            img
+                margin-bottom -50px
+                width 100%
+        .copy
+            text-align center
+            .author
+                color gris_oscuro
+            .title
+                color gris_claro
+        .slug
+            color gris_claro
+            width 90%
+            margin 0 auto
+            padding-top 1em
+            padding-bottom 1.5em 
+            border-top 2px rgba(gris_claro, 0.7) solid
+            text-align center
+            font-size 1.1em
+    &-footer
+        color #fefefe
+        background gris_oscuro
+        margin 0 auto
+    &-footerConten
+        overflow hidden
+        padding .6em
+        span
+            float right
+            text-align right
+            display inline-block
+            width 48%
+            a
+                text-decoration underline
+                color #fefefe
+                &:last-child
+                    float right
+                    margin-left .5em
+        
+        .icon-sfotipy
+            float none
+            text-align left
+            top .15em
+            font-size 1.2em
+            position: relative
