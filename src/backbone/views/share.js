@@ -3,10 +3,10 @@ import $ from 'jquery'
 import template from '../../templates/share.html'
 
 class Share extends Backbone.View {
-  get el () { return $('.share') }
+  get el () { return $('.Share') }
   get events () {
     return {
-      'click .share-close': 'hide'
+      'click .Share-close': 'hide'
     }
   }
 

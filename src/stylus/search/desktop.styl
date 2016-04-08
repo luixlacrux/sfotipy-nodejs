@@ -1,0 +1,35 @@
+.Search
+    &-form
+        display none
+    &-lengend
+        color rgba(gris_claro, .75)
+        text-transform uppercase
+        border-bottom 1px solid gris_oscuro
+    
+    &-albums
+    &-artists
+        .Search-item
+            display inline-block
+            width 8rem
+            margin-right .5em
+            margin-bottom 1em
+            &:last-child
+                margin-right 0
+                figure
+                    margin 0
+            .coverConten
+                .cover
+                    width 128px
+                    height 128px
+    &-songs
+        .Search-item
+            display inline-block
+            width 49%
+            &:nth-child(even)
+                margin-left 1%
+    &-viewMore
+        position absolute
+        top 2px
+        right 0
+        text-decoration none
+        color gris_oscuro

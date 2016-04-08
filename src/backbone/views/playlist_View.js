@@ -3,11 +3,11 @@ import $ from 'jquery'
 import template from '../../templates/playlist.html'
 
 class Playlist extends Backbone.View {
-  get el () { return $('.share') }
+  get el () { return $('.Share') }
   get events () {
     return {
-      'click .share-close': 'hide',
-      'click .share-item.border-bottom': 'toggleInput'
+      'click .Share-close': 'hide',
+      'click .Share-item.border-bottom': 'toggleInput'
       //'submit': 'newPlaylist' 
     }
   }

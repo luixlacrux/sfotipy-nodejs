@@ -7,15 +7,15 @@ class Main extends Backbone.View {
     return {
       'submit #form-search': 'search',
       'click': 'hide',
-      'click .menu': 'stopEvent',
-      'click .share': 'stopEvent',
-      'click .button-menu': 'showMenu'
+      'click .Header-menu': 'stopEvent',
+      'click .Share': 'stopEvent',
+      'click .Header-btnMenu': 'showMenu'
     }
   }
 
   initialize () {
-    this.$menu = $('.menu')
-    this.$share = $('.share')
+    this.$menu = $('.Header-menu')
+    this.$share = $('.Share')
   }
 
   stopEvent (ev) {
