@@ -5,7 +5,6 @@ class Albums extends Backbone.Collection {
   constructor (options) {
     super(options)
     this.model = Album
-    this.url = 'assets/data.json'
   }
 }
 

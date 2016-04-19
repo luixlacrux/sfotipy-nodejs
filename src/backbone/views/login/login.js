@@ -1,9 +1,9 @@
 import Backbone from 'backbone'
-import template_login from '../../templates/login.html'
-import template_signIn from '../../templates/sign_in.html'
+import template_login from '../../../templates/login/login.html'
+import template_signIn from '../../../templates/login/sign_in.html'
 import $ from 'jquery'
 
-class LoginBasic extends Backbone.View {
+class Login extends Backbone.View {
   get el () { return $('.Home-loginBasic') }
   get events () {
     return {
@@ -38,4 +38,4 @@ class LoginBasic extends Backbone.View {
   }
 }
 
-export default LoginBasic
+export default Login

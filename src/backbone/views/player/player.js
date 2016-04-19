@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from '../../templates/player.html'
+import template from '../../../templates/player/player.html'
 
 class Player extends Backbone.View {
   get el () { return $('.music') }
@@ -61,7 +61,7 @@ class Player extends Backbone.View {
   changeSong (ev) {
     var id = this.model.id
     var $this = $(ev.target)
-    var collection = Sfotipy.songs 
+    var collection = Sfotipy.playing 
     var length = collection.length
 
     if ($this.hasClass('random'))

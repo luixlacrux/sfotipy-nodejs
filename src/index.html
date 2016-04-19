@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Sfotipy</title>
-	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="app.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+  <title>Sfotipy</title>
+  <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="app.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 </head>
 <body>
-	<!--header class="header relative border-bottom">
-    <div class="logo">
-      <div class="wrap center-block">
-        <figure class="image isotipo left">
+  <header class="Header">
+    <div class="Header-logo">
+      <div class="container">
+        <figure class="image">
           <img src="assets/img/logo.png" alt="Sfotipy"/>
         </figure>
-        <div class="user right">
-          <figure class="avatar round left">
+        <div class="user">
+          <figure class="avatar">
             <img src="assets/img/avatares/leonidas.jpg" alt="@LeonidasEsteban" width="38" height="38">
           </figure>
-          <span class="left username">@LeonidasEsteban</span>
+          <span class="username">@luixlacrux</span>
         </div>
-        <div class="search right">
-          <form action="" class="relative">
-            <span class="icon-search search-icon"></span>
+        <div class="search">
+          <form id="form-search" class="form ">
+            <span class="icon-search"></span>
             <input type="text"  placeholder="ejem: Leonidas Esteban" class="input">
             <span class="close-icon">x</span>
           </form>
         </div>
       </div>
     </div>
-    <a href="" class="button-menu icon-menu"></a>
-    <nav class="menu">
-      <ul class="list center-block wrap">
+    <a href="" class="Header-btnMenu icon-menu"></a>
+    <nav class="Header-menu">
+      <form action="" class="search-mobile relative">
+        <span class="icon-search"></span>
+        <input type="text">
+      </form>
+      <ul class="list center-block ">
         <li class="item">
           <a href="#">Top Hits</a>
         </li>
@@ -46,101 +50,24 @@
         </li>
       </ul>
     </nav>
-    <div class="title">
+    <div class="Header-title">
       <span>
         Top hits
       </span>
     </div>
-  </header-->
+  </header>
 
-  <section class="Home">
-    <figure class="Home-logo">
-      <img src="assets/img/logo.png" alt="">
-      <figcaption>All music that you like, everywhere</figcaption>  
-    </figure>
-    <div class="Home-login">
-      <ul class="Home-loginSocial">
-        <li class="btn">
-          <a href="#" class="facebook"><span class="icon-facebook"></span>Connect with Facebook</a>
-        </li>
-        <li class="btn twitter">
-          <a href="#" class="twitter"><span class="icon-twitter"></span>Connect with Twitter</a>
-        </li>
-      </ul>
+  <!-- Modal-right -->
+  <div class="Share">
 
-      <ul class="Home-loginBasic">
-        <li>
-          <a href="#" id="login">Log In</a>
-        </li>
-        <li>
-          <a href="#" id="sign-in">Create Account</a>
-        </li>
-      </ul>
-    </div>
 
-    <form id="form" class="Home-createAccount">
-      
-    </form>
-
-    <aside class="Home-landing">
-      <div>
-        <figure class="cover-hit">
-          <img src="assets/img/cover2.jpg" alt="" />
-        </figure>
-        <div class="copy">
-          <p class="author">Listen</p>
-          <p class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </div>
-      <div>
-        <figure class="cover-hit">
-          <img src="assets/img/cover_comparte2.jpg" alt="" />
-        </figure>
-        <div class="copy">
-          <p class="author">Shares</p>
-          <p class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </div>
-      <div>
-        <figure class="cover-hit">
-          <img src="assets/img/cover_sigueplaylist2.jpg" alt="" />
-        </figure>
-        <div class="copy">
-          <p class="author">Creates and follow playlist</p>
-          <p class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </div>
-      <div class="slug author">
-        Stars listening now
-      </div>
-    </aside>
-          
-    <footer class="Home-footer">
-     <div class="Home-footerConten">
-        <span class="icon-sfotipy"></span>
-        <span>
-          <a href="#">about us</a>
-          <a href="#">legal</a>
-        </span>
-      </div>
-    </footer>
-  </section>
+  </div>
   
   <!-- Music -->
-
-  <!--section class="playing small medium large">
+  <section id="music" class="playing small medium large">
     <div class="music">
       <figure class="image relative">
         <img src="http://www.andreagal.com/wp-content/themes/andreagal/images/no-track-image.png" width="320" height="320" alt="default">
-        <div class="actions padding right-text">
-          <a href="#" class="action icon-add"></a>
-          <a href="#" class="action icon-love"></a>
-          <a href="#" class="action icon-share"></a>
-        </div>
-        <div class="description center-text border-bottom">
-          <p class="name">
-          </p>
-        </div>
       </figure>
       <div class="padding">
         <div class="progress">
@@ -168,7 +95,7 @@
 
     </div>
     <!-- Playlist -->
-    <!--div class="playlist ">
+    <div class="playlist ">
       <div class="current"></div>
       <ul class="list"></ul>
     </div>
@@ -176,8 +103,47 @@
 
   <!-- Top hits -->
 
-  <!--section id="albums" class="container">
-  </section-->
+  <section id="albums" class="container">
+  </section>
+
+  <section class="Search container">
+    <form class="Search-form relative">
+      <span class="icon-search"></span>
+      <input type="search">
+    </form>
+
+    <section id="results" class="Search-results">
+      
+      <section class="Search-artists results-items relative">
+        <h3 class="Search-lengend">
+          Artist
+        </h3>
+        <div class="list">
+          <!--Artists-->
+        </div>
+        <a href="#" class="Search-viewMore">View all artists</a>
+      </section>
+
+      <section class="Search-albums results-items relative">
+        <h3 class="Search-lengend">
+          Albums
+        </h3>
+        <div class="list">
+          <!--Albums-->
+        </div>
+        <a href="#" class="Search-viewMore">View all albums</a>
+      </section>
+      <section class="Search-songs results-items relative">
+        <h3 class="Search-lengend">
+          Songs
+        </h3>
+        <div class="list">
+          <!-- Songs -->
+        </div>
+        <a href="#" class="Search-viewMore">View all songs</a> 
+      </section>
+    </section>
+  </section>
 
   <script src="app.js"></script>
   </body>

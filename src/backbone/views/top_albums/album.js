@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from '../../templates/album.html'
+import template from '../../../templates/top_albums/album.html'
 
 class AlbumView extends Backbone.View {
   get tagName() { return 'article' } 
@@ -24,7 +24,9 @@ class AlbumView extends Backbone.View {
 
   navigate () {
     $('.music').show()
-    Sfotipy.navigate('album/' + this.model.get('name'), { trigger:true })
+    let author = this.model.get('author')
+    let name = this.model.get('name')
+    Sfotipy.navigate(`album/${name}`, { trigger:true })
   }
 }
 

@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from '../../templates/song.html'
+import template from '../../../templates/player/song.html'
 
 class Song extends Backbone.View {
   get tagName () { return 'li' }

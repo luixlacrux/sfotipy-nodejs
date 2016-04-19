@@ -17,6 +17,8 @@ gris_mas_claro = #F0F0F0
 facebook = #3B5998
 twitter = #5EA9DD
 
+@import "spinner.styl"
+
 a
     text-decoration none
 body
@@ -66,6 +68,10 @@ icon-search-big()
     position: absolute
     right 0
 
+text-wrapper()
+    overflow hidden 
+    white-space nowrap
+    text-overflow ellipsis
 .input-form
     background none
     border gris_claro 1px solid
@@ -136,8 +142,7 @@ icon-search-big()
     left 0
     right 0
     background rgba(black,.3)
-.border-bottom
-    border-bottom 
+    
 .border-left
     border-left 1px solid gris_claro
 .name
@@ -279,6 +284,7 @@ icon-search-big()
     &:nth-child(even)
         margin-right 0
     p
+        text-wrapper()
         margin .5em 0
 
 .playing

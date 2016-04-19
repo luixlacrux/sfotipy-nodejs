@@ -6,12 +6,12 @@
   "scripts": {
     "public": "mkdir -p public",
     "lint": "standard",
-    "copy-files": "NODE_PATH=. cp -r ./src/assets ./public  && cp ./src/index.html ./public && npm run design && http-server .",
+    "copy-files": "NODE_PATH=. cp -r ./src/assets ./public  && cp ./src/index.html ./public && npm run design && npm run server",
     "stylus": "NODE_PATH=. stylus ./src/stylus/app.styl -u nib  -w -o  ./public ",
     "build-js": "NODE_PATH=. browserify -t [ hbsfy -e html,htm] -t babelify ./src/backbone/app.js > ./public/app.js",
     "build": "npm run public && npm run copy-files && npm run build-js",
     "server": "http-server ./public",
-    "design": "NODE_PATH=: cp ./src/hits.html ./public"
+    "design": "NODE_PATH=: cp ./src/login.html ./public"
   },
   "author": "Julian Duque",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "backbone": "^1.3.2",
     "handlebars": "^4.0.5",
     "jquery": "^1.12.2",
+    "spotify-finder": "^1.0.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
