@@ -4,22 +4,27 @@
   "description": "A Spotify Clone (?)",
   "main": "server.js",
   "scripts": {
+    "stylus": "stylus ./src/stylus/app.styl -u nib -w -o ./public ",
     "public": "mkdir -p public",
-    "lint": "standard",
-    "copy-files": "NODE_PATH=. cp -r ./src/assets ./public  && cp ./src/index.html ./public && npm run design && npm run server",
-    "stylus": "NODE_PATH=. stylus ./src/stylus/app.styl -u nib  -w -o  ./public ",
-    "build-js": "NODE_PATH=. browserify -t [ hbsfy -e html,htm] -t babelify ./src/backbone/app.js > ./public/app.js",
+    "copy-files": "cp -r ./src/assets ./public",
+    "build-js": "NODE_PATH=. browserify -t [ hbsfy -e html,htm] -t [ babelify --presets [ es2015 ] ] ./src/client/backbone/app.js > ./public/app.js",
     "build": "npm run public && npm run copy-files && npm run build-js",
-    "server": "http-server ./public",
-    "design": "NODE_PATH=: cp ./src/login.html ./public"
+    "dist": "babel src/server/index.js src/server/**/*.js --out-dir dist --presets es2015",
+    "server": "NODE_PATH=./dist node dist/src/server",
+    "start": "npm run dist && npm run server"
   },
   "author": "Julian Duque",
   "license": "MIT",
   "dependencies": {
     "backbone": "^1.3.2",
+    "body-parser": "^1.15.0",
+    "consolidate": "^0.14.0",
+    "express": "^4.13.4",
     "handlebars": "^4.0.5",
     "jquery": "^1.12.2",
+    "mongoose": "^4.4.12",
     "spotify-finder": "^1.0.0",
+    "swig": "^1.4.2",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

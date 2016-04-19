@@ -1,4 +1,5 @@
-songs
 node_modules
 public
-js
+dist
+*.tgz
+*.log
