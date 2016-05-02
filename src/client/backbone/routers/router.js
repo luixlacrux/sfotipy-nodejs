@@ -22,7 +22,7 @@ import Share from 'src/client/backbone/views/app/share'
 import LibraryView from 'src/client/backbone/views/app/library'
 import PlaylistView from 'src/client/backbone/views/app/playlist_View'
 
-import Login from 'src/client/backbone/views/login/login'
+import Login from 'src/client/backbone/views/home/login'
 
 import List from 'src/client/backbone/views/player/list'
 import Player from 'src/client/backbone/views/player/player'
@@ -41,9 +41,10 @@ const Spotify =  SpotifyCli.createClient()
 class Router extends Backbone.Router {
   get routes () {
     return {
-      "": "start",
+      "top-albums": "start",
       "album/:name": "album",
-      "search/:query": "showSearch"
+      "search/:query": "showSearch",
+      "home/:action": "showHomeForm"
     }
   }
 
@@ -66,7 +67,7 @@ class Router extends Backbone.Router {
     this.list = new List({ collection: this.playing })
     this.player = new Player({ model: new Song })
     this.topAlbumsView = new TopAlbumsView({ collection: this.topAlbums })
-    
+
     this.artistsList = new ArtistsView({ collection: this.artists })
     this.albumsList = new AlbumsView({ collection: this.albums })
     this.songsList = new SongsView({ collection: this.songs })
@@ -112,7 +113,7 @@ class Router extends Backbone.Router {
       ApiAlbums(albums => {
         albums.forEach(this.parseTopAlbum, this)
         resolve(this.addSongs.bind(this))
-      })  
+      })
     })
   }
 
@@ -167,7 +168,7 @@ class Router extends Backbone.Router {
       Spotify.getAlbum(id, { tracks: false }, (err, album) => {
         if (err) return reject(err)
 
-        this.parseTopAlbum(album)   
+        this.parseTopAlbum(album)
         resolve(album.name)
       })
     })
@@ -290,6 +291,14 @@ class Router extends Backbone.Router {
     })
 
     this.songs.add(song)
+  }
+
+  showHomeForm (action) {
+    console.log(action)
+    if (action === 'login')
+      this.login.showLogin()
+    if (action === 'signup')
+      this.login.showSignIn()
   }
 }
 

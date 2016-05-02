@@ -31,13 +31,14 @@ img
 ul
     margin 0
     padding 0
-    
+
 //utilitis
 wrap()
     max-width 980px
 fixed()
     position fixed
 btn-submit()
+    border none
     margin 0 auto
     display block
     background rojo
@@ -48,12 +49,12 @@ btn-submit()
     width 90%
     color #fefefe
     font-size 1.4em
-    
+
 search-mobile()
     padding 2em 0
     margin 0 auto
     width 85%
-    
+
 
 search-mobile-input()
     outline none
@@ -61,7 +62,7 @@ search-mobile-input()
     border-radius .5em
     padding .5em
     width 70%
-    
+
 icon-search-big()
     color white
     font-size 2em
@@ -69,7 +70,7 @@ icon-search-big()
     right 0
 
 text-wrapper()
-    overflow hidden 
+    overflow hidden
     white-space nowrap
     text-overflow ellipsis
 .input-form
@@ -80,10 +81,10 @@ text-wrapper()
     left 1.8em
     outline none
     position: absolute
-    text-indent .3em 
+    text-indent .3em
     top 0
-    width 90%    
-    
+    width 90%
+
 //buttons
 .button-menu
     color gris_oscuro
@@ -111,7 +112,7 @@ text-wrapper()
         border-radius .2em
         &.icon-vol
             input
-                outline none 
+                outline none
         &:hover
             color gris_oscuro
         &:active
@@ -142,7 +143,7 @@ text-wrapper()
     left 0
     right 0
     background rgba(black,.3)
-    
+
 .border-left
     border-left 1px solid gris_claro
 .name
@@ -230,7 +231,7 @@ text-wrapper()
         right -5px
         top -2px
         width 10px
-        
+
         transition all .2s
         //animation 1s circle infinite
     .state
@@ -248,7 +249,7 @@ text-wrapper()
             width 15px
             top -5px
             right -8px
-        
+
 /*@keyframes state
     0%
         width 0
@@ -263,7 +264,7 @@ text-wrapper()
         opacity 0
 .header
     height 3.5em
-    
+
     // a
     //  display none
     .title
@@ -319,7 +320,7 @@ text-wrapper()
     .item
         cursor pointer
         padding 1em 0
-        span 
+        span
             display inline-block
             max-width 60%
             overflow hidden
@@ -353,7 +354,7 @@ text-wrapper()
             margin-left .4em
 
 
-//imports components        
+//imports components
 @import 'home/style.styl'
 @import 'header/style.styl'
 @import 'share/style.styl'
@@ -381,11 +382,11 @@ text-wrapper()
 @media screen and (min-width:1000px)
     body
         background gris_mas_claro
-    
+
     @import 'header/desktop.styl'
     @import 'home/desktop.styl'
     @import 'search/desktop.styl'
-            
+
     .playing
         padding-top 1.3em
         text-align center
@@ -397,19 +398,19 @@ text-wrapper()
             border-radius .2em
             box-shadow inset -10px 1px 15px gris_claro
             max-height 39em
-            overflow-y auto        
-        
+            overflow-y auto
+
     .music
         width 32.5em
         float left
-    
+
     .playlist
         display inline-block
-        
-            
-    
-/*  
-                    
+
+
+
+/*
+
 .header-home
     background-image url('./assets/img/cover.jpg')
     background-repeat no-repeat
@@ -432,6 +433,6 @@ text-wrapper()
             width 14em
         .facebook
             background #3B5998
-            margin-bottom .5em 
+            margin-bottom .5em
         .twitter
             background #5EA9DD*/
