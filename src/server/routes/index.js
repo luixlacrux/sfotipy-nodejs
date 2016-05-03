@@ -18,16 +18,9 @@ export default function (app, passport) {
     res.redirect('/home')
   })
 
-  app.get('/users', (req, res) => {
-    User.find({}, (err, users) => {
-      if (err)
-        throw err
-
-      res.json(users)
-    })
-  })
-
-
+  // =====================
+  // LOCAL ===============
+  // =====================
   app.post('/home/login', passport.authenticate('local-login', {
     successRedirect: '/',
     failureRedirect: '/home/login',
@@ -39,18 +32,23 @@ export default function (app, passport) {
     failureRedirect: '/home/signup',
     failureFlash: true // allow flash messages
   }))
-  /*(req, res) => {
-    if (!req.body.username || !req.body.email || !req.body.password)
-      return res.json({ success: false, message: 'all fields are required' })
 
-    let newUser = new User()
-    newUser.local.username = req.body.username
-    newUser.local.password = newUser.generateHash(req.body.password)
-    newUser.local.email = req.body.email
+  // =====================
+  // FACEBOOK ============
+  // =====================
+  // route for facebook authenticattion and login
+  app.get('/auth/facebook', isNotLoggedIn, passport.authenticate('facebook', { scope: 'email' }))
+  // handle the callback after facebook has authenticated the user
+  app.get('/auth/facebook/callback', isNotLoggedIn, passport.authenticate('facebook', {
+    successRedirect: '/',
+    failureRedirect: '/home'
+  }))
 
-    newUser.save(err => {
+  app.get('/users', (req, res) => {
+    User.find({}, (err, users) => {
       if (err)
         throw err
-      res.json({ success: true, message: 'Successfully' })
-    }*/
+      res.json(users)
+    })
+  })
 }

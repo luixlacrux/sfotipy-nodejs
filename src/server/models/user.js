@@ -12,7 +12,6 @@ const UserSchema = mongoose.Schema({
     password: String,
     email: String
   },
-  
   facebook: {
     id: String,
     token: String,
@@ -48,4 +47,3 @@ UserSchema.methods.validPassword = function (password) {
 let user = mongoose.model('User', UserSchema)
 
 export default user
-
