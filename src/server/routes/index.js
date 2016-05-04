@@ -36,10 +36,21 @@ export default function (app, passport) {
   // =====================
   // FACEBOOK ============
   // =====================
-  // route for facebook authenticattion and login
+  // route for facebook authentication and login
   app.get('/auth/facebook', isNotLoggedIn, passport.authenticate('facebook', { scope: 'email' }))
   // handle the callback after facebook has authenticated the user
   app.get('/auth/facebook/callback', isNotLoggedIn, passport.authenticate('facebook', {
+    successRedirect: '/',
+    failureRedirect: '/home'
+  }))
+
+  // =====================
+  // TWITTER ============
+  // =====================
+  // route for twitter authentication and login
+  app.get('/auth/twitter', passport.authenticate('twitter'))
+  // handle the callback after twitter has authenticated the user
+  app.get('/auth/twitter/callback', passport.authenticate('twitter', {
     successRedirect: '/',
     failureRedirect: '/home'
   }))

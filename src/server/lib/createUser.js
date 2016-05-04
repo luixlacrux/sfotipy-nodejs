@@ -38,3 +38,42 @@ export function userFacebook (profile, token) {
     })
   })
 }
+
+export function userTwitter (profile, token) {
+  return new Promise((resolve, reject) => {
+    // create the user
+    var newUser = new User()
+    checkUsernameSocial(profile).then(username => {
+      newUser.local.username = username
+      // set the username because is required
+      // set all of the user data that we need
+      newUser.twitter.id = profile.id
+      newUser.twitter.token = token
+      newUser.twitter.username = profile.username
+      newUser.twitter.displayName = profile.displayName
+
+      // save the user
+      newUser.save(err => {
+        if (err)
+          throw err
+        resolve(newUser)
+      })
+    })
+  })
+}
+
+let checkUsernameSocial = (profile) => {
+  return new Promise((resolve, reject) => {
+    User.findOne({'local.username':  profile.username}, (err, user) => {
+      console.log(user)
+      if (err)
+        throw err
+      if (user) {
+        let username = `${profile.username}-${profile.id}`
+        resolve(username)
+      }
+
+      resolve(profile.username)
+    })
+  })
+}
