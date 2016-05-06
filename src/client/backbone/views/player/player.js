@@ -8,7 +8,7 @@ class Player extends Backbone.View {
     return {
       'click .action.icon-share': 'share',
       'click .action.icon-add': 'add',
-      
+
       //Controls
       'click .action.gray.icon-play': 'pause',
       'click .action.gray.icon-next': 'changeSong',
@@ -30,6 +30,8 @@ class Player extends Backbone.View {
     this.$el.find('.image').empty()
     let song = this.model.toJSON()
     this.$el.find('.image').html(template(song))
+    $('.playlist ul').find('li').eq( song.id-1 ).addClass('item-playing')
+    $('.playlist ul').find('li').eq( song.id-1 ).siblings('li').removeClass('item-playing')
 
     this.$el.append( this.audio )
     this.initEvents()
@@ -61,7 +63,7 @@ class Player extends Backbone.View {
   changeSong (ev) {
     var id = this.model.id
     var $this = $(ev.target)
-    var collection = Sfotipy.playing 
+    var collection = Sfotipy.playing
     var length = collection.length
 
     if ($this.hasClass('random'))
@@ -102,7 +104,7 @@ class Player extends Backbone.View {
     let seconds = time % 60
 
     seconds = seconds < 10 ? '0' + seconds : seconds
-    return `${ minutes }:${ seconds }` 
+    return `${ minutes }:${ seconds }`
   }
 
   progressBar () {
@@ -116,7 +118,7 @@ class Player extends Backbone.View {
   progressPointer (ev) {
     let $this = $('.total')
     let calculate = this.audio.duration * (ev.offsetX / $this.width())
-    this.audio.currentTime = calculate    
+    this.audio.currentTime = calculate
   }
 
   totalDuration () {
