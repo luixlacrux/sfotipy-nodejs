@@ -13,9 +13,18 @@ vendor-prefixes = webkit o ms moz official
 gris_oscuro = #333333
 gris_claro = #818181
 rojo = #BD255B
+rosa = #CC2F6F
 gris_mas_claro = #F0F0F0
 facebook = #3B5998
 twitter = #5EA9DD
+
+form(content, size)
+  	font-size size
+  	position absolute
+  	content content
+  	left 1.7em
+  	top .6em
+  	color gris_claro
 
 @import "spinner.styl"
 
@@ -31,7 +40,8 @@ img
 ul
     margin 0
     padding 0
-
+    border-bottom 1px solid rgba(129,129,129,0.3)
+    padding-bottom .4em
 //utilitis
 wrap()
     max-width 980px
@@ -365,7 +375,7 @@ text-wrapper()
 @import 'search/style.styl'
 
 @media screen and (min-width:480px)
-
+    @import 'home/tablet480.styl'
     .cover-hit
         img
             margin-bottom 0
@@ -380,7 +390,8 @@ text-wrapper()
     .playing
         &.medium
             width auto
-
+@media screen and (min-width:720px)
+    @import 'home/tablet720.styl'
 /* MEDIA DESKTOP */
 
 @media screen and (min-width:1000px)

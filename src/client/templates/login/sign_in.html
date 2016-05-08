@@ -1,18 +1,22 @@
-<legend>Create Account</legend>
-<div class="input">
-  <span class="icon-user"></span>
-  <input class="input-form" type="text" placeholder="Username" name="username">
-</div>
-<div class="input">
-  <span class="icon-mail"></span>
-  <input class="input-form" type="email" placeholder="Email" name="email">
-</div>
-<div class="input">
-  <span class="icon-lock"></span>
-  <input class="input-form" type="password" placeholder="Choose a password" name="password">
-</div>
-<!--div class="input">
-  <span class="icon-lock"></span>
-  <input class="input-form" type="password" placeholder="Confirm password">
-</div-->
-<button type="submit" id="sign-id" class="btn-submit">Sign In</button>
+<form class="create" action"/login" method="POST">
+  <h2>Crea una cuenta</h2>
+  <p>
+    <span class="icon-username"></span>
+    <input name="username" id="username" type="username" placeholder="Username" />
+  </p>
+  <p>
+    <span class="icon-email"></span>
+    <input name="email" id="email" type="email" placeholder="Email" />
+  </p>
+  <p>
+    <span class="icon-password"></span>
+    <input name="password" id="password" type="password" placeholder="Choose a password" />
+  </p>
+  <p>
+    <span class="icon-password"></span>
+    <input id="password2" type="password" placeholder="Confirm password" />
+  </p>
+  <p>
+    <input type="submit" class="btn-submit" id="sign-in" value="Register" />
+  </p>
+</form>

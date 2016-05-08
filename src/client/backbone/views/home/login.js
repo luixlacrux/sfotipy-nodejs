@@ -4,23 +4,22 @@ import template_signIn from 'src/client/templates/login/sign_in.html'
 import $ from 'jquery'
 
 class Login extends Backbone.View {
-  get el () { return $('.Home-loginBasic') }
+  get el () { return $('body#login') }
   get events () {
     return {
-      'click #login': 'navigate',
-      'click #sign-in': 'navigate'
+      'click .id-login': 'navigate',
+      'click .id-create': 'navigate'
     }
   }
 
   initialize () {
-    this.$body = $('body')
     this.$form = $('#form')
   }
 
   render (template) {
     this.$form.html(template())
     this.$form.fadeIn(800)
-    this.$body.animate({ scrollTop: `${500}px` }, 1000)
+    this.$el.animate({ scrollTop: `${450}px` }, 1000)
   }
 
   showLogin (ev) {
@@ -42,7 +41,7 @@ class Login extends Backbone.View {
   navigate (ev) {
     ev.preventDefault()
     let $elem = ev.target
-    if ( $elem.id === 'login')
+    if ( $elem.className === 'id-login')
       Sfotipy.navigate('/home/login', { trigger: true })
     else
       Sfotipy.navigate('/home/signup', { trigger: true })

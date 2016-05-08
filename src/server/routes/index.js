@@ -3,7 +3,7 @@ import { isLoggedIn, isNotLoggedIn } from 'src/server/lib/middlewares'
 
 export default function (app, passport) {
   let renderIndex = (req, res) => res.render('index', {user: req.user})
-  let renderHome = (req, res) => res.render('home', {message: req.flash('message')})
+  let renderHome = (req, res) => res.render('login', {message: req.flash('message')})
 
   app.get('/', (req, res) => res.redirect('/top-albums'))
   app.get('/top-albums', isLoggedIn, renderIndex)

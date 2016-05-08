@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Sfotipy</title>
   <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="/app.css">
+  <link rel="icon" href="/assets/img/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 </head>
 <body>
@@ -12,13 +13,13 @@
     <div class="Header-logo">
       <div class="container">
         <figure class="image">
-          <img src="assets/img/logo.png" alt="Sfotipy"/>
+          <img src="/assets/img/logo.png" alt="Sfotipy"/>
         </figure>
         <div class="user">
           <figure class="avatar">
-            <img src="assets/img/avatares/leonidas.jpg" alt="@LeonidasEsteban" width="38" height="38">
+            <img src="/assets/img/avatares/leonidas.jpg" alt="@LeonidasEsteban" width="38" height="38">
           </figure>
-          <span class="username">@luixlacrux</span>
+          <span class="username">@{{ user.local.username }}</span>
         </div>
         <div class="search">
           <form id="form-search" class="form ">
@@ -48,6 +49,9 @@
         <li class="item">
           <a href="#">Playlist</a>
         </li>
+        <li class="item">
+          <a href="/logout">Logout</a>
+        </li>
       </ul>
     </nav>
     <div class="Header-title">
@@ -62,7 +66,7 @@
 
 
   </div>
-  
+
   <!-- Music -->
   <section id="music" class="playing small medium large">
     <div class="music">
@@ -81,7 +85,7 @@
           </div>
           <span class="max">0:00</span>
         </div>
-        
+
         <div class="play center-text padding-tb">
           <button class="action gray icon-prev"></button>
           <button class="action gray icon-play"></button>
@@ -113,7 +117,7 @@
     </form>
 
     <section id="results" class="Search-results">
-      
+
       <section class="Search-artists results-items relative">
         <h3 class="Search-lengend">
           Artist
@@ -140,11 +144,11 @@
         <div class="list">
           <!-- Songs -->
         </div>
-        <a href="#" class="Search-viewMore">View all songs</a> 
+        <a href="#" class="Search-viewMore">View all songs</a>
       </section>
     </section>
   </section>
 
-  <script src="app.js"></script>
+  <script src="/app.js"></script>
   </body>
 </html>
