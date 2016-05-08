@@ -210,6 +210,8 @@ text-wrapper()
     float left
 .right
     float right
+.border-bottom
+    border-bottom 1px solid rgba(gris_claro, 0.51)
 
 .item-playing
 		border-left 3px solid rojo
@@ -325,23 +327,28 @@ text-wrapper()
     right .5em
     font-size 1.2em
 .playlist
-    border-color transparent
-    padding 0 2em
-    width 22em
-    display initial
+    border-left 1px solid gris_claro
+    padding 0 .5em
     .list
         list-style none
+        overflow hidden
+        border-bottom none
     .item
-        cursor pointer
         padding 1em 0
-        span
+        div
             display inline-block
-            max-width 60%
+            height 18px
+            margin 0 .3em
             overflow hidden
-            white-space nowrap
             text-overflow ellipsis
+            white-space nowrap
+            width calc(100% - 7.5em)
+    .item-playing
+        border-left 3px solid rojo
+        text-shadow 1px -1px rgba(189, 37, 91, 0.61)
     .action
         font-size .8em
+
 .isotipo
     width 122px
 .logo
@@ -407,22 +414,17 @@ text-wrapper()
         text-align center
         &.large
             margin 0 auto
-            wrap()
+            width 62.5em
             overflow hidden
         .playlist
-            border-radius .2em
-            box-shadow inset -10px 1px 15px gris_claro
-            max-height 39em
+            display inline-block
+            width 27em
+            max-height 520px
             overflow-y auto
 
     .music
         width 32.5em
         float left
-
-    .playlist
-        display inline-block
-
-
 
 /*
 
