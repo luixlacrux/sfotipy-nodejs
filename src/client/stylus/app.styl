@@ -293,7 +293,7 @@ text-wrapper()
     display inline-block
     font-size 1rem
     margin-bottom 1em
-    margin-right 1em
+    margin-left 1em
     text-align left
     vertical-align top
     width 8rem
@@ -331,13 +331,13 @@ text-wrapper()
     right .5em
     font-size 1.2em
 .playlist
-    border-left 1px solid gris_claro
     padding 0 .5em
     .list
         list-style none
         overflow hidden
         border-bottom none
     .item
+        cursor pointer
         padding 1em 0
         div
             display inline-block
@@ -409,25 +409,30 @@ text-wrapper()
     body
         background gris_mas_claro
 
-    @import 'header/desktop.styl'
     @import 'home/desktop.styl'
+    @import 'header/desktop.styl'
     @import 'search/desktop.styl'
 
     .playing
+        wrap()
         padding-top 1.3em
         text-align center
         &.large
+            wrap()
+            display flex
+            justify-content space-between
             margin 0 auto
-            width 62.5em
             overflow hidden
         .playlist
+            border-left 1px solid gris_claro
             display inline-block
             width 27em
             max-height 520px
             overflow-y auto
 
     .music
-        width 32.5em
+        width 100%
+        max-width 32.5em
         float left
 
 /*

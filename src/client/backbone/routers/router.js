@@ -248,7 +248,7 @@ class Router extends Backbone.Router {
   checkImage (images) {
     let length = Object.keys(images).length
     if (length === 0)
-      return 'http://www.andreagal.com/wp-content/themes/andreagal/images/no-track-image.png'
+      return null
     else if (length === 1)
       return images[0].url
     else

@@ -5,7 +5,7 @@
 
   .isotipo
     position absolute
-    left 12.5em
+    left 12%
     width 15em
 
   .texto
@@ -14,27 +14,34 @@
     margin-bottom 1em
 
   .id-login
-  .id-create
     display block
+  .id-create
+    margin-top .5em
+    display block
+    &:before
+      content: 'or'
+      margin-right .3em
+      text-decoration underline
+      color #fefefe
 
 .login
   .list
     display none
 
 .contenedor
+  width 80%
   max-width 1400px
   margin 0 auto
   article
     height 18em
-    margin 1em 5em 2em 5em
     position relative
-    width calc(100% - 10em)
     .img
       left 0
       margin 0 auto
       position absolute
       width 50%
       img
+        height 100%
         border-radius 50%
         width 18.7em
 
@@ -44,10 +51,7 @@
       right 0
       top 2em
       width 50%
-      text-align left
-
-      p
-        margin 0
+      text-align center
 
   article:nth-child(even)
     .img
@@ -63,7 +67,8 @@
     border-bottom 2px solid rgba(gris_claro, .3)
     border-top none
     margin 1em auto
-    width 70%
+    width 80%
+    max-width 1400px
 
     p
       position relative
