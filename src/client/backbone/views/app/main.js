@@ -3,11 +3,15 @@ import $ from 'jquery'
 
 class Main extends Backbone.View {
   get el () { return 'body' }
-  get events () { 
+  get events () {
     return {
       'submit #form-search': 'searchDesktop',
       'submit .search-mobile' : 'searchMobileOne',
       'submit .Search-form' : 'searchMobileTwo',
+      'click #form-search .icon-search': 'searchDesktop',
+      'click .search-mobile .icon-search' : 'searchMobileOne',
+      'click .Search-form .icon-search' : 'searchMobileTwo',
+      'click .close-icon': 'clearInput',
       'click': 'hide',
       'click .Header-menu': 'stopEvent',
       'click .Share': 'stopEvent',
@@ -22,8 +26,8 @@ class Main extends Backbone.View {
     this.$albums = $('#albums')
     this.$search = $('.Search')
     this.$inputSearchDesktop = $('#form-search').find('.input')
-    this.$inputSearchMobileOne = $('.search-mobile').find('input') 
-    this.$inputSearchMobileTwo = $('.Search-form').find('input') 
+    this.$inputSearchMobileOne = $('.search-mobile').find('input')
+    this.$inputSearchMobileTwo = $('.Search-form').find('input')
   }
 
   stopEvent (ev) {
@@ -76,6 +80,10 @@ class Main extends Backbone.View {
 
   hideSearch () {
     this.$search.hide()
+  }
+
+  clearInput (ev) {
+    this.$inputSearchDesktop.val('')
   }
 
   showSearch (query) {

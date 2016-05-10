@@ -154,8 +154,6 @@ text-wrapper()
     right 0
     background rgba(black,.3)
 
-.border-left
-    border-left 1px solid gris_claro
 .name
     color gris_oscuro
 .menu
@@ -293,13 +291,12 @@ text-wrapper()
     display inline-block
     font-size 1rem
     margin-bottom 1em
-    margin-left 1em
+    margin-left .5em
+    margin-right .5em
     text-align left
     vertical-align top
     width 8rem
     cursor pointer
-    &:nth-child(even)
-        margin-right 0
     p
         text-wrapper()
         margin .5em 0
@@ -324,12 +321,6 @@ text-wrapper()
     left .5em
     top .8em
     color gris_claro
-.close-icon
-    position absolute
-    top .5em
-    color gris_claro
-    right .5em
-    font-size 1.2em
 .playlist
     padding 0 .5em
     .list
