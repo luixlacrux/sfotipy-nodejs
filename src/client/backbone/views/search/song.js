@@ -23,6 +23,7 @@ class SongView extends Backbone.View {
   }
 
   navigate () {
+    Sfotipy.$opacity.show()
     let id_album = this.model.get('id_album')
     Sfotipy.events.trigger('album:get', id_album)
     //Sfotipy.navigate('album/' + this.model.get('album'), { trigger: true })

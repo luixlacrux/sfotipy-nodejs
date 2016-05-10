@@ -51,6 +51,7 @@ class Router extends Backbone.Router {
   initialize () {
     this.initEvents()
     this.current = {}
+    this.$opacity = $('.opacity')
     this.$loader = [$('<div class="loader">'),
                     $('<div class="loader">'),
                     $('<div class="loader">')]
@@ -100,6 +101,7 @@ class Router extends Backbone.Router {
     this.events.on('album:get', id => this.getAlbum(id).then(name => {
       this.album(name)
       this.navigate(`album/${name}`, { trigger: true })
+      this.$opacity.hide()
     }))
   }
 
@@ -109,8 +111,10 @@ class Router extends Backbone.Router {
   }
 
   fetchData () {
+    this.$opacity.show()
     return new Promise((resolve, reject) => {
       ApiAlbums(albums => {
+        this.$opacity.hide()
         albums.forEach(this.parseTopAlbum, this)
         resolve(this.addSongs.bind(this))
       })
