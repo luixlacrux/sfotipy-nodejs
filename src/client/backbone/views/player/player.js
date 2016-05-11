@@ -17,7 +17,9 @@ class Player extends Backbone.View {
       'dblclick .action.gray.icon-prev': 'changeSong',
       'change  .range-vol': 'volume',
       'mousemove  .range-vol': 'volume',
-      'click .progress': 'progressPointer'
+      'click .progress': 'progressPointer',
+      'mousemove .total': 'pointTime',
+      'mouseout .total': 'pointTimeOut'
     }
   }
 
@@ -131,6 +133,22 @@ class Player extends Backbone.View {
   volume (ev) {
     let vol = parseFloat(ev.target.value)
     this.audio.volume = vol
+  }
+
+  pointTime (ev) {
+    let $this = $('.progress .total')
+    let calculate = this.audio.duration * (ev.offsetX / $this.width())
+    let time = this.formaTime(calculate)
+    $('.progress .position-mouse')
+      .css({
+        display: 'block',
+        left: ev.offsetX
+      })
+      .find('.pointTime').text(time)
+  }
+
+  pointTimeOut (ev) {
+    $('.progress .position-mouse').css('display', 'none')
   }
 
   restart () {
