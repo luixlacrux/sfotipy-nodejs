@@ -53,6 +53,7 @@ class Router extends Backbone.Router {
   initialize () {
     this.initEvents()
     this.current = {}
+    this.$opacity = $('.opacity')
     this.$loader = [$('<div class="loader">'),
                     $('<div class="loader">'),
                     $('<div class="loader">')]
@@ -106,6 +107,7 @@ class Router extends Backbone.Router {
     this.events.on('album:get', id => this.getAlbum(id).then(name => {
       this.album(name)
       this.navigate(`album/${name}`, { trigger: true })
+      this.$opacity.hide()
     }))
   }
 
@@ -115,8 +117,10 @@ class Router extends Backbone.Router {
   }
 
   fetchData () {
+    this.$opacity.show()
     return new Promise((resolve, reject) => {
       ApiAlbums(albums => {
+        this.$opacity.hide()
         albums.forEach(this.parseTopAlbum, this)
         resolve(this.addSongs.bind(this))
       })
@@ -259,7 +263,7 @@ class Router extends Backbone.Router {
   checkImage (images) {
     let length = Object.keys(images).length
     if (length === 0)
-      return 'http://www.andreagal.com/wp-content/themes/andreagal/images/no-track-image.png'
+      return null
     else if (length === 1)
       return images[0].url
     else

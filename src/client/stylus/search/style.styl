@@ -8,47 +8,50 @@
     margin 0 auto
     width 100%
     text-align left
-    
+
     span
       icon-search-big()
       cursor pointer
       color gris_claro
       top .05em
       left 90%
-      
+
     input
       search-mobile-input()
       border 1px gris_claro solid
       width 80%
-  
+
   &-results
     text-align left
     color gris_oscuro
     .results-items
       margin-bottom 2em
-    
+
   &-lengend
     font-weight 300
-    
+
   &-item
     cursor pointer
     overflow hidden
     margin-bottom 1em
     .coverConten
+      background-image url('http://www.andreagal.com/wp-content/themes/andreagal/images/no-track-image.png')
+      background-repeat no-repeat
+      background-size cover
       float left
       display inline-block
       margin-right .5em
       .cover
         width 50px
         height 50px
-      
+
     .titleConten
       line-height 25px
       .title
         cursor pointer
         display block
         text-wrapper()
-        
+
       .slug
         color rgba(gris_claro .75)
         display block
@@ -57,8 +60,7 @@
       line-height 50px
       .title
         text-wrapper()
-  
+
   &-viewMore
     text-decoration underline
     color rgba(gris_claro .75)
-    

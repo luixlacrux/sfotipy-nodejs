@@ -33,6 +33,7 @@ a
 body
     font-family 'Varela Round', sans-serif
     font-size 16px
+
 figure
     margin 0
 img
@@ -82,6 +83,13 @@ text-wrapper()
     overflow hidden
     white-space nowrap
     text-overflow ellipsis
+.opacity
+  display none
+  z-index 4
+  position fixed
+  width 100%
+  height 100%
+  background gris_mas_claro
 .input-form
     background none
     border gris_claro 1px solid
@@ -153,8 +161,6 @@ text-wrapper()
     right 0
     background rgba(black,.3)
 
-.border-left
-    border-left 1px solid gris_claro
 .name
     color gris_oscuro
 // Menu of navigation
@@ -286,13 +292,12 @@ text-wrapper()
     display inline-block
     font-size 1rem
     margin-bottom 1em
-    margin-right 1em
+    margin-left .5em
+    margin-right .5em
     text-align left
     vertical-align top
     width 8rem
     cursor pointer
-    &:nth-child(even)
-        margin-right 0
     p
         text-wrapper()
         margin .5em 0
@@ -317,20 +322,14 @@ text-wrapper()
     left .5em
     top .8em
     color gris_claro
-.close-icon
-    position absolute
-    top .5em
-    color gris_claro
-    right .5em
-    font-size 1.2em
 .playlist
-    border-left 1px solid gris_claro
     padding 0 .5em
     .list
         list-style none
         overflow hidden
         border-bottom none
     .item
+        cursor pointer
         padding 1em 0
         div
             display inline-block
@@ -404,26 +403,31 @@ text-wrapper()
     body
         background gris_mas_claro
 
-    @import 'header/desktop.styl'
     @import 'home/desktop.styl'
+    @import 'header/desktop.styl'
     @import 'search/desktop.styl'
     @import 'user/desktop1000.styl'
 
     .playing
+        wrap()
         padding-top 1.3em
         text-align center
         &.large
+            wrap()
+            display flex
+            justify-content space-between
             margin 0 auto
-            width 62.5em
             overflow hidden
         .playlist
+            border-left 1px solid gris_claro
             display inline-block
             width 27em
             max-height 520px
             overflow-y auto
 
     .music
-        width 32.5em
+        width 100%
+        max-width 32.5em
         float left
 
 /*

@@ -23,6 +23,7 @@ class AlbumView extends Backbone.View {
   }
 
   navigate () {
+    Sfotipy.$opacity.show()
     let id = this.model.get('id_spotify')
     Sfotipy.events.trigger('album:get', id)
     //let name = this.model.get('name')

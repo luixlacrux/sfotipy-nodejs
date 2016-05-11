@@ -19,7 +19,7 @@ class Login extends Backbone.View {
   render (template) {
     this.$form.html(template())
     this.$form.fadeIn(800)
-    this.$el.animate({ scrollTop: `${450}px` }, 1000)
+    this.$el.animate({ scrollTop: `${650}px` }, 1000)
   }
 
   showLogin (ev) {
