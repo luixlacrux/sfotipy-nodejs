@@ -3,7 +3,7 @@ import $ from 'jquery'
 
 class Main extends Backbone.View {
   get el () { return 'body' }
-  get events () { 
+  get events () {
     return {
       'submit #form-search': 'searchDesktop',
       'submit .search-mobile' : 'searchMobileOne',
@@ -11,7 +11,9 @@ class Main extends Backbone.View {
       'click': 'hide',
       'click .Header-menu': 'stopEvent',
       'click .Share': 'stopEvent',
-      'click .Header-btnMenu': 'showMenu'
+      'click .Header-btnMenu': 'showMenu',
+      'click #btn-top_hits': 'showTop_hits',
+      'click #btn-profile': 'showProfile'
     }
   }
 
@@ -20,14 +22,30 @@ class Main extends Backbone.View {
     this.$share = $('.Share')
     this.$music = $('#music')
     this.$albums = $('#albums')
+    this.$content = $('#content')
     this.$search = $('.Search')
     this.$inputSearchDesktop = $('#form-search').find('.input')
-    this.$inputSearchMobileOne = $('.search-mobile').find('input') 
-    this.$inputSearchMobileTwo = $('.Search-form').find('input') 
+    this.$inputSearchMobileOne = $('.search-mobile').find('input')
+    this.$inputSearchMobileTwo = $('.Search-form').find('input')
   }
 
   stopEvent (ev) {
     ev.stopPropagation()
+  }
+
+  showTop_hits (ev) {
+    ev.preventDefault()
+    if (this.$content !== '') this.$content.empty()
+    this.$albums.empty()
+    Sfotipy.navigate('/top-albums', { trigger: true })
+  }
+
+  showProfile (ev) {
+    ev.preventDefault()
+    let $element = $(ev.target).attr('href')
+    if (this.$content !== '') this.$content.empty()
+    this.$albums.empty()
+    Sfotipy.navigate(`/@${$element}`, { trigger: true })
   }
 
   showMenu (ev) {
@@ -72,6 +90,14 @@ class Main extends Backbone.View {
   showMusic () {
     this.$music.show()
     this.$albums.show()
+  }
+
+  hidePlaying () {
+    this.$music.hide()
+  }
+
+  showPlaying () {
+    this.$music.show()
   }
 
   hideSearch () {

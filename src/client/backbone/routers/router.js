@@ -30,6 +30,7 @@ import Player from 'src/client/backbone/views/player/player'
 import SongsView from 'src/client/backbone/views/search/songs'
 import AlbumsView from 'src/client/backbone/views/search/albums'
 import ArtistsView from 'src/client/backbone/views/search/artists'
+import ProfileView from 'src/client/backbone/views/user/profile'
 
 import TopAlbumsView from 'src/client/backbone/views/top_albums/albums'
 
@@ -43,6 +44,7 @@ class Router extends Backbone.Router {
     return {
       "top-albums": "start",
       "album/:name": "album",
+      ":username": "profile",
       "search/:query": "showSearch",
       "home/:action": "showHomeForm"
     }
@@ -64,6 +66,7 @@ class Router extends Backbone.Router {
     // Views
     this.mainView = new Main()
     this.login = new Login()
+    this.profile = new ProfileView()
     this.list = new List({ collection: this.playing })
     this.player = new Player({ model: new Song })
     this.topAlbumsView = new TopAlbumsView({ collection: this.topAlbums })
@@ -97,6 +100,9 @@ class Router extends Backbone.Router {
     this.events.on('music:hide', () => this.mainView.hideMusic())
     this.events.on('music:show', () => this.mainView.showMusic())
 
+    this.events.on('playing:hide', () => this.mainView.hidePlaying())
+    this.events.on('playing:show', () => this.mainView.showPlaying())
+
     this.events.on('album:get', id => this.getAlbum(id).then(name => {
       this.album(name)
       this.navigate(`album/${name}`, { trigger: true })
@@ -104,8 +110,8 @@ class Router extends Backbone.Router {
   }
 
   start () {
-    if (this.topAlbums.length === 0)
-      this.fetchData()
+    this.events.trigger('playing:show')
+    this.fetchData()
   }
 
   fetchData () {
@@ -140,6 +146,11 @@ class Router extends Backbone.Router {
         .then(callback => callback(name))
     else
       this.addSongs(name)
+  }
+
+  profile (username) {
+    this.events.trigger('playing:hide')
+    this.profile.render()
   }
 
   addSongs (name) {

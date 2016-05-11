@@ -40,7 +40,6 @@ img
 ul
     margin 0
     padding 0
-    border-bottom 1px solid rgba(129,129,129,0.3)
     padding-bottom .4em
 //utilitis
 wrap()
@@ -158,38 +157,32 @@ text-wrapper()
     border-left 1px solid gris_claro
 .name
     color gris_oscuro
+// Menu of navigation
 .menu
-    wrap()
-    fixed()
-    border none
-    display block
-    z-index 1
-    width 80%
-    left -80%
-    height 100%
-    background rgba(#000, 0.9)
-    .search-mobile
-        search-mobile()
-        input
-            search-mobile-input()
-        .icon-search
-            icon-search-big()
-    .list
-        overflow-y auto
-        max-height 70vh
-    .item
-        list-style none
-        width 85%
-        margin 0 auto
-        a
-            display block
-            padding 1em 0
-            color gris_mas_claro
-            border-bottom 1px gris_mas_claro solid
-            transition .4s color
-            &:hover
-            &:active
-                color rojo
+		background gris_mas_claro
+		border-top 1px solid gris_claro
+		display block
+		left 0
+		overflow hidden
+		padding inherit
+		position inherit
+		width 100%
+		.list
+  			width 1000px
+  			.item
+    				float left
+    				list-style none
+    				a
+      					color gris_oscuro
+      					cursor pointer
+      					display block
+      					padding 1em
+      					text-transform uppercase
+      					border-top 5px solid transparent
+      					transition .3s border-top
+      					&:hover
+                    border-top 5px solid gris_claro
+                    color rojo
 .relative
     position relative
 //.author
@@ -384,9 +377,11 @@ text-wrapper()
 @import 'header/style.styl'
 @import 'share/style.styl'
 @import 'search/style.styl'
+@import 'user/style.styl'
 
 @media screen and (min-width:480px)
     @import 'home/tablet480.styl'
+    @import 'user/mobile480.styl'
     .cover-hit
         img
             margin-bottom 0
@@ -412,6 +407,7 @@ text-wrapper()
     @import 'header/desktop.styl'
     @import 'home/desktop.styl'
     @import 'search/desktop.styl'
+    @import 'user/desktop1000.styl'
 
     .playing
         padding-top 1.3em

@@ -46,6 +46,6 @@ class Song extends Backbone.View {
     Sfotipy.events.trigger('playlist', this.model)
     return false
   }
-}  
+}
 
 export default Song
