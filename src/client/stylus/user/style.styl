@@ -6,13 +6,18 @@
 	max-width 1000px
 	margin 0 auto
 
+	.btn-change
+		color rojo
+		text-decoration underline
+		font-size 1em
+
 	&-perfil
 		margin 0 auto
 		text-align center
 		width 100%
 		overflow hidden
 
-		a
+		.btn-edit
 			background rojo
 			color white
 			border-radius 5px
@@ -21,6 +26,18 @@
 			padding .5em 1em
 			max-padding .8em 1.2em
 			float right
+
+		.btn-back
+			color grey
+			font-weight bold
+			font-size 1.5em
+			float left
+			margin 0 1em
+		.btn-back.desktop
+			display none
+			color rojo
+			span
+				color gris_claro
 
 		figure
 			margin 1em auto
@@ -39,8 +56,6 @@
 
 
 	&-playlist
-		//display none
-
 		h2
 			border-bottom 1px solid gris_claro
 			color gris_oscuro
@@ -48,8 +63,34 @@
 			padding .5em
 			text-align left
 
+		// Menu of navigation
+		.menu
+			display none
+			background gris_mas_claro
+			border-top 1px solid gris_claro
+			left 0
+			overflow hidden
+			padding inherit
+			position inherit
+			width 100%
+			.list
+				width 1000px
+				.item
+					float left
+					list-style none
+					a
+						color gris_oscuro
+						cursor pointer
+						display block
+						padding 1em
+						text-transform uppercase
+						border-top 5px solid transparent
+						transition .3s border-top
+						&:hover
+							border-top 5px solid gris_claro
+							color rojo
+
 .playlist-playlistVacia
-	display none
 	.mobile
 		margin 0 auto
 		text-align center
@@ -86,3 +127,40 @@
 			color rojo
 			text-decoration underline
 			font-size 2.3em
+
+.Perfil
+	.campo-text
+		text-align left
+		color gris_claro
+		margin 0 auto
+		width calc(100% - 3em)
+		p
+			margin 1em 0 .5em 0
+		input
+			border 1px solid gris_claro
+			border-radius 5px
+			display block
+			font-size 1em
+			height 2.9em
+			margin 0 auto
+			padding 0 .5em 0 .5em
+			width calc(100% - 1em)
+
+		input[type="submit"]
+			background rosa
+			color white
+			font-size 1em
+			padding 0
+			margin 1.5em 0
+			width 100%
+
+.Perfil-edit
+	border-top 1px solid gris_claro
+	text-align center
+
+.Perfil-edit-password
+	border-top 1px solid gris_claro
+	text-align center
+	padding 2em 0
+	.campo-text
+		margin 1em auto

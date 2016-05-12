@@ -31,6 +31,7 @@ import SongsView from 'src/client/backbone/views/search/songs'
 import AlbumsView from 'src/client/backbone/views/search/albums'
 import ArtistsView from 'src/client/backbone/views/search/artists'
 import ProfileView from 'src/client/backbone/views/user/profile'
+import ProfileEditView from 'src/client/backbone/views/user/edit'
 
 import TopAlbumsView from 'src/client/backbone/views/top_albums/albums'
 
@@ -45,6 +46,7 @@ class Router extends Backbone.Router {
       "top-albums": "start",
       "album/:name": "album",
       ":username": "profile",
+      ":username/edit": "profileEdit",
       "search/:query": "showSearch",
       "home/:action": "showHomeForm"
     }
@@ -68,6 +70,7 @@ class Router extends Backbone.Router {
     this.mainView = new Main()
     this.login = new Login()
     this.profile = new ProfileView()
+    this.profileEdit = new ProfileEditView()
     this.list = new List({ collection: this.playing })
     this.player = new Player({ model: new Song })
     this.topAlbumsView = new TopAlbumsView({ collection: this.topAlbums })
@@ -155,6 +158,11 @@ class Router extends Backbone.Router {
   profile (username) {
     this.events.trigger('playing:hide')
     this.profile.render()
+  }
+
+  profileEdit (username) {
+    this.events.trigger('playing:hide')
+    this.profileEdit.render()
   }
 
   addSongs (name) {

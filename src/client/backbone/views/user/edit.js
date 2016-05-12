@@ -1,14 +1,14 @@
 import Backbone from 'backbone'
 import Handlebars from 'handlebars'
-import template from 'src/client/templates/user/profile.html'
+import template from 'src/client/templates/user/edit.html'
 import $ from 'jquery'
 
-class ProfileView extends Backbone.View {
+class ProfileEditView extends Backbone.View {
   get el () { return $('#content') }
 
   get events () {
     return {
-      'click .btn-edit': 'navigate'
+      'click .btn-back': 'navigate'
     }
   }
 
@@ -28,8 +28,8 @@ class ProfileView extends Backbone.View {
 
   navigate (ev) {
     ev.preventDefault()
-    Sfotipy.navigate(`/@moisesdelacruz18/edit`, { trigger: true })
+    Sfotipy.navigate(`/@moisesdelacruz18`, { trigger: true })
   }
 }
 
-export default ProfileView
+export default ProfileEditView

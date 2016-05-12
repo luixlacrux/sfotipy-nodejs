@@ -163,32 +163,6 @@ text-wrapper()
 
 .name
     color gris_oscuro
-// Menu of navigation
-.menu
-		background gris_mas_claro
-		border-top 1px solid gris_claro
-		display block
-		left 0
-		overflow hidden
-		padding inherit
-		position inherit
-		width 100%
-		.list
-  			width 1000px
-  			.item
-    				float left
-    				list-style none
-    				a
-      					color gris_oscuro
-      					cursor pointer
-      					display block
-      					padding 1em
-      					text-transform uppercase
-      					border-top 5px solid transparent
-      					transition .3s border-top
-      					&:hover
-                    border-top 5px solid gris_claro
-                    color rojo
 .relative
     position relative
 //.author
@@ -413,6 +387,7 @@ text-wrapper()
             width auto
 @media screen and (min-width:720px)
     @import 'home/tablet720.styl'
+    @import 'user/tablet720.styl'
 /* MEDIA DESKTOP */
 
 @media screen and (min-width:1000px)

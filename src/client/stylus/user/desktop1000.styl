@@ -1,4 +1,22 @@
 .Perfil
+	&-perfil.unique
+		width calc(50% - .2em)
+		display inline-block
+		height 25em
+		.btn-back.desktop
+			display block
+		.btn-back
+			display none
+		.perfil
+			figure
+				max-width 15.8em
+				width 50%
+			h2
+				display none
+	&-edit
+		display inline-block
+		width calc(50% - .2em)
+		border-top none
 	&-playlist
 		h2
 			border-top none
@@ -11,9 +29,23 @@
 				content "\e60e"
 				font-size .8em
 				margin-right .5em
+		.menu
+			display block
+	.campo-text
+		max-width 40em
+		p
+			display none
+		input
+			font-size 1.5em
+		input[type="submit"]
+			font-size 1.5em
 
 .playlist-playlistVacia
 	.mobile
 		display none
 	.desktop
-		display bloc
+		display block
+.edit-password
+	display inline-block
+	width calc(50% - .2em)
+	float right

@@ -1,0 +1,50 @@
+<section id="profile" class="Perfil">
+  <div class="Perfil-perfil unique">
+    <div class="perfil">
+      <a href="#" class="btn-back"><--</a>
+      <a href="#" class="btn-back desktop">Profile<span> > Edit</span></a>
+      <figure>
+        <img src="/assets/img/avatares/leonidas.jpg" />
+      </figure>
+      <a href="#" class="btn-change">Change Photo</a>
+      <h2>{{username}}</h2>
+    </div>
+  </div>
+
+  <div class="Perfil-edit">
+    <form class="edit-user" method="post" action"/edit">
+      <div class="campo-text">
+        <p>Name</p>
+        <input id="Ausername" name="name" type="username" placeholder="Name" />
+      </div>
+      <div class="campo-text">
+        <p>Username</p>
+        <input id="Apassword" name="username" type="username" placeholder="Username" />
+      </div>
+      <div class="campo-text">
+        <p>Email</p>
+        <input id="Apassword" name="email" type="email" placeholder="Email" />
+      </div>
+      <div class="campo-text">
+        <input type="submit" value="Save" />
+      </div>
+    </form>
+  </div>
+  <div class="Perfil-edit-password">
+    <a href="#" class="btn-change">Change Password</a>
+    <form class="edit-password" action="/edit" method="post">
+      <div class="campo-text">
+        <input id="Apassword" name="password" type="password" placeholder="Old Password" />
+      </div>
+      <div class="campo-text">
+        <input id="Apassword" name="password" type="email" placeholder="New Password" />
+      </div>
+      <div class="campo-text">
+        <input id="Apassword" name="password" type="email" placeholder="Confirm Password" />
+      </div>
+      <div class="campo-text">
+        <input type="submit" value="Change" />
+      </div>
+    </form>
+  </div>
+</section>
