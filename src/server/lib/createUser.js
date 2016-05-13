@@ -1,62 +1,65 @@
-import User from 'src/server/models/user'
+import  User from 'src/server/models'
+User.sync()
 
 export function userLocal (username, password, email) {
   return new Promise((resolve, reject) => {
     // create the user
-    var newUser = new User()
-    // set the user's local crendentials
-    newUser.local.username = username
-    newUser.local.password = newUser.generateHash(password)
-    newUser.local.email = email
+    let newUser = User.build({
+      // set the user's local crendentials
+      localusername: username,
+      localpassword: User.generateHash(password),
+      localemail: email
+    })
 
     // save the user
-    newUser.save(err => {
-      if (err)
+    newUser.save()
+      .then(() => resolve(newUser))
+      .catch(err => {
         throw err
-      resolve(newUser)
-    })
+      })
   })
 }
 
 export function userFacebook (profile, token) {
   return new Promise((resolve, reject) => {
     // create the user
-    var newUser = new User()
-    // set the username because is required
-    newUser.local.username = profile.displayName
-    // set the user's facebook crendentials
-    newUser.facebook.id = profile.id
-    newUser.facebook.token = token
-    newUser.facebook.name = profile.displayName
-    newUser.facebook.email = profile.email
+    let newUser = User.build({
+      // set the username because is required
+      localusername: profile.displayName,
+      // set the user's facebook crendentials
+      facebookid: profile.id,
+      facebooktoken: token,
+      facebookname: profile.displayName,
+      facebookemail: profile.email,
+    })
 
     // save the user
-    newUser.save(err => {
-      if (err)
+    newUser.save()
+      .then(() => resolve(newUser))
+      .catch(err => {
         throw err
-      resolve(newUser)
-    })
+      })
   })
 }
 
 export function userTwitter (profile, token) {
   return new Promise((resolve, reject) => {
     // create the user
-    var newUser = new User()
     checkUsernameSocial(profile).then(username => {
-      newUser.local.username = username
-      // set the username because is required
-      // set all of the user data that we need
-      newUser.twitter.id = profile.id
-      newUser.twitter.token = token
-      newUser.twitter.username = profile.username
-      newUser.twitter.displayName = profile.displayName
-
+      let newUser = User.build({
+        localusername: username,
+        // set the username because is required
+        // set all of the user data that we need
+        twitterid: profile.id,
+        twittertoken: token,
+        twitterusername: profile.username,
+        twitterdisplayName: profile.displayName
+      })
       // save the user
-      newUser.save(err => {
-        if (err)
-          throw err
-        resolve(newUser)
+      newUser.save()
+      .then(() => resolve(newUser))
+      .catch(err => {
+        throw err
       })
     })
   })
@@ -64,16 +67,14 @@ export function userTwitter (profile, token) {
 
 let checkUsernameSocial = (profile) => {
   return new Promise((resolve, reject) => {
-    User.findOne({'local.username':  profile.username}, (err, user) => {
-      console.log(user)
-      if (err)
-        throw err
-      if (user) {
-        let username = `${profile.username}-${profile.id}`
-        resolve(username)
-      }
-
-      resolve(profile.username)
-    })
+    User.findOne({ where: { localusername:  profile.username } })
+      .then(user => {
+        console.log(user)
+        if (user) {
+          let username = `${profile.username}-${profile.id}`
+          resolve(username)
+        }
+        resolve(profile.username)
+      })
   })
 }

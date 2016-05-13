@@ -1,4 +1,3 @@
-import User from 'src/server/models/user'
 import { isLoggedIn, isNotLoggedIn } from 'src/server/lib/middlewares'
 
 export default function (app, passport) {
@@ -57,10 +56,15 @@ export default function (app, passport) {
   }))
 
   app.get('/users', (req, res) => {
-    User.find({}, (err, users) => {
-      if (err)
-        throw err
-      res.json(users)
-    })
+    let user = req.user
+    if (user.localpassword) {
+      return res.json({
+        username: user.localusername,
+        password: user.localpassword,
+        email: user.localemail
+      })
+    }
+
+    res.json({username: user.localusername})
   })
 }
