@@ -7,7 +7,7 @@
     "stylus": "stylus ./src/client/stylus/app.styl -u nib -o ./public",
     "public": "mkdir -p public views",
     "copy-files": "cp -r src/client/assets public && cp -r src/client/*.html views/",
-    "build-js": "NODE_PATH=. browserify -t [ hbsfy -e html,htm] -t [ babelify --presets [ es2015 ] ] ./src/client/backbone/app.js > ./public/app.js",
+    "build-js": "NODE_PATH=. browserify -t  hbsfy -t [ babelify --presets [ es2015 ] ] ./src/client/backbone/app.js > ./public/app.js",
     "build": "npm run public && npm run stylus && npm run copy-files && npm run build-js",
     "dist": "babel src/server/index.js src/server/**/*.js --out-dir dist --presets es2015",
     "server": "NODE_PATH=./dist node dist/src/server",

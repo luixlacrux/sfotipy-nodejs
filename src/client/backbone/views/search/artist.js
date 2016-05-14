@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/templates/search/artist.html'
+import template from 'src/client/templates/search/artist.hbs'
 
 class ArtistView extends Backbone.View {
   get tagName () { return 'article' }

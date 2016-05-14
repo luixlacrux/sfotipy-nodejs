@@ -1,16 +1,16 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/templates/top_albums/album.html'
+import template from 'src/client/templates/top_albums/album.hbs'
 
 class AlbumView extends Backbone.View {
-  get tagName() { return 'article' } 
+  get tagName() { return 'article' }
   get className() { return 'song' }
   get events () {
     return {
       'click': 'navigate'
       }
   }
-  
+
   initialize () {
     this.listenTo(this.model, 'change', this.render, this)
   }

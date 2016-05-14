@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/templates/search/album.html'
+import template from 'src/client/templates/search/album.hbs'
 import AlbumView from './album'
 
 class AlbumsView extends Backbone.View {
@@ -20,7 +20,7 @@ class AlbumsView extends Backbone.View {
     let albumView = new AlbumView({ model: album })
     this.$el.append(albumView.render().el)
   }
-  
+
   addAll () {
     this.collection.forEach(this.addOne, this)
   }

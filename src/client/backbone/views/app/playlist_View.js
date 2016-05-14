@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/templates/app/playlist.html'
+import template from 'src/client/templates/app/playlist.hbs'
 
 class Playlist extends Backbone.View {
   get el () { return $('.Share') }
@@ -8,7 +8,7 @@ class Playlist extends Backbone.View {
     return {
       'click .Share-close': 'hide',
       'click .Share-item.border-bottom': 'toggleInput'
-      //'submit': 'newPlaylist' 
+      //'submit': 'newPlaylist'
     }
   }
 

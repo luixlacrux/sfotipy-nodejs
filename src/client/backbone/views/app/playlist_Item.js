@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/templates/app/playlist_item.html'
+import template from 'src/client/templates/app/playlist_item.hbs'
 
 class PlaylistItem extends Backbone.View {
   get tagName () { return 'li' }

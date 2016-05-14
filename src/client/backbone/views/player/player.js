@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/templates/player/player.html'
+import template from 'src/client/templates/player/player.hbs'
 
 class Player extends Backbone.View {
   get el () { return $('.music') }

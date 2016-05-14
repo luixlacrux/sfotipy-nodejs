@@ -1,7 +1,7 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import AlbumView from './album'
-import template from 'src/client/templates/top_albums/album.html'
+import template from 'src/client/templates/top_albums/album.hbs'
 
 class AlbumsView extends Backbone.View {
   get el () { return $('#albums')}

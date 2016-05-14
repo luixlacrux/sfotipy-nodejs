@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
-import template_login from 'src/client/templates/login/login.html'
-import template_signIn from 'src/client/templates/login/sign_in.html'
+import template_login from 'src/client/templates/login/login.hbs'
+import template_signIn from 'src/client/templates/login/sign_in.hbs'
 import $ from 'jquery'
 
 class Login extends Backbone.View {

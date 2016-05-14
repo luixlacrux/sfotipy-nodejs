@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/templates/app/share.html'
+import template from 'src/client/templates/app/share.hbs'
 
 class Share extends Backbone.View {
   get el () { return $('.Share') }

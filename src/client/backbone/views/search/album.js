@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/templates/search/album.html'
+import template from 'src/client/templates/search/album.hbs'
 
 class AlbumView extends Backbone.View {
   get tagName () { return 'article' }

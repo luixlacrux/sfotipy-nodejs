@@ -1,7 +1,7 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import PlaylistItem from './playlist_Item'
-import template from 'src/client/templates/app/playlist_item.html'
+import template from 'src/client/templates/app/playlist_item.hbs'
 
 class LibraryView extends Backbone.View {
   get el () { return $('.Share-list') }

@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/templates/search/artist.html'
+import template from 'src/client/templates/search/artist.hbs'
 import ArtistView from './artist'
 
 class ArtistsView extends Backbone.View {
@@ -20,7 +20,7 @@ class ArtistsView extends Backbone.View {
     let artistView = new ArtistView({ model: artist })
     this.$el.append(artistView.render().el)
   }
-  
+
   addAll () {
     this.collection.forEach(this.addOne, this)
   }

@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import Handlebars from 'handlebars'
-import template from 'src/client/templates/user/profile.html'
+import template from 'src/client/templates/user/profile.hbs'
 import $ from 'jquery'
 
 class ProfileView extends Backbone.View {
