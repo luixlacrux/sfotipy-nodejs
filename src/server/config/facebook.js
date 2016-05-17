@@ -1,9 +1,8 @@
 import FacebookStrategy from 'passport-facebook'
-import User from 'src/server/models/user'
 import configAuth from 'src/server/config/auth'
 import { userFacebook } from 'src/server/lib/createUser'
 
-export default function (passport) {
+export default function (passport, User) {
   // ==================================
   // FACEBOOK =========================
   // ==================================
@@ -17,20 +16,19 @@ export default function (passport) {
     process.nextTick(() => {
       //console.log(profile)
       // find the user in the database based on their facebook id
-      User.findOne({ 'facebook.id': profile.id }, (err, user) => {
+      User.findOne({ where: { 'facebookid': profile.id } })
+        .then(user => {
+          // if the user is found, then log them in
+          if (user)
+          // if there is no user found with that facebook id, create them
+            return done(null, user) // user found, return that user
+          userFacebook(profile, token)
+            // all is well, return successsfully user
+            .then(newUser => done(null, newUser))
+          })
         // if there is an error, stop everything and return that
         // ie an error connecting to the database
-        if (err)
-          return done(err)
-        // if the user is found, then log them in
-        if (user)
-          return done(null, user) // user found, return that user
-        // if there is no user found with that facebook id, create them
-        userFacebook(profile, token)
-           // all is well, return successsfully user
-          .then(newUser => done(null, newUser))
-      })
+        .catch(err => done(err))
     })
-  }
- ))
+  }))
 }

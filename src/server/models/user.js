@@ -1,49 +1,48 @@
-import mongoose from 'mongoose'
 import bcrypt from 'bcrypt-nodejs'
 
-//define the schema for our user model
-const UserSchema = mongoose.Schema({
-  local: {
-    username: {
-      type: String,
-      unique: true,
-      required: true
+export default function (sequelize, DataTypes) {
+  return sequelize.define('user', {
+    // User's local
+    localusername: {
+      type: DataTypes.STRING,
+      //allowNull: false,
+      unique: true
     },
-    password: String,
-    email: String
-  },
-  facebook: {
-    id: String,
-    token: String,
-    email: String,
-    name: String
-  },
-  twitter: {
-    id: String,
-    token: String,
-    displayName: String,
-    username: String
-  },
-  google: {
-    id: String,
-    token: String,
-    email: String,
-    name: String
-  }
-})
-
-// methods ============
-// generating a hash
-UserSchema.methods.generateHash = function (password) {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+    localemail: {
+      type: DataTypes.STRING,
+      unique: true
+    },
+    localpassword: DataTypes.STRING,
+    // User's facebook
+    facebookid: DataTypes.STRING,
+    facebooktoken : DataTypes.STRING,
+    facebookemail: DataTypes.STRING,
+    facebookname: DataTypes.STRING,
+    // User's twitter
+    twitterid: DataTypes.STRING,
+    twittertoken: DataTypes.STRING,
+    twitterdisplayname: DataTypes.STRING,
+    twitterusername: DataTypes.STRING
+  },{
+    classMethods: {
+      generateHash: function (password) {
+        return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+      }
+    },
+    instanceMethods: {
+      validPassword: function (password) {
+        return bcrypt.compareSync(password, this.localpassword)
+      }
+    },
+    getterMethods: {
+      someValue: function () {
+        return this.someValue
+      }
+    },
+    setterMethods: {
+      someValue: function (value) {
+        this.someValue = value
+      }
+    }
+  })
 }
-
-// checking if password is valid
-UserSchema.methods.validPassword = function (password) {
-  return bcrypt.compareSync(password, this.local.password)
-}
-
-// create the model for users and expose it to our app
-let user = mongoose.model('User', UserSchema)
-
-export default user

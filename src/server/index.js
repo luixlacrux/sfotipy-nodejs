@@ -4,7 +4,6 @@ import session from 'express-session'
 import passport from 'passport'
 import swig from 'swig'
 import consolidate from 'consolidate'
-import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import flash from 'connect-flash'
@@ -18,9 +17,6 @@ const RedisStore = require('connect-redis')(session)
 const app = express()
 const server = http.createServer(app)
 const port = process.env.PORT || 3000
-
-// connect database
-mongoose.connect(configDB.url)
 
 // set up express
 app.use(cookieParser())
