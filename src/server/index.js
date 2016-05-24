@@ -9,7 +9,6 @@ import cookieParser from 'cookie-parser'
 import flash from 'connect-flash'
 import morgan from 'morgan'
 import configDB from 'src/server/config/database'
-import api from 'src/server/api'
 
 // set up redis to presistent session
 const RedisStore = require('connect-redis')(session)
@@ -48,7 +47,8 @@ import routes from 'src/server/routes'
 routes(app, passport)
 
 // set routes api
-app.use('/api', api)
+import api from 'src/server/api'
+api('/api', app, passport)
 
 // launch
 server.listen(port, () => console.log(`Server listening on port ${port}`))

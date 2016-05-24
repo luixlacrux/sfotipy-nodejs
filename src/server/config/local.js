@@ -20,7 +20,9 @@ export default function (passport, User) {
             return done(null, false, req.flash('message', 'Email is required'))
           // check to see if theres already a user with that username or email
           if (users.length)
-            return done(null, false, req.flash('message', 'Taht username our email is already taken.'))
+            return done(null, false, req.flash('message', 'That username our email is already taken.'))
+          if (password.length < 6)
+            return done(null, false, req.flash('message', 'Password is short. min 6 characters'))
           // create a new user
           userLocal(username, password, req.body.email)
             // all is well, return successsfully user

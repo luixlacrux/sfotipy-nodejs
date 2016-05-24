@@ -39,6 +39,7 @@ class Main extends Backbone.View {
 
   showTop_hits (ev) {
     ev.preventDefault()
+    this.hideMenu()
     if (this.$content !== '') this.$content.empty()
     this.$albums.empty()
     Sfotipy.navigate('/top-albums', { trigger: true })
@@ -46,10 +47,10 @@ class Main extends Backbone.View {
 
   showProfile (ev) {
     ev.preventDefault()
-    let $element = $(ev.target).attr('href')
-    if (this.$content !== '') this.$content.empty()
+    this.hideMenu()
+    let username = Sfotipy.profile.model.get('localusername')
     this.$albums.empty()
-    Sfotipy.navigate(`/@${$element}`, { trigger: true })
+    Sfotipy.navigate(`/@${username}`, { trigger: true })
   }
 
   showMenu (ev) {

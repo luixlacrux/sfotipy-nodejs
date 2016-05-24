@@ -4,7 +4,7 @@ export function isLoggedIn (req, res, next) {
     return next()
   }
 
-  // id they aren't redirect them to the home page
+  // if they aren't redirect them to the home page
   res.redirect('/home/login')
 }
 
@@ -14,4 +14,13 @@ export function isNotLoggedIn (req, res, next) {
     return next()
 
   res.redirect('/')
+}
+
+export function requestAuthenticated (req, res, next) {
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  // if response http status 403 Forbidden
+  res.format({ default: () => res.sendStatus(401) })
 }

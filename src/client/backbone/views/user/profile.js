@@ -13,22 +13,33 @@ class ProfileView extends Backbone.View {
   }
 
   initialize () {
+    this.model.fetchData()
     console.log('profile')
+  }
+
+  fetchData () {
+    if (!Object.keys(this.model.toJSON()).length) {
+      this.model.fetchData()
+        .then(this.render.bind(this))
+    } else {
+      this.render()
+    }
   }
 
   render () {
     this.$el.empty()
     let model = {
-      'username': '@mdelacruz',
-      'name': 'Moises De La Cruz',
-      'email': 'moiseslacruz16@gmail.com'
+      'username': this.model.get('localusername'),
+      'name': this.model.get('localusername'),
+      'email': this.model.get('localemail')
     }
     this.$el.html(template(model))
   }
 
   navigate (ev) {
     ev.preventDefault()
-    Sfotipy.navigate(`/@moisesdelacruz18/edit`, { trigger: true })
+    let username = this.model.get('localusername')
+    Sfotipy.navigate(`/@${username}/edit`, { trigger: true })
   }
 }
 

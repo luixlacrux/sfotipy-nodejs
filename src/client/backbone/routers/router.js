@@ -9,6 +9,7 @@ import Album from 'src/client/backbone/models/album'
 import Song from 'src/client/backbone/models/song'
 import Playlist from 'src/client/backbone/models/playlist'
 import Artist from 'src/client/backbone/models/artist'
+import User from 'src/client/backbone/models/user'
 
 // Collections
 import Albums from 'src/client/backbone/collections/albums'
@@ -69,8 +70,8 @@ class Router extends Backbone.Router {
     // Views
     this.mainView = new Main()
     this.login = new Login()
-    this.profile = new ProfileView()
-    this.profileEdit = new ProfileEditView()
+    this.profile = new ProfileView({ model: new User() })
+    this.profileEdit = new ProfileEditView({ model: this.profile.model })
     this.list = new List({ collection: this.playing })
     this.player = new Player({ model: new Song })
     this.topAlbumsView = new TopAlbumsView({ collection: this.topAlbums })
@@ -144,6 +145,7 @@ class Router extends Backbone.Router {
   }
 
   album (name) {
+    this.events.trigger('playing:show')
     this.events.trigger('search:hide')
     this.events.trigger('music:show')
 
@@ -157,12 +159,12 @@ class Router extends Backbone.Router {
 
   profile (username) {
     this.events.trigger('playing:hide')
-    this.profile.render()
+    this.profile.fetchData()
   }
 
   profileEdit (username) {
     this.events.trigger('playing:hide')
-    this.profileEdit.render()
+    this.profileEdit.fetchData()
   }
 
   addSongs (name) {

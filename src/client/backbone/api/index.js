@@ -15,3 +15,23 @@ export function ApiAlbums (callback) {
     }
   })
 }
+
+export function ApiProfile (callback) {
+  $.ajax('/api/profile', {
+    success: (user, textStatus, xhr) => {
+      callback(user)
+    }
+  })
+}
+
+export function ApiProfileUpdate (formData, opts, callback) {
+  var endpoint = opts.passwd ? '/api/profile?passwd=true' : '/api/profile'
+  $.ajax({
+    url: endpoint,
+    method: 'put',
+    data: formData,
+    success: (res, textStatus, xhr) => {
+      callback(res)
+    }
+  })
+}
