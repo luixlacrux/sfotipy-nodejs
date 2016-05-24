@@ -6,13 +6,13 @@
       <figure>
         <img src="/assets/img/avatares/leonidas.jpg" />
       </figure>
-      <a href="#" class="btn-change">Change Photo</a>
+      <a href="#" class="btn-change" id="change-photo">Change Photo</a>
       <h2>@{{username}}</h2>
     </div>
   </div>
 
   <div class="Perfil-edit">
-    <form class="edit-user" method="post" action"/edit">
+    <form class="edit-user" method="post" enctype="multipart/form-data">
       <div class="campo-text">
         <p>Name</p>
         <input id="Ausername" class="name" name="name" type="username" placeholder="Name" value="{{name}}"/>
@@ -28,10 +28,11 @@
       <div class="campo-text">
         <button type="submit">Save</button>
       </div>
+      <input type="file" name="image" id="image-profile" accept="image/jpeg, image/x-png, image/gif" hidden>
     </form>
   </div>
   <div class="Perfil-edit-password">
-    <a href="#" class="btn-change">Change Password</a>
+    <a href="#" class="btn-change" id="change-passwd">Change Password</a>
     <form class="edit-password" action="/edit" method="post">
       <div class="campo-text">
         <input id="Apassword" class="old" name="password" type="password" placeholder="Old Password" required />

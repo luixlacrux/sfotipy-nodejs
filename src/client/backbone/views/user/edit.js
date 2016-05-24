@@ -10,7 +10,8 @@ class ProfileEditView extends Backbone.View {
   get events () {
     return {
       'click .btn-back': 'navigate',
-      'click .btn-change': 'showFormPasswd',
+      'click #change-passwd': 'showFormPasswd',
+      'click #change-photo': 'changePhoto',
       'submit #profile .edit-user': 'updateData',
       'submit #profile .edit-password': 'updatePassword'
     }
@@ -116,6 +117,11 @@ class ProfileEditView extends Backbone.View {
     this.$el.find('.edit-password').fadeToggle(300, () => {
       this.$body.animate({ scrollTop: this.$body.get(0).scrollHeight }, 800)
     })
+  }
+
+  changePhoto (ev) {
+    ev.preventDefault()
+    this.$el.find('#image-profile').click()
   }
 }
 
