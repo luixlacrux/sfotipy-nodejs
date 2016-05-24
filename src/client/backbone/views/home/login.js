@@ -14,12 +14,13 @@ class Login extends Backbone.View {
 
   initialize () {
     this.$form = $('#form')
+    this.$portada = this.$el.find('.portada')
   }
 
   render (template) {
     this.$form.html(template())
     this.$form.fadeIn(800)
-    this.$el.animate({ scrollTop: `${650}px` }, 1000)
+    this.$el.animate({ scrollTop: this.$portada.get(0).scrollHeight }, 1000)
   }
 
   showLogin (ev) {
