@@ -72,6 +72,7 @@ class Main extends Backbone.View {
   hide () {
     this.hideMenu()
     this.hideShare()
+    $('.user .dropdown').hide()
   }
 
   hideMenu () {

@@ -1,0 +1,24 @@
+<figure class="avatar">
+  {{#if avatar}}
+  <img src="{{ avatar }}" alt="@{{ username }}" width="38" height="38">
+  {{else}}
+  <img src="/assets/img/avatar_default.jpg" alt="@{{ username }}" width="38" height="38">
+  {{/if}}
+</figure>
+<span class="username">@{{ username }}</span>
+<div class="dropdown">
+  <ul class="dropdown-menu">
+    <li class="item">
+      <a href="/@{{ username }}" class="link nav">Your profile</a>
+    </li>
+    <li class="item">
+      <a href="/@{{ username }}/playlists" class="link nav">Your playlists</a>
+    </li>
+    <li class="item">
+      <a href="/@{{ username }}/settings" class="link nav">Settings</a>
+    </li>
+    <li class="item logout">
+      <a href="/logout" class="link">Logout</a>
+    </li>
+  </ul>
+</div>

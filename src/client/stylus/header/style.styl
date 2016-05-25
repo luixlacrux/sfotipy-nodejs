@@ -6,10 +6,9 @@
 
   &-logo
     border-bottom 1px solid gris_claro
-    overflow hidden
     background white
     display none
-    padding-bottom 1.3em
+    padding-bottom 2.3em
     .container
       margin 0 auto
       center-block()
@@ -20,7 +19,10 @@
         width 122px
 
       .user
+        cursor pointer
+        margin-left .3em
         float right
+        position relative
 
       .avatar
         border-radius 50%
@@ -42,6 +44,42 @@
             border-top 9px solid gris_claro
             display inline-block
             margin-left .4em
+
+      .dropdown
+        display none
+        position absolute
+        top 4.5em
+        right 0
+        background #fefefe
+        border-radius .3em
+        box-shadow 0px 5px 10px rgba(0, 0, 0, 0.5)
+        width 200px
+        &-menu
+          position relative
+          padding .3em
+          margin 0
+          list-style none
+          &:before
+            content ""
+            border-left 10px solid transparent
+            border-right 10px solid transparent
+            border-bottom 9px solid #fefefe
+            position absolute
+            top -9px
+            right 9px
+          .link
+            text-align left
+            padding .3em
+            text-decoration none
+            color gris_oscuro
+            display block
+            transition .4s
+            &:hover
+              color rosa
+          .logout
+            font-size .9em
+            padding-top .4em
+            border-top 1px solid #ccc
 
       .search
         float right

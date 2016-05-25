@@ -33,6 +33,7 @@ import AlbumsView from 'src/client/backbone/views/search/albums'
 import ArtistsView from 'src/client/backbone/views/search/artists'
 import ProfileView from 'src/client/backbone/views/user/profile'
 import ProfileEditView from 'src/client/backbone/views/user/edit'
+import UserDropdownView from 'src/client/backbone/views/user/user_dropdown'
 
 import TopAlbumsView from 'src/client/backbone/views/top_albums/albums'
 
@@ -72,6 +73,7 @@ class Router extends Backbone.Router {
     this.login = new Login()
     this.profile = new ProfileView({ model: new User() })
     this.profileEdit = new ProfileEditView({ model: this.profile.model })
+    this.userDropdown = new UserDropdownView({ model: this.profile.model })
     this.list = new List({ collection: this.playing })
     this.player = new Player({ model: new Song })
     this.topAlbumsView = new TopAlbumsView({ collection: this.topAlbums })
