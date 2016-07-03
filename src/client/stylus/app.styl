@@ -323,7 +323,7 @@ text-wrapper()
         cursor pointer
         padding 1em 0
         div
-            display inline-block
+            display inline
             height 18px
             margin 0 .3em
             overflow hidden
@@ -333,6 +333,7 @@ text-wrapper()
     .item-playing
         border-left 3px solid rojo
         text-shadow 1px -1px rgba(189, 37, 91, 0.61)
+        position relative
         &:before
             content ""
             margin 0 .5em
@@ -343,6 +344,8 @@ text-wrapper()
             background-size cover
             width 20px
             height 20px
+            position absolute
+            left 0
     .action
         font-size .8em
 
