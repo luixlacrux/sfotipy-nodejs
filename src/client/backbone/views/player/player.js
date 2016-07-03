@@ -32,8 +32,9 @@ class Player extends Backbone.View {
     this.$el.find('.image').empty()
     let song = this.model.toJSON()
     this.$el.find('.image').html(template(song))
-    $('.playlist ul').find('li').eq( song.id-1 ).addClass('item-playing')
-    $('.playlist ul').find('li').eq( song.id-1 ).siblings('li').removeClass('item-playing')
+    this.$song = $('.playlist ul').find('li')
+    this.$song.eq( song.id-1 ).addClass('item-playing')
+    this.$song.eq( song.id-1 ).siblings('li').removeClass('item-playing')
 
     this.$el.append( this.audio )
     this.initEvents()
@@ -56,10 +57,15 @@ class Player extends Backbone.View {
   }
 
   pause () {
-    if (this.audio.paused)
+    let song = this.model.toJSON()
+    if (this.audio.paused) {
       this.audio.play()
-    else
+      this.$song.eq( song.id-1 ).addClass('item-playing')
+    }
+    else {
       this.audio.pause()
+      this.$song.removeClass('item-playing')
+    }
   }
 
   changeSong (ev) {
