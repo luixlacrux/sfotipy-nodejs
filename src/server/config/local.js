@@ -12,8 +12,8 @@ export default function (passport, User) {
     (req, username, password, done) => {
       process.nextTick(() => {
         User.findAll({ where: {
-          localusername: username,
-          $or:[{ localemail: req.body.email }]
+          username: username,
+          $or:[{ email: req.body.email }]
         }})
         .then(users => {
           if (!req.body.email)
@@ -42,7 +42,7 @@ export default function (passport, User) {
     { passReqToCallback: true }, // allows us to pass back the entire request to the callback
     (req, username, password, done) => {
       process.nextTick(() => {
-        User.findOne({ where: { localusername: username }})
+        User.findOne({ where: { username: username }})
         .then(user => {
           // if no user is found, return the message
           if (!user)

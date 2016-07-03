@@ -2,27 +2,26 @@ import bcrypt from 'bcrypt-nodejs'
 
 export default function (sequelize, DataTypes) {
   return sequelize.define('user', {
+    // First Name
+    first_name: DataTypes.STRING,
+    // Last Name
+    last_name: DataTypes.STRING,
     // User's local
-    localusername: {
-      type: DataTypes.STRING,
-      //allowNull: false,
-      unique: true
-    },
-    localemail: {
+    username: {
       type: DataTypes.STRING,
       unique: true
     },
-    localpassword: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      unique: true
+    },
+    password: DataTypes.STRING,
     // User's facebook
     facebookid: DataTypes.STRING,
     facebooktoken : DataTypes.STRING,
-    facebookemail: DataTypes.STRING,
-    facebookname: DataTypes.STRING,
     // User's twitter
     twitterid: DataTypes.STRING,
-    twittertoken: DataTypes.STRING,
-    twitterdisplayname: DataTypes.STRING,
-    twitterusername: DataTypes.STRING
+    twittertoken: DataTypes.STRING
   },{
     classMethods: {
       generateHash: function (password) {

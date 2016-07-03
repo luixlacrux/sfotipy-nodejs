@@ -6,9 +6,9 @@ export function userLocal (username, password, email) {
     // create the user
     let newUser = User.build({
       // set the user's local crendentials
-      localusername: username,
-      localpassword: User.generateHash(password),
-      localemail: email
+      username: username,
+      password: User.generateHash(password),
+      email: email
     })
 
     // save the user
@@ -25,12 +25,11 @@ export function userFacebook (profile, token) {
     // create the user
     let newUser = User.build({
       // set the username because is required
-      localusername: profile.displayName,
+      username: profile.displayName,
       // set the user's facebook crendentials
       facebookid: profile.id,
       facebooktoken: token,
-      facebookname: profile.displayName,
-      facebookemail: profile.email,
+      email: profile.email
     })
 
     // save the user
@@ -47,13 +46,11 @@ export function userTwitter (profile, token) {
     // create the user
     checkUsernameSocial(profile).then(username => {
       let newUser = User.build({
-        localusername: username,
+        username: username,
         // set the username because is required
         // set all of the user data that we need
         twitterid: profile.id,
-        twittertoken: token,
-        twitterusername: profile.username,
-        twitterdisplayName: profile.displayName
+        twittertoken: token
       })
       // save the user
       newUser.save()
@@ -67,7 +64,7 @@ export function userTwitter (profile, token) {
 
 let checkUsernameSocial = (profile) => {
   return new Promise((resolve, reject) => {
-    User.findOne({ where: { localusername:  profile.username } })
+    User.findOne({ where: { username:  profile.username } })
       .then(user => {
         console.log(user)
         if (user) {

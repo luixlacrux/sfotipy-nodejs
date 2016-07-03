@@ -35,9 +35,10 @@ class ProfileEditView extends Backbone.View {
   render () {
     this.$el.empty()
     let model = {
-      'username': this.model.get('localusername'),
-      'name': this.model.get('localusername'),
-      'email': this.model.get('localemail')
+      'username': this.model.get('username'),
+      'first_name': this.model.get('first_name'),
+      'last_name': this.model.get('last_name'),
+      'email': this.model.get('email')
     }
     this.$el.html(template(model))
   }
@@ -54,7 +55,7 @@ class ProfileEditView extends Backbone.View {
 
   navigate (ev) {
     ev.preventDefault()
-    let username = this.model.get('localusername')
+    let username = this.model.get('username')
     Sfotipy.navigate(`/@${username}`, { trigger: true })
   }
 
@@ -63,7 +64,8 @@ class ProfileEditView extends Backbone.View {
     this.$formData = $(ev.target)
     let $button = this.$formData.find('button')
     let data = {
-      name: this.$formData.find('.name').val(),
+      first_name: this.$formData.find('.first_name').val(),
+      last_name: this.$formData.find('.last_name').val(),
       username: this.$formData.find('.username').val(),
       email: this.$formData.find('.email').val(),
     }

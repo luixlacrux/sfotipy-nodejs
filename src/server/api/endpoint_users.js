@@ -42,17 +42,18 @@ export default function (apiRoute, app) {
             if (!user.validPassword(passwd.old))
               return res.json({ success: false, message: 'Oops! Wrong password' })
 
-            user.update({ localpassword: passwd.new })
+            user.update({ password: passwd.new })
               .then(() => res.json({ success: true, message: 'Password update successsfully'}))
           })
       } else {
         let formData = {
-          //name: req.body.name,
-          localusername: req.body.username || req.user.localusername,
-          localemail: req.body.email || req.user.localemail
+          first_name: req.body.first_name || req.user.first_name,
+          last_name: req.body.last_name || req.user.last_name,
+          username: req.body.username || req.user.username,
+          email: req.body.email || req.user.email
         }
 
-        if (!formData.localusername || !formData.localemail)
+        if (!formData.username || !formData.email)
           return res.format({ default: () => res.sendStatus(400) })
 
         User.findOne({ where: { id: user_id } })
@@ -90,7 +91,7 @@ export default function (apiRoute, app) {
     if (!username)
       return res.format({ default: () => res.sendStatus(400) })
 
-    User.findOne({ where: { localusername: username } })
+    User.findOne({ where: { username: username } })
       .then(user => {
         if (!user)
           return res.format({ default: () => res.sendStatus(404) })
