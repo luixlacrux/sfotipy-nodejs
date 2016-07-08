@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Sfotipy</title>
-  <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="/app.css">
-  <link rel="icon" href="/assets/img/favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-</head>
+
+{% include "./components/head.html" %}
+
 <body>
   <div class="opacity">
     <div class="loader fixed"></div>
@@ -38,16 +33,16 @@
       </form>
       <ul class="list center-block ">
         <li class="item">
-          <a href="#" id="btn-top_hits">Top Hits</a>
+          <a href="/top-albums" id="btn-top_hits">Top Hits</a>
         </li>
         <li class="item">
-          <a href="#" id="btn-profile">Profile</a>
+          <a href="/@{{ user.username }}" id="btn-profile">Profile</a>
         </li>
         <li class="item">
-          <a href="#">Settings</a>
+          <a href="/@{{ user.username }}/settings">Settings</a>
         </li>
         <li class="item">
-          <a href="#">Playlist</a>
+          <a href="/@{{ user.username }}/playlists">Playlist</a>
         </li>
         <li class="item">
           <a href="/logout">Logout</a>

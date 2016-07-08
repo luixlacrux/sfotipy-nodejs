@@ -28,13 +28,8 @@ class UserDropdown extends Backbone.View {
 
   render () {
     this.$el.empty()
-    let model = {
-      'username': this.model.get('username'),
-      'first_name': this.model.get('first_name'),
-      'last_name': this.model.get('last_name'),
-      'email': this.model.get('email')
-    }
-    this.$el.html(template(model))
+    let user = this.model.toJSON()
+    this.$el.html(template(user))
     this.$dropdown = this.$el.find('.dropdown')
   }
 

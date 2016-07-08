@@ -48,7 +48,7 @@ class Main extends Backbone.View {
   showProfile (ev) {
     ev.preventDefault()
     this.hideMenu()
-    let username = Sfotipy.profile.model.get('localusername')
+    let username = Sfotipy.profile.model.get('username')
     this.$albums.empty()
     Sfotipy.navigate(`/@${username}`, { trigger: true })
   }

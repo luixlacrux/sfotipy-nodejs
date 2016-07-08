@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "./components/head.html" %}
+
+<body id="login">
+  <header class="portada">
+    <figure class="isotipo">
+      <img src="/assets/img/logo.png" alt="logo" />
+    </figure>
+    <a href="#" class="id-login">Login</a>
+    <p class="texto center-block">All music that you like, everywhere</p>
+    <a href="/auth/facebook" class="facebook center-block"><p><span class="icon-facebook"></span>Connect with Facebook</p></a>
+    <a href="/auth/twitter" class=" twitter center-block"><p><span class="icon-twitter"></span>Connect with Twitter</p></a>
+    <a href="#" class="id-create">Create Account</a>
+  </header>
+  <section class="login">
+    <ul class="list Home-loginBasic">
+      <li class="item"><a href="#" class="id-login">Log in</a></li>
+      <li class="item"><a href="#" class="id-create">Create account</a></li>
+    </ul>
+    {% if message.length %}
+      <div class="Home-message">{{ message }}</div>
+    {% endif %}
+    <div id="form">
+
+    </div>
+  </section>
+  <section class="contenedor">
+    <article>
+      <figure class="img">
+        <img src="/assets/img/cover2.jpg" />
+      </figure>
+      <div>
+        <h2>Listen</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+      </div>
+    </article>
+    <article>
+      <figure class="img">
+        <img src="/assets/img/cover_comparte2.jpg" />
+      </figure>
+      <div>
+        <h2>Shares</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+      </div>
+    </article>
+    <article>
+      <figure class="img">
+        <img src="/assets/img/cover_sigueplaylist2.jpg" />
+      </figure>
+      <div>
+        <h2>Create and follow playlist</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+      </div>
+    </article>
+  </section>
+  <section class="message">
+    <p>Stars listening now</p>
+  </section>
+  <footer>
+    <div>
+      <p class="icon-sfotipy"></p>
+      <a href="#">legal</a>
+      <a href="#">about us</a>
+    </div>
+  </footer>
+  <script src="/app.js"></script>
+</body>
+</html>

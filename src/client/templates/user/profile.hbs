@@ -1,11 +1,15 @@
 <section id="profile" class="Perfil">
   <div class="Perfil-perfil">
     <div class="perfil">
-      <a href="#" class="btn-edit">Edit</a>
+      <a href="/@{{ username }}/edit" class="btn-edit">Edit</a>
       <figure>
         <img src="/assets/img/avatares/leonidas.jpg" />
       </figure>
-      <h2>@{{username}}</h2>
+      {{#if first_name}}
+        <h2>{{ first_name }} {{ last_name }}</h2>
+      {{else}}
+        <h2>@{{ username }}</h2>
+      {{/if}}
     </div>
   </div>
 
@@ -13,8 +17,8 @@
     <h2>Playlist</h2>
     <nav class="menu">
       <ul class="list center-block wrap">
-        <li class="item"><a href="#">Me</a></li>
-        <li class="item"><a href="#">Following</a></li>
+        <li class="item"><a href="/@{{ username }}/playlists/me">Me</a></li>
+        <li class="item"><a href="/@{{ username }}/following">Following</a></li>
       </ul>
     </nav>
 

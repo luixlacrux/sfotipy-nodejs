@@ -30,7 +30,7 @@ export default function (sequelize, DataTypes) {
     },
     instanceMethods: {
       validPassword: function (password) {
-        return bcrypt.compareSync(password, this.localpassword)
+        return bcrypt.compareSync(password, this.password)
       }
     },
     getterMethods: {

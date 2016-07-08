@@ -1,13 +1,17 @@
 <section id="profile" class="Perfil">
   <div class="Perfil-perfil unique">
     <div class="perfil">
-      <a href="#" class="btn-back"><--</a>
-      <a href="#" class="btn-back desktop">Profile<span> > Edit</span></a>
+      <a href="/@{{ user.username }}" class="btn-back"><--</a>
+      <a href="/@{{ user.username }}" class="btn-back desktop">Profile <span> > Edit</span></a>
       <figure>
         <img src="/assets/img/avatares/leonidas.jpg" />
       </figure>
       <a href="#" class="btn-change" id="change-photo">Change Photo</a>
-      <h2>@{{username}}</h2>
+      {{#if first_name}}
+        <h2>{{ first_name }} {{ last_name }}</h2>
+      {{else}}
+        <h2>@{{ username }}</h2>
+      {{/if}}
     </div>
   </div>
 
@@ -23,7 +27,7 @@
       </div>
       <div class="campo-text">
         <p>Username</p>
-        <input class="username" name="username" type="username" placeholder="Username" value="{{username}}"/>
+        <input class="username" name="username" type="text" placeholder="Username" value="{{username}}"/>
       </div>
       <div class="campo-text">
         <p>Email</p>
@@ -39,13 +43,13 @@
     <a href="#" class="btn-change" id="change-passwd">Change Password</a>
     <form class="edit-password" action="/edit" method="post">
       <div class="campo-text">
-        <input class="old" name="password" type="password" placeholder="Old Password" required />
+        <input class="password old" name="password" type="password" placeholder="Old Password" required />
       </div>
       <div class="campo-text">
-        <input class="new" name="password" type="password" placeholder="New Password" required />
+        <input class="password new" name="password" type="password" placeholder="New Password" required />
       </div>
       <div class="campo-text">
-        <input class="confirm" name="password" type="password" placeholder="Confirm Password" required />
+        <input class="password confirm" name="password" type="password" placeholder="Confirm Password" required />
       </div>
       <div class="campo-text">
         <button type="submit">Change</button>

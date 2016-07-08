@@ -25,7 +25,6 @@ class Login extends Backbone.View {
 
   showLogin (ev) {
     this.$form
-      .attr('action', '/home/login')
       .fadeOut(500, () => {
         this.render(template_login)
       })
@@ -33,7 +32,6 @@ class Login extends Backbone.View {
 
   showSignIn (ev) {
     this.$form
-      .attr('action', '/home/signup')
       .fadeOut(500, () => {
         this.render(template_signIn)
       })

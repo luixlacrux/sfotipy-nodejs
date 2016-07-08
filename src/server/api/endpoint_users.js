@@ -8,7 +8,15 @@ export default function (apiRoute, app) {
     // Get data of user authenticate ==
     // ================================
     .get((req, res) => {
-      let user = req.user.dataValues
+      let reqUser = req.user.dataValues
+      let user = {
+        first_name: reqUser.first_name,
+        last_name: reqUser.last_name,
+        username: reqUser.username,
+        email: reqUser.email,
+        facebookid: reqUser.facebookid,
+        twitterid: reqUser.twitterid
+      }
       res.json(user)
     })
 

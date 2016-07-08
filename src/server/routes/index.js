@@ -21,7 +21,10 @@ export default function (app, passport) {
   // =====================
   // LOCAL ===============
   // =====================
-  app.post('/home/login', passport.authenticate('local-login', {
+  app.post('/home/login', (req, res, next) => {
+    console.log(req.body)
+    next()
+  },passport.authenticate('local-login', {
     successRedirect: '/',
     failureRedirect: '/home/login',
     failureFlash: true // allow flash messages
