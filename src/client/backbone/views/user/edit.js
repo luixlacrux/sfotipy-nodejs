@@ -18,6 +18,7 @@ class ProfileEditView extends Backbone.View {
   }
 
   initialize () {
+    this.listenTo(this.model, 'change', this.render, this)
     this.$body = this.$el.closest('body')
     this.$spinner = $('<div class="loader small">')
     console.log('profile')
@@ -66,11 +67,7 @@ class ProfileEditView extends Backbone.View {
     }
     $button.html(this.$spinner)
     this.model.updateData(data)
-      .then(res => {
-        $button.html('Save')
-        if (res.success)
-          this.render()
-      })
+      .then(res => $button.html('Save'))
   }
 
   updatePassword (ev) {

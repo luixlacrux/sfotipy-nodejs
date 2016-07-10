@@ -14,8 +14,10 @@ class User extends Backbone.Model {
   updateData (formData) {
     return new Promise((resolve, reject) => {
       ApiProfileUpdate(formData, { passwd: false }, res => {
-        if (res.success)
+        if (res.success) {
           this.attributes = res.user
+          this.trigger('change')
+        }
         resolve(res)
       })
     })

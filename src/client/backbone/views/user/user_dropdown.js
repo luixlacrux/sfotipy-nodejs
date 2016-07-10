@@ -27,6 +27,7 @@ class UserDropdown extends Backbone.View {
   }
 
   render () {
+    console.log('UserDropdown render')
     this.$el.empty()
     let user = this.model.toJSON()
     this.$el.html(template(user))

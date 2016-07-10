@@ -15,8 +15,13 @@ export default function (apiRoute, app) {
         username: reqUser.username,
         email: reqUser.email,
         facebookid: reqUser.facebookid,
-        twitterid: reqUser.twitterid
+        twitterid: reqUser.twitterid,
+        has_password: false
       }
+      
+      if (reqUser.password)
+        user.has_password = true
+      
       res.json(user)
     })
 
@@ -71,6 +76,7 @@ export default function (apiRoute, app) {
 
             user.update(formData)
               .then(() => res.json({ success: true, message: 'Data update sucessfully', user: user.dataValues }))
+              .catch(err => res.json({ succes: false, message: 'Oops an error occurred' }))
           })
       }
     })

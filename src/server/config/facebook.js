@@ -14,7 +14,6 @@ export default function (passport, User) {
   },
   (token, resfreshToken, profile, done) => {
     process.nextTick(() => {
-      //console.log(profile)
       // find the user in the database based on their facebook id
       User.findOne({ where: { 'facebookid': profile.id } })
         .then(user => {
