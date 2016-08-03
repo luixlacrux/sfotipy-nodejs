@@ -12,12 +12,8 @@ export default function (apiRoute, app) {
         title: req.body.title
       }
       newPlaylist(data)
-        .then((data) => {
-          res.json(data)
-        })
-        .catch((err) => {
-          res.send(err)
-        })
+        .then(data => res.json(data))
+        .catch(err => res.send(err))
     })
 
     // Get PlayList
@@ -25,11 +21,7 @@ export default function (apiRoute, app) {
       // let user = req.user.id << este es el original
       let user = 1
       getPlaylist(user)
-        .then((data) => {
-          res.json(data)
-        })
-        .catch((err) => {
-          res.send(err)
-        })
+        .then(data => res.json(data))
+        .catch(err => res.send(err))
     })
 }

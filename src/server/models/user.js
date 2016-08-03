@@ -2,13 +2,6 @@ import bcrypt from 'bcrypt-nodejs'
 
 export default function (sequelize, DataTypes) {
   return sequelize.define('user', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        allowNull: false,
-        autoIncrement: true,
-        unique: true
-    },
     // First Name
     first_name: DataTypes.STRING,
     // Last Name
@@ -16,11 +9,12 @@ export default function (sequelize, DataTypes) {
     // User's local
     username: {
       type: DataTypes.STRING,
-      unique: true
+      allowNull: false,
+      unique: true,
     },
     email: {
-      type: DataTypes.STRING,
-      unique: true
+      type: DataTypes.STRING,  
+      unique: true,
     },
     password: DataTypes.STRING,
     // User's facebook
@@ -38,17 +32,12 @@ export default function (sequelize, DataTypes) {
     instanceMethods: {
       validPassword: function (password) {
         return bcrypt.compareSync(password, this.password)
-      }
-    },
-    getterMethods: {
-      someValue: function () {
-        return this.someValue
-      }
-    },
-    setterMethods: {
-      someValue: function (value) {
-        this.someValue = value
+      },
+      fullName: function () {
+        return `${this.first_name} ${this.last_name}`
       }
     }
   })
 }
+
+

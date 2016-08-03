@@ -20,11 +20,11 @@ function newPlaylist (playlist) {
 
 function getPlaylist (user_id) {
   return new Promise((resolve, reject) => {
-    PlayList.findAll({ where: { userId: user_id }, include: [ { model: User, as: 'user' } ] })
-      .then((data) => {
-        resolve(data)
+    User.findById(user_id).then(user => {
+        user.getPlaylists() // Este el metodo que se crea al hacer la relacion HasMany y asignandole un nombre
+          .then(playlists => reject(playlists))
       })
-      .catch((err) => {
+      .catch(err => {
         reject(`this is the error ${err}`)
       })
   })
