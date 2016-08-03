@@ -1,4 +1,4 @@
-import User from 'src/server/models'
+import { User } from 'src/server/models'
 User.sync()
 
 export default function (apiRoute, app) {
@@ -10,6 +10,7 @@ export default function (apiRoute, app) {
     .get((req, res) => {
       let reqUser = req.user.dataValues
       let user = {
+        id: reqUser.id,
         first_name: reqUser.first_name,
         last_name: reqUser.last_name,
         username: reqUser.username,
@@ -18,10 +19,10 @@ export default function (apiRoute, app) {
         twitterid: reqUser.twitterid,
         has_password: false
       }
-      
+
       if (reqUser.password)
         user.has_password = true
-      
+
       res.json(user)
     })
 

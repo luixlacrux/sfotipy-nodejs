@@ -2,7 +2,7 @@ import passport from 'passport'
 import LocalStrategy from 'src/server/config/local'
 import FacebookStrategy from 'src/server/config/facebook'
 import TwitterStrategy from 'src/server/config/twitter'
-import User from 'src/server/models'
+import { User } from 'src/server/models'
 User.sync()
 
 export default function (app) {

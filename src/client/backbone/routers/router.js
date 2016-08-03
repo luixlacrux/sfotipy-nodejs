@@ -107,6 +107,9 @@ class Router extends Backbone.Router {
     this.events.on('music:hide', () => this.mainView.hideMusic())
     this.events.on('music:show', () => this.mainView.showMusic())
 
+    this.events.on('content:show', () => this.mainView.showContent())
+    this.events.on('content:hide', () => this.mainView.hideContent())
+
     this.events.on('playing:hide', () => this.mainView.hidePlaying())
     this.events.on('playing:show', () => this.mainView.showPlaying())
 
@@ -213,6 +216,7 @@ class Router extends Backbone.Router {
 
   addToPlaylist (playlist) {
     let songs = playlist.get('songs')
+    debugger
     let newSong = this.current.songActually
 
     if (songs.find( song => song.get('name') === newSong.get('name') ))
@@ -243,6 +247,7 @@ class Router extends Backbone.Router {
 
   showSearch (query) {
     this.events.trigger('music:hide')
+    this.events.trigger('content:hide')
     this.events.trigger('search:show', query)
     this.artists.reset()
     this.albums.reset()

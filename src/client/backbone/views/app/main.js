@@ -119,6 +119,14 @@ class Main extends Backbone.View {
     this.$search.show()
   }
 
+  showContent () {
+    this.$content.show()
+  }
+
+  hideContent () {
+    this.$content.hide()
+  }
+
   searchDesktop (ev) {
     let query = this.$inputSearchDesktop.val()
     this.search(query)

@@ -38,7 +38,8 @@
     "spotify-finder": "^1.0.0",
     "stylus": "^0.54.5",
     "swig": "^1.4.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "uuid": "^2.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.8.0",

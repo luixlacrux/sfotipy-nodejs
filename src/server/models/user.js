@@ -2,6 +2,13 @@ import bcrypt from 'bcrypt-nodejs'
 
 export default function (sequelize, DataTypes) {
   return sequelize.define('user', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true,
+        unique: true
+    },
     // First Name
     first_name: DataTypes.STRING,
     // Last Name

@@ -1,4 +1,4 @@
-import  User from 'src/server/models'
+import { User } from 'src/server/models'
 User.sync()
 
 export function userLocal (username, password, email) {
