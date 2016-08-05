@@ -11,6 +11,18 @@ made in the course of professional frontend in [Platzi](https://platzi.com/front
 * [Postgresql](https://www.postgresql.org/)
 * [Redis](http://redis.io/)
 
+## Install gulp globally:
+If you have previously installed a version of gulp globally, please run npm rm --global gulp to make sure your old version doesn't collide with gulp-cli.
+```
+$ npm install -g gulp-cli
+```
+for more info visit the docs of [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
+
+## Install nodemon globally (optional):
+Needed for server to development
+```
+$ npm install -g nodemon
+```
 ## Clone
 ```
 $ git clone https://github.com/luixlacrux/sfotipy-nodejs.git
@@ -28,13 +40,9 @@ const USER = process.env.USER_DB || <<< YOUR_DATABASE_USER >>>
 ```
 $ npm install
 ```
-### Generate the builds
+### Generate the builds and start server
 ```
-$ npm run build && npm run dist
-```
-### Start node server
-```
-$ npm run server
+$ npm start
 ```
 ### Ready
 ready now open a new tab browser in url http://localhost:3000
