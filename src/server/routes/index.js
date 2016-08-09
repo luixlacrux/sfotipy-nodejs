@@ -11,6 +11,7 @@ export default function (app, passport) {
   app.get('/@:username', isLoggedIn, renderIndex)
   app.get('/@:username/edit', isLoggedIn, renderIndex)
   app.get('/album/:name', isLoggedIn, renderIndex)
+  app.get('/play/:name/:id', isLoggedIn, renderIndex)
   app.get('/search/:query', isLoggedIn, renderIndex)
 
   app.get('/logout', (req, res) => {

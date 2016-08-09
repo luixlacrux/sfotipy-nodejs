@@ -9,7 +9,7 @@ export default function (apiRoute, app) {
     let query = req.params.query
 
     client.search(query, 'all', 6, (err, data) => {
-      if (err) return res.sendStatus(500).json(err)
+      if (err) return res.status(500).send(err)
 
       res.json(data)
     })
@@ -17,9 +17,19 @@ export default function (apiRoute, app) {
 
   app.get(`${apiRoute}/top-albums`, (req, res) => {
     client.getAlbums(ids, (err, data) => {
-      if (err) return res.sendStatus(500).json(err)
+      if (err) return res.status(500).send(err)
 
       res.json(data.albums)
+    })
+  })
+
+  app.get(`${apiRoute}/album/:id`, (req, res) => {
+    let id = req.params.id
+
+    client.getAlbum(id, {traks:false}, (err, album) => {
+      if (err) return res.status(500).send(err)
+
+      res.json(album)
     })
   })
 }
