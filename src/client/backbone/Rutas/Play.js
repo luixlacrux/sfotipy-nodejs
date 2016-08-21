@@ -5,8 +5,8 @@ import Play from 'src/client/handlebars/Play/main.hbs'
 // Playing Collection
 import PlayingCollection from 'src/client/backbone/Colecciones/Songs'
 // Player, List View
-import PlayerView from 'src/client/backbone/Vistas/Play/player'
-import ListView from 'src/client/backbone/Vistas/Play/list'
+import PlayerView from 'src/client/backbone/Vistas/Play/Player'
+import ListView from 'src/client/backbone/Vistas/Play/List'
 // Song, Album Model
 import AlbumModel from 'src/client/backbone/Modelos/Album'
 import SongModel from 'src/client/backbone/Modelos/Song'
@@ -27,11 +27,13 @@ export default function (name, id) {
     return false
   }
 
-  // renderisamos el player
-  // y guardamos el id 
-  $player
-    .html(Play())
-    .data('playid', id)
+  // si no encuentra el elemento #music lo renderiza 
+  if (!$player.find('#music').length) {
+    $player.html(Play())
+  }
+
+  // guardamos el id
+  $player.data('playid', id)
 
   album.fetchData(name, id).then(() => {
     

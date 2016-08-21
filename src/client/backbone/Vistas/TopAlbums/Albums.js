@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
-import AlbumView from './album'
 import $ from 'jquery'
+import AlbumView from './Album'
 
 class TopAlbumsView extends Backbone.View {
   get tagName () { return 'section' }

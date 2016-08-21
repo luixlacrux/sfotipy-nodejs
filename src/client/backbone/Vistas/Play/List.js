@@ -1,8 +1,8 @@
 import Backbone from 'backbone'
-import Song from 'src/client/backbone/Modelos/Song'
-import SongView from './song'
 import $ from 'jquery'
-import PlayerView from './player'
+import Song from 'src/client/backbone/Modelos/Song'
+import SongView from './Song'
+import PlayerView from './Player'
 
 class List extends Backbone.View {
   get el () { return $('.playlist > .list') }

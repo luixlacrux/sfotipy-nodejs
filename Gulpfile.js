@@ -57,6 +57,12 @@ gulp.task('assets', () => {
     .pipe(gulp.dest('./public/assets'))
 })
 
+// Task's Views
+gulp.task('views', () => {
+  return gulp.src('./src/client/views/**')
+    .pipe(gulp.dest('./views'))
+})
+
 // Task's Dist
 gulp.task('dist', () => {
   return gulp.src(['./src/server/**'])
@@ -76,7 +82,7 @@ gulp.task('nodemon', () => {
 })
 
 gulp.task('default', ['build', 'dist'])
-gulp.task('build', ['assets','styl', 'js'])
+gulp.task('build', ['assets', 'views','styl', 'js'])
 gulp.task('build:watch', ['styl:watch', 'js:watch'])
 
 

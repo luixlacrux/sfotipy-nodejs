@@ -24,7 +24,7 @@ class Player extends Backbone.View {
   }
 
   initialize () {
-    this.audio = document.createElement('audio')
+    this.audio = document.getElementById('audio')
     this.listenTo(this.model, 'change', this.render)
     this.on('autoplay', this.autoplay)
   }
@@ -46,7 +46,7 @@ class Player extends Backbone.View {
   }
 
   initEvents () {
-    this.audio.addEventListener('ended', this.changeSong.bind(this))
+    this.audio.onended = this.changeSong.bind(this)
     this.audio.addEventListener('timeupdate', this.updateTime.bind(this))
     this.audio.addEventListener('durationchange', this.totalDuration.bind(this))
   }
@@ -69,7 +69,6 @@ class Player extends Backbone.View {
   }
 
   changeSong (ev) {
-    this.audio.removeEventListener('ended', this.changeSong.bind(this))
 
     let idx = this.collection.findIndex({
       id_spotify: this.model.attributes.id_spotify

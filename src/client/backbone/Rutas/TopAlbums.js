@@ -2,14 +2,13 @@ import Backbone from 'backbone'
 import $ from 'jquery'
 import loaderBig from 'src/client/handlebars/Utils/loader.hbs'
 import AlbumsCollections from 'src/client/backbone/Colecciones/Albums'
-import TopAlbumsView from 'src/client/backbone/Vistas/TopAlbums'
-
-const $app = $('#app')
-const $player = $('#player')
-const albums = new AlbumsCollections({ url: '/api/top-albums' })
-
+import TopAlbumsView from 'src/client/backbone/Vistas/TopAlbums/Albums'
 
 export default function () {
+  const $app = $('#app')
+  const $player = $('#player')
+  const albums = new AlbumsCollections({ url: '/api/top-albums' })
+  
   // ocultamos player
   $player.hide()
 

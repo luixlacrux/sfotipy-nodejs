@@ -40,7 +40,7 @@ export default function (apiRoute, app) {
           confirm: req.body.confirm
         }
         if (!passwd.old || !passwd.new || !passwd.confirm)
-          return res.format({ default: () => res.sendStatus(400) })
+          return res.status(400)
 
         if (passwd.new !== passwd.confirm)
           return res.json({ success: false, message: 'Passwords not match' })
@@ -52,7 +52,7 @@ export default function (apiRoute, app) {
         User.findOne({ where: { id: user_id } })
           .then(user => {
             if (!user)
-              return res.format({ default: () => res.sendStatus(404) })
+              return res.status(404)
             if (!user.validPassword(passwd.old))
               return res.json({ success: false, message: 'Oops! Wrong password' })
 
@@ -68,12 +68,12 @@ export default function (apiRoute, app) {
         }
 
         if (!formData.username || !formData.email)
-          return res.format({ default: () => res.sendStatus(400) })
+          return res.status(400)
 
         User.findOne({ where: { id: user_id } })
           .then(user => {
             if (!user)
-              return res.format({ default: () => res.sendStatus(404) })
+              return res.status(404)
 
             user.update(formData)
               .then(() => res.json({ success: true, message: 'Data update sucessfully', user: user.dataValues }))
