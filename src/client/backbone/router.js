@@ -2,6 +2,7 @@ import Backbone from 'backbone'
 import $ from 'jquery'
 /* Views */
 import HeaderView from 'src/client/backbone/Vistas/Header/Main'
+import HomeView from 'src/client/backbone/Vistas/Home'
 /* Routes */
 import PlayRoute from 'src/client/backbone/Rutas/Play'
 import TopAlbumsRoute from 'src/client/backbone/Rutas/TopAlbums'
@@ -11,13 +12,15 @@ class Router extends Backbone.Router {
     return {
       'top-albums': 'TopAlbumsRoute',
       'play/:album/:id': 'PlayRoute',
+      'home/:form': 'LoginOrSignIn',
       '*notFound': 'notFound',
     }
   }
 
   init () {
-    // Instancio la vista header
+    // Instancio la vista header y Home
     this.headerView = new HeaderView()
+    this.homeView = new HomeView()
     Backbone.history.start({ root: '/', pushState: true })
   }
 
@@ -38,6 +41,11 @@ class Router extends Backbone.Router {
   PlayRoute (album, id) {
     this.headerView.setTitle(album.replace('+', ' '))
     return PlayRoute(album, id)
+  }
+
+  LoginOrSignIn (form) {
+    if (form === 'login') this.homeView.login()
+    if (form === 'signup') this.homeView.signUp()
   }
 }
 
