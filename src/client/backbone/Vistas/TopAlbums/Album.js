@@ -1,7 +1,7 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import template from 'src/client/handlebars/TopAlbums/album.hbs'
-// import app from 'src/client/backbone/router'
+import app from 'src/client/backbone/router'
 
 class AlbumView extends Backbone.View {
   get tagName() { return 'article' }
@@ -26,7 +26,7 @@ class AlbumView extends Backbone.View {
   navigate () {
     let { name, id } = this.model.attributes
     name = name.replace(' ', '+')
-    Sfotipy.navigate(`play/${name}/${id}`, { trigger:true })
+    app.navigate(`play/${name}/${id}`, { trigger:true })
   }
 }
 

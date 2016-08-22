@@ -1,5 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
+import Share from 'src/client/backbone/Vistas/Share'
 import template from 'src/client/handlebars/Play/player.hbs'
 
 class Player extends Backbone.View {
@@ -165,7 +166,10 @@ class Player extends Backbone.View {
   }
 
   share () {
-    Sfotipy.events.trigger('share', this.model)
+    // instancio la nueva vista y la muestro
+    // return false para terminar la ejecucion
+    let shareView = new Share({ model: this.model})
+    shareView.show()
     return false
   }
 

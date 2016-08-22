@@ -1,5 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
+import Share from 'src/client/backbone/Vistas/Share'
 import template from 'src/client/handlebars/Play/song.hbs'
 
 class Song extends Backbone.View {
@@ -33,7 +34,6 @@ class Song extends Backbone.View {
   select () {
     let model = this.model.toJSON()
     this.player.model.set(model)
-    //$('.playlist').addClass('border-left')
     return false
   }
 
@@ -41,9 +41,11 @@ class Song extends Backbone.View {
 
   }
 
-  share (ev) {
-    ev.stopPropagation()
-    Sfotipy.events.trigger('share', this.model)
+  share () {
+    // instancio la nueva vista y la muestro
+    // return false para terminar la ejecucion
+    let shareView = new Share({ model: this.model })
+    shareView.show()
     return false
   }
 
