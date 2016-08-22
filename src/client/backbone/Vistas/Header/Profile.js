@@ -1,6 +1,7 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/handlebars/profile'
+import template from 'src/client/handlebars/Header/profile.hbs'
+import app from 'src/client/backbone/router'
 
 class Profile extends Backbone.View {
   get tagName () { return 'div' }
@@ -14,39 +15,34 @@ class Profile extends Backbone.View {
   }
 
   initialize () {
-    this.listenTo(this.model, 'change:username', this.render, this)
-    this.model.fetchData()
+    this.model.fetchData().then(this.render.bind(this))
+    this.listenTo(this.model, 'change', this.render, this)
+    this.hide = this.hide.bind(this)
   }
 
-  // fetchData () {
-  //   if (!Object.keys(this.model.toJSON()).length) {
-  //     this.model.fetchData()
-  //       .then(this.render.bind(this))
-  //   } else {
-  //     this.render()
-  //   }
-  // }
-
   render () {
-    console.log('UserDropdown render')
-    this.$el.empty()
     let user = this.model.toJSON()
     this.$el.html(template(user))
     this.$dropdown = this.$el.find('.dropdown')
+    return this
   }
 
   show (ev) {
     ev.stopPropagation()
+    document.addEventListener('click', this.hide)
     this.$dropdown.fadeToggle(300)
   }
 
   hide () {
-    this.$dropdown.hide(300)
+    document.removeEventListener('click', this.hide)
+    this.$dropdown.fadeOut(300)
   }
 
   navigate (ev) {
     ev.preventDefault()
     let link = $(ev.target).attr('href')
-    Sfotipy.navigate(link, { trigger: true })
+    app.navigate(link, { trigger: true })
   }
 }
+
+export default Profile
