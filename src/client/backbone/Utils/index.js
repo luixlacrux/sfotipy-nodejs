@@ -5,9 +5,22 @@ export default {
       id: album.id,
       name: album.name,
       cover: album.images[1].url || album.images[0].url || null,
-      author: album.artists[0],
-      songs: album.tracks.items,
+      author: album.artists ? album.artists[0] : null,
+      songs: album.tracks ? album.tracks.items : null,
       album: album.album_type
+    }
+  },
+
+  parseSong (song) {
+    return {
+      id: song.id,
+      name: song.name,
+      song: song.preview_url,
+      artists: song.artists,
+      album: song.album.name,
+      album_id: song.album.id,
+      track_number: song.track_number,
+      cover: song.album.images[1].url || song.album.images[0].url || null
     }
   },
 

@@ -5,7 +5,7 @@ import utils from 'src/client/backbone/Utils'
 class Album extends Backbone.Model {
   constructor(opts) {
     super(opts)
-    this.url = opts.url
+    this.url = opts && opts.url ? opts.url : null
   }
 
   fetchData (name, id) {

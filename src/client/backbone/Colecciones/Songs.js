@@ -1,8 +1,9 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import Song from 'src/client/backbone/Modelos/Song'
+import utils from 'src/client/backbone/Utils'
 
-class Playing extends Backbone.Collection {
+class Songs extends Backbone.Collection {
   constructor(opts) {
     super(opts)
     this.model = Song
@@ -26,6 +27,10 @@ class Playing extends Backbone.Collection {
       source: song.preview_url
     }))
   }
+
+  addSongMoreInfo (song) {
+    this.add(new Song(utils.parseSong(song)))
+  }
 }
 
-export default Playing
+export default Songs

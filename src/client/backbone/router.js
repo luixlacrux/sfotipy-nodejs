@@ -6,13 +6,15 @@ import HomeView from 'src/client/backbone/Vistas/Home'
 /* Routes */
 import PlayRoute from 'src/client/backbone/Rutas/Play'
 import TopAlbumsRoute from 'src/client/backbone/Rutas/TopAlbums'
+import SearchRoute from 'src/client/backbone/Rutas/Search'
 
 class Router extends Backbone.Router {
   get routes () {
     return {
       'top-albums': 'TopAlbumsRoute',
       'play/:album/:id': 'PlayRoute',
-      'home/:form': 'LoginOrSignIn',
+      'home/:action': 'LoginOrSignIn',
+      'search/:query': 'SearchRoute',
       '*notFound': 'notFound',
     }
   }
@@ -39,13 +41,18 @@ class Router extends Backbone.Router {
   }
 
   PlayRoute (album, id) {
-    this.headerView.setTitle(album.replace('+', ' '))
+    this.headerView.setTitle(album.replace(/\+/g, ' '))
     return PlayRoute(album, id)
   }
 
-  LoginOrSignIn (form) {
-    if (form === 'login') this.homeView.login()
-    if (form === 'signup') this.homeView.signUp()
+  SearchRoute (query) {
+    this.headerView.setTitle(`Search: ${query}`)
+    return SearchRoute(query)
+  }
+
+  LoginOrSignIn (action) {
+    if (action === 'login') this.homeView.login()
+    if (action === 'signup') this.homeView.signUp()
   }
 }
 

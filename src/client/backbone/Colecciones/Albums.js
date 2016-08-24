@@ -7,7 +7,7 @@ class Albums extends Backbone.Collection {
   constructor(opts) {
     super()
     this.model = Album
-    this.url = opts.url
+    this.url = opts && opts.url ? opts.url : null 
   }
 
   getAlbums () {
@@ -37,8 +37,8 @@ class Albums extends Backbone.Collection {
   }
 
   addAlbum (album) {
-    // agregamos el album a la coleccion 
-    this.add( new Album(utils.parseAlbum(album)))
+    // agregamos el album a la coleccion
+    this.add(new Album(utils.parseAlbum(album)))
   }
 
   isEmpty () {

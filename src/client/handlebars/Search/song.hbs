@@ -1,0 +1,17 @@
+<figure class="coverConten">
+  <img class="cover" width="128" height="128" src="{{ cover }}" alt="">
+</figure>
+<div class="titleConten">
+  <span class="title">
+  {{ name }}
+  </span>
+  <span class="slug">
+    {{# each artists }}
+      {{# if @last }}
+        <span data-href="/artist/{{ this.name }}/{{ this.id }}">{{ this.name }}</span>
+      {{ else }}
+        <span data-href="/artist/{{ this.name }}/{{ this.id }}">{{ this.name }},</span>
+      {{/ if}}
+    {{/ each }}
+  </span>
+</div>
