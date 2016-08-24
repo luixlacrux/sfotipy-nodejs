@@ -45,8 +45,10 @@ class Router extends Backbone.Router {
     return PlayRoute(album, id)
   }
 
-  SearchRoute (query) {
+  SearchRoute (q) {
+    const query = q.replace(/\+/g, ' ')
     this.headerView.setTitle(`Search: ${query}`)
+    this.headerView.setQuery(query)
     return SearchRoute(query)
   }
 

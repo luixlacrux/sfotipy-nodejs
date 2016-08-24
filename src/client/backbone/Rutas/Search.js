@@ -1,6 +1,6 @@
 import $ from 'jquery'
-// Main template
-import Search from 'src/client/handlebars/Search/main.hbs'
+// Main View
+import SearchView from 'src/client/backbone/Vistas/Search/Main'
 // Artists
 import ArtistsCollections from 'src/client/backbone/Colecciones/Artists'
 import ArtistsView from 'src/client/backbone/Vistas/Search/Artists'
@@ -21,10 +21,13 @@ export default function (query) {
   const albums = new AlbumsCollections()
   const songs = new SongsCollections()
 
-  // vaciamos app, ocultamos el player
-  // y renderizamos la vista search
+  // ocultamos el player
   $player.hide()
-  $app.html(Search({ query }))
+  // instancio la Vista Principal
+  const searchView = new SearchView()
+  searchView.setQuery(query)
+  // y renderizamos la vista en $app
+  $app.html(searchView.el)
 
   $.get(url).done(res => {
     // obtengo la data, y ejecuto renderView

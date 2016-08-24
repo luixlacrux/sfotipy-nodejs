@@ -7,11 +7,15 @@ class Menu extends Backbone.View {
   get events () {
     return {
       'click': 'stopEvent',
-      'click .item': 'navigate'
+      'click .item': 'navigate',
+      'submit .search-mobile': 'search'
     }
   }
 
-  initialize () { this.hide = this.hide.bind(this) }
+  initialize () {
+    this.$input = this.$el.find('.search-mobile > input')
+    this.hide = this.hide.bind(this)
+  }
 
   navigate (ev) {
     // ocultamos el menu
@@ -37,6 +41,13 @@ class Menu extends Backbone.View {
   }
 
   stopEvent (ev) { ev.stopPropagation() }
+
+  search (ev) {
+    ev.preventDefault()
+    const query = this.$input.val().replace(/\s/g, '+')
+    app.navigate(`search/${query}`, { trigger: true })
+    this.hide()
+  }
 }
 
 export default Menu

@@ -2,6 +2,7 @@ import Backbone from 'backbone'
 import $ from 'jquery'
 import ProfileView from './Profile'
 import MenuView from './Menu'
+import SearchView from './Search'
 import ProfileModel from 'src/client/backbone/Modelos/Profile'
 
 class Main extends Backbone.View {
@@ -14,6 +15,7 @@ class Main extends Backbone.View {
 
   initialize () {
     this.menu = new MenuView()
+    this.search = new SearchView()
     this.$container = this.$el.find('.container')
     this.$menu = this.$el.find('.Header-menu')
     this.$title = this.$el.find('.Header-title')
@@ -31,7 +33,14 @@ class Main extends Backbone.View {
     this.menu.show()
   }
 
-  setTitle(section) { this.$title.html(section) }
+  setTitle(section) {
+    this.$title.html(section)
+  }
+
+  setQuery(query) {
+    this.search.$input.val(query)
+    this.menu.$input.val(query)
+  }
 }
 
 export default Main
