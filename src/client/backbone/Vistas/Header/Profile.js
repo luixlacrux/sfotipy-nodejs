@@ -15,14 +15,13 @@ class Profile extends Backbone.View {
   }
 
   initialize () {
-    this.model.fetchData().then(this.render.bind(this))
+    this.model.isEmptyPromised()
     this.listenTo(this.model, 'change', this.render, this)
     this.hide = this.hide.bind(this)
   }
 
   render () {
-    let user = this.model.toJSON()
-    this.$el.html(template(user))
+    this.$el.html(template(this.model.attributes))
     this.$dropdown = this.$el.find('.dropdown')
     return this
   }

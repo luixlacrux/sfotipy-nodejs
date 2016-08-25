@@ -7,6 +7,7 @@ import HomeView from 'src/client/backbone/Vistas/Home'
 import PlayRoute from 'src/client/backbone/Rutas/Play'
 import TopAlbumsRoute from 'src/client/backbone/Rutas/TopAlbums'
 import SearchRoute from 'src/client/backbone/Rutas/Search'
+import ProfileRoute from 'src/client/backbone/Rutas/Profile'
 
 class Router extends Backbone.Router {
   get routes () {
@@ -15,6 +16,7 @@ class Router extends Backbone.Router {
       'play/:album/:id': 'PlayRoute',
       'home/:action': 'LoginOrSignIn',
       'search/:query': 'SearchRoute',
+      '@:username': 'ProfileRoute',
       '*notFound': 'notFound',
     }
   }
@@ -50,6 +52,11 @@ class Router extends Backbone.Router {
     this.headerView.setTitle(`Search: ${query}`)
     this.headerView.setQuery(query)
     return SearchRoute(query)
+  }
+
+  ProfileRoute (username) {
+    this.headerView.setTitle('Profile')
+    return ProfileRoute(username)
   }
 
   LoginOrSignIn (action) {

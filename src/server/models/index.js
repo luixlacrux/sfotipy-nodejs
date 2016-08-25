@@ -3,7 +3,9 @@ import configDB from 'src/server/config/database'
 import { native as pg } from 'pg'
 import pghstore from 'pg-hstore'
 
-const sequelize = new Sequelize(configDB.url)
+const sequelize = new Sequelize(configDB.url, {
+  logging: false // para no mostrar where en consola
+})
 
 const User = sequelize.import('./user.js')
 const PlayList = sequelize.import('./playlist.js')

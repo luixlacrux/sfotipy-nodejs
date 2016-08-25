@@ -5,7 +5,7 @@ import $ from 'jquery'
 class Profile extends Backbone.Model {
   constructor(opts) {
     super(opts)
-    this.url = '/api/profile'
+    this.url = opts ? opts.url : '/api/profile'
   }
 
   fetchData () {
@@ -49,6 +49,14 @@ class Profile extends Backbone.Model {
 
   updateData (url, data) {
     return $.ajax({ url, data, method: 'PUT' })
+  }
+
+  isEmptyPromised () {
+    if(this.isEmpty()) {
+      return this.fetchData()
+    }
+
+    return Promise.resolve()
   }
 }
 

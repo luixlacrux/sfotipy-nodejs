@@ -23,8 +23,8 @@ class Main extends Backbone.View {
   }
 
   render () {
-    let profile = new ProfileView({ model: new ProfileModel })
-    this.$container.prepend(profile.el)
+    this.profile = new ProfileView({ model: new ProfileModel })
+    this.$container.prepend(this.profile.el)
   }
 
   showMenu (ev) {
@@ -40,6 +40,10 @@ class Main extends Backbone.View {
   setQuery(query) {
     this.search.$input.val(query)
     this.menu.$input.val(query)
+  }
+
+  getProfileModel () {
+    return this.profile.model
   }
 }
 
