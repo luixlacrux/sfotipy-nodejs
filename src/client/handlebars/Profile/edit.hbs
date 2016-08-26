@@ -1,0 +1,60 @@
+<div class="Perfil-perfil unique">
+  <div class="perfil">
+    <a href="/@{{ username }}" class="btn-back"><--</a>
+    <a href="/@{{ username }}" class="btn-back desktop"> Profile<span> > Edit</span></a>
+    <figure>
+      <img src="/assets/img/avatares/leonidas.jpg" />
+    </figure>
+    <a href="#" class="btn-change" id="change-photo">Change Photo</a>
+    {{#if first_name}}
+      <h2>{{ first_name }} {{ last_name }}</h2>
+    {{else}}
+      <h2>@{{ username }}</h2>
+    {{/if}}
+  </div>
+</div>
+
+<div class="Perfil-edit">
+  <form class="edit-user" method="post" enctype="multipart/form-data">
+    <div class="campo-text">
+      <p>First Name</p>
+      <input class="first_name" name="first_name" type="text" placeholder="First Name" value="{{first_name}}"/>
+    </div>
+    <div class="campo-text">
+      <p>Last Name</p>
+      <input class="last_name" name="last_name" type="text" placeholder="Last Name" value="{{last_name}}"/>
+    </div>
+    <div class="campo-text">
+      <p>Username</p>
+      <input class="username" name="username" type="text" placeholder="Username" value="{{username}}" required />
+    </div>
+    <div class="campo-text">
+      <p>Email</p>
+      <input class="email" name="email" type="email" placeholder="Email" value="{{email}}" required />
+    </div>
+    <div class="campo-text">
+      <button type="submit">Save</button>
+    </div>
+    <input type="file" name="image" id="image-profile" accept="image/jpeg, image/x-png, image/gif" hidden>
+  </form>
+</div>
+
+{{#if has_password}}
+  <div class="Perfil-edit-password">
+    <a href="#" class="btn-change" id="change-passwd">Change Password</a>
+    <form class="edit-password" action="/edit" method="post">
+      <div class="campo-text">
+        <input class="password old" name="password" type="password" placeholder="Old Password" required />
+      </div>
+      <div class="campo-text">
+        <input class="password new" name="password" type="password" placeholder="New Password" required />
+      </div>
+      <div class="campo-text">
+        <input class="password confirm" name="password" type="password" placeholder="Confirm Password" required />
+      </div>
+      <div class="campo-text">
+        <button type="submit">Change</button>
+      </div>
+    </form>
+  </div>
+{{/if}}

@@ -1,3 +1,9 @@
-<div class="opacity" style="display: block;">
-  <div class="loader fixed"></div>
-</div>
+{{# if big }}
+  <div class="opacity" style="display: block;">
+    <div class="loader fixed"></div>
+  </div>
+{{else if small }}
+  <div class="loader small"></div>
+{{ else }}
+  <div class="loader"></div>
+{{/ if}}

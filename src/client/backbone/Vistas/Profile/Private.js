@@ -1,10 +1,10 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/handlebars/Profile/profile.hbs'
+import template from 'src/client/handlebars/Profile/private.hbs'
 import app from 'src/client/backbone/router'
 
 
-class ProfileView extends Backbone.View {
+class ProfilePrivateView extends Backbone.View {
   get tagName () { return 'section' }
   get className () { return 'Perfil' }
   get id () { return 'profile' }
@@ -26,4 +26,4 @@ class ProfileView extends Backbone.View {
   }
 }
 
-export default ProfileView
+export default ProfilePrivateView

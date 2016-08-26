@@ -8,6 +8,7 @@ import PlayRoute from 'src/client/backbone/Rutas/Play'
 import TopAlbumsRoute from 'src/client/backbone/Rutas/TopAlbums'
 import SearchRoute from 'src/client/backbone/Rutas/Search'
 import ProfileRoute from 'src/client/backbone/Rutas/Profile'
+import ProfileEditRoute from 'src/client/backbone/Rutas/ProfileEdit'
 
 class Router extends Backbone.Router {
   get routes () {
@@ -17,6 +18,7 @@ class Router extends Backbone.Router {
       'home/:action': 'LoginOrSignIn',
       'search/:query': 'SearchRoute',
       '@:username': 'ProfileRoute',
+      '@:username/edit': 'ProfileEditRoute',
       '*notFound': 'notFound',
     }
   }
@@ -57,6 +59,11 @@ class Router extends Backbone.Router {
   ProfileRoute (username) {
     this.headerView.setTitle('Profile')
     return ProfileRoute(username)
+  }
+
+  ProfileEditRoute (username) {
+    this.headerView.setTitle('Profile Edit')
+    return ProfileEditRoute(username)
   }
 
   LoginOrSignIn (action) {

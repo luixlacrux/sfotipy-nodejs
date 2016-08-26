@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import loaderBig from 'src/client/handlebars/Utils/loader.hbs'
+import loader from 'src/client/handlebars/Utils/loader.hbs'
 import AlbumsCollections from 'src/client/backbone/Colecciones/Albums'
 import TopAlbumsView from 'src/client/backbone/Vistas/TopAlbums/Albums'
 
@@ -13,7 +13,7 @@ export default function () {
   $player.hide()
 
   // colocamos el loader
-  $app.html(loaderBig())
+  $app.html(loader({ big: true }))
 
   // escuchamos cada vez que se agregan datos 
   // albums.on('add', () => console.log('Se agrego un modelo a la coleccion'))

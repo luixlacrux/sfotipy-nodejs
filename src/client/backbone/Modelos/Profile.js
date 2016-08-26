@@ -28,6 +28,7 @@ class Profile extends Backbone.Model {
           return reject(res.message)
         }
 
+        this.fetchData()
         resolve(res.message)
       }).error(err => console.log)
     })
@@ -37,11 +38,7 @@ class Profile extends Backbone.Model {
     const url = `${this.url}?passwd=true` 
     return new Promise((resolve, reject) => {
       this.updateData(url, data).done(res => {
-        if (!res.success) {
-          return reject(res.message)
-        }
-
-        resolve(res.message)
+        return resolve(res)
       }).error(err => console.log)
     })
   }

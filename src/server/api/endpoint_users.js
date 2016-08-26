@@ -45,7 +45,7 @@ export default function (apiRoute, app) {
         if (passwd.new !== passwd.confirm)
           return res.json({ success: false, message: 'Passwords not match' })
         if (passwd.new.length < 6)
-          return res.json({ sucess: false, message: 'New password is short. min 6 characters' })
+          return res.json({ success: false, message: 'New password is short. min 6 characters' })
 
         passwd.new = User.generateHash(passwd.new)
 

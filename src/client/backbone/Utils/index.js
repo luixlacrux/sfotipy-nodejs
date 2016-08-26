@@ -1,4 +1,15 @@
 export default {
+  validPassword (passwd) {
+    return new Promise((resolve, reject) => {
+      if (!passwd.old || !passwd.new || !passwd.confirm)
+        return reject({ message: 'All fields is required. '})
+      if (passwd.new.length < 6)
+        return reject({ message: 'New password is short. min 6 characters'})
+      if (passwd.new !== passwd.confirm)
+        return reject({ message: 'Passwords not match. '})
+      resolve()
+    })
+  },
 
   parseAlbum (album) {
     return {

@@ -1,0 +1,29 @@
+<div class="Perfil-perfil">
+  <div class="perfil">
+    <figure>
+      <img src="/assets/img/avatares/leonidas.jpg" />
+    </figure>
+    {{#if first_name}}
+      <h2>{{ first_name }} {{ last_name }}</h2>
+    {{else}}
+      <h2>@{{ username }}</h2>
+    {{/if}}
+  </div>
+</div>
+
+<div class="Perfil-playlist">
+  <h2>Playlists</h2>
+
+  <div class="playlists">
+    <div class="playlist-playlistVacia">
+      <div class="mobile" style="display: block;">
+        <figure>
+          <img src="/assets/img/vacia.jpg" />
+        </figure>
+        <p>
+          This user not have playlists
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
