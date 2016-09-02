@@ -1,14 +1,14 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 /* Views */
-import HeaderView from 'src/client/backbone/Vistas/Header/Main'
-import HomeView from 'src/client/backbone/Vistas/Home'
+import HeaderView from 'src/client/backbone/Views/Header/Main'
+import HomeView from 'src/client/backbone/Views/Home'
 /* Routes */
-import PlayRoute from 'src/client/backbone/Rutas/Play'
-import TopAlbumsRoute from 'src/client/backbone/Rutas/TopAlbums'
-import SearchRoute from 'src/client/backbone/Rutas/Search'
-import ProfileRoute from 'src/client/backbone/Rutas/Profile'
-import ProfileEditRoute from 'src/client/backbone/Rutas/ProfileEdit'
+import PlayRoute from 'src/client/backbone/Routes/Play'
+import TopAlbumsRoute from 'src/client/backbone/Routes/TopAlbums'
+import SearchRoute from 'src/client/backbone/Routes/Search'
+import ProfileRoute from 'src/client/backbone/Routes/Profile'
+import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
 
 class Router extends Backbone.Router {
   get routes () {

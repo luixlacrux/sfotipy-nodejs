@@ -1,12 +1,6 @@
 node_modules
 public
 dist
-/src/client/backbone/models
-/src/client/backbone/collections
-/src/client/backbone/views
-/src/client/backbone/routers
-/src/client/backbone/api
-/src/client/templates
 /views
 *.tgz
 *.log
