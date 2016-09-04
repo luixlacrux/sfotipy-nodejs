@@ -7,14 +7,15 @@ class Search extends Backbone.View {
   get events () {
     return {
       'submit': 'search',
-      'click .close-icon': 'clean'
+      'click .close-icon': 'clean',
+      'click .icon-search': 'search'
     }
   }
 
   initialize () {
     this.$input = this.$el.find('.input')
   }
-  
+
   search (ev) {
     ev.preventDefault()
     const query = this.$input.val().replace(/\s/g, '+')
