@@ -1,6 +1,7 @@
 @import "nib"
 @import "normalize.styl"
 @import "fonts.styl"
+@import "spinner.styl"
 
 vendor-prefixes = webkit o ms moz official
 // animacion(parametro)
@@ -19,14 +20,12 @@ facebook = #3B5998
 twitter = #5EA9DD
 
 form(content, size)
-  	font-size size
-  	position absolute
-  	content content
-  	left 1.7em
-  	top .6em
-  	color gris_claro
-
-@import "spinner.styl"
+  font-size size
+  position absolute
+  content content
+  left 1.7em
+  top .6em
+  color gris_claro
 
 a
     text-decoration none
@@ -294,14 +293,6 @@ text-wrapper()
         text-wrapper()
         margin .5em 0
 
-.playing
-    &.small
-        width auto
-        margin 0 auto
-    .image
-      img
-        width 100%
-        height auto
 
 .input
     overflow hidden
@@ -314,41 +305,7 @@ text-wrapper()
     left .5em
     top .8em
     color gris_claro
-.playlist
-    padding 0 .5em
-    .list
-        list-style none
-        overflow hidden
-        border-bottom none
-    .item
-        cursor pointer
-        padding 1em 0
-        div
-            display inline
-            height 18px
-            margin 0 .3em
-            overflow hidden
-            text-overflow ellipsis
-            white-space nowrap
-            width calc(100% - 15%)
-    .item-playing
-        border-left 3px solid rojo
-        text-shadow 1px -1px rgba(189, 37, 91, 0.61)
-        position relative
-        &:before
-            content ""
-            margin 0 .5em
-            display inline-block
-            background-image url("/assets/img/play.svg")
-            background-position center
-            background-repeat no-repeat
-            background-size cover
-            width 20px
-            height 20px
-            position absolute
-            left 0
-    .action
-        font-size .8em
+
 
 .isotipo
     width 122px
@@ -383,10 +340,12 @@ text-wrapper()
 @import 'search/style.styl'
 @import 'user/style.styl'
 @import 'playerDown/style.styl'
+@import 'player/style.styl'
 
 @media screen and (min-width:480px)
     @import 'home/tablet480.styl'
     @import 'user/mobile480.styl'
+    @import 'player/mobile480.styl'
     .cover-hit
         img
             margin-bottom 0
@@ -398,14 +357,12 @@ text-wrapper()
         img
             width 100%
             height auto
-    .playing
-        &.medium
-            width auto
+/* MEDIA TABLET */
 @media screen and (min-width:720px)
     @import 'home/tablet720.styl'
     @import 'user/tablet720.styl'
-/* MEDIA DESKTOP */
 
+/* MEDIA DESKTOP */
 @media screen and (min-width:1000px)
     body
         background gris_mas_claro
@@ -415,53 +372,4 @@ text-wrapper()
     @import 'search/desktop.styl'
     @import 'user/desktop1000.styl'
     @import 'playerDown/desktop1000.styl'
-
-    .playing
-        wrap()
-        padding-top 1.3em
-        text-align center
-        &.large
-            wrap()
-            display flex
-            justify-content space-between
-            margin 0 auto
-            overflow hidden
-        .playlist
-            border-left 1px solid gris_claro
-            display inline-block
-            width 27em
-            max-height 520px
-            overflow-y auto
-
-    .music
-        width 100%
-        max-width 32.5em
-        float left
-
-/*
-
-.header-home
-    background-image url('./assets/img/cover.jpg')
-    background-repeat no-repeat
-    background-position center
-    background-size cover
-    //background-size: auto
-    .landing-home
-        text-align center
-        color #fefefe
-        margin 0 auto
-        padding 5em 1.5em
-    .login-social
-        .login-home
-            border-radius .4em
-            color #fefefe
-            display block
-            margin 0 auto
-            text-decoration none
-            padding 1em
-            width 14em
-        .facebook
-            background #3B5998
-            margin-bottom .5em
-        .twitter
-            background #5EA9DD*/
+    @import 'player/desktop1000.styl'
