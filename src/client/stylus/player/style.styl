@@ -8,7 +8,26 @@
       img
         width 100%
         height auto
+    // Reproductor de audio
     .music
+      // Controles del reproductor
+      .play
+        .icon-vol
+          position relative
+          margin-top -105px
+          padding-top 105px
+          .range-vol
+            display none
+            -webkit-appearance slider-vertical
+            width 20px
+            height 100px
+            position absolute
+            top 0
+            left 10px
+          &:hover
+            .range-vol
+              display block
+      // Barra de progreso
       .progress
         margin 1em 0
         position relative
