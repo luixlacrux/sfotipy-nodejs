@@ -21,13 +21,13 @@ export default function (name, id) {
   $app.empty()
   $player.show()
 
-  // si el id conincide con el del player finalizamos 
+  // si el id conincide con el del player finalizamos
   // la ejecuccion retornado false
   if ($player.data('playid') === id) {
     return false
   }
 
-  // si no encuentra el elemento #music lo renderiza 
+  // si no encuentra el elemento #music lo renderiza
   if (!$player.find('#music').length) {
     $player.html(Play())
   }
@@ -36,11 +36,11 @@ export default function (name, id) {
   $player.data('playid', id)
 
   album.fetchData(name, id).then(() => {
-    
+
     // obtenemos el album y lo agregamos a la coleccion
     playing.addSongs(album)
 
-    // instanciamos nueva vista y le pasamos la colleccion  
+    // instanciamos nueva vista y le pasamos la colleccion
     const listView = new ListView({ collection: playing })
     // renderizamos la vista
     listView.render()

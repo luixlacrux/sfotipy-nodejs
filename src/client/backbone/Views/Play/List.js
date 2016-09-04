@@ -10,7 +10,7 @@ class List extends Backbone.View {
   initialize () {
     this.listenTo(this.collection, 'add', this.addOne, this)
     this.listenTo(this.collection, 'reset', this.render, this)
-    this.player = new PlayerView({ model: new Song(), collection: this.collection }) 
+    this.player = new PlayerView({ model: new Song(), collection: this.collection })
   }
 
   render () {

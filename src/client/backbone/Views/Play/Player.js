@@ -2,6 +2,8 @@ import Backbone from 'backbone'
 import $ from 'jquery'
 import Share from 'src/client/backbone/Views/Share'
 import template from 'src/client/handlebars/Play/player.hbs'
+import PlayerMinView from './PlayerMin'
+import Song from 'src/client/backbone/Models/Song'
 
 class Player extends Backbone.View {
   get el () { return $('#music > .music') }
@@ -28,6 +30,7 @@ class Player extends Backbone.View {
     this.audio = document.getElementById('audio')
     this.listenTo(this.model, 'change', this.render)
     this.on('autoplay', this.autoplay)
+    this.playerMin = new PlayerMinView({ model: new Song(), collection: this.collection })
   }
 
   autoplay () {
@@ -44,6 +47,7 @@ class Player extends Backbone.View {
     this.$el.append(this.audio)
     this.initEvents()
     this.play()
+    this.playerMin.model.set(song)
   }
 
   initEvents () {
@@ -143,6 +147,9 @@ class Player extends Backbone.View {
   volume (ev) {
     let vol = parseFloat(ev.target.value)
     this.audio.volume = vol
+    // modifica valor del input range de player min
+    this.playerMin.$el.find('.btns-min .icon-vol .range-vol')[0]
+      .value = vol
   }
 
   pointTime (ev) {
