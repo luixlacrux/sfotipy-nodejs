@@ -14,17 +14,18 @@
       .play
         .icon-vol
           position relative
-          margin-top -105px
-          padding-top 105px
           .range-vol
             display none
-            -webkit-appearance slider-vertical
-            width 20px
-            height 100px
+            transform rotate(270deg)
+            width 100px
+            height 20px
+            background none
             position absolute
-            top 0
-            left 10px
+            top 30px
+            left -30px
           &:hover
+            margin-top -105px
+            padding-top 105px
             .range-vol
               display block
       // Barra de progreso
