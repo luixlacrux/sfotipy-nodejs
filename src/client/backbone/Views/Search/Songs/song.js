@@ -18,9 +18,8 @@ class SongView extends Backbone.View {
   }
 
   navigate () {
-    let { album, album_id } = this.model.attributes
-    album = album.replace(/\s/g, '+')
-    app.navigate(`play/${album}/${album_id}`, { trigger: true })
+    const { album_id } = this.model.attributes
+    app.navigate(`play?album=${album_id}`, { trigger: true })
   }
 }
 

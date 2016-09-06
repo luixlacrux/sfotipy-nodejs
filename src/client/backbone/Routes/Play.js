@@ -11,7 +11,7 @@ import ListView from 'src/client/backbone/Views/Play/List'
 import AlbumModel from 'src/client/backbone/Models/Album'
 import SongModel from 'src/client/backbone/Models/Song'
 
-export default function (name, id) {
+export default function (id) {
   const $app = $('#app')
   const $player = $('#player')
   const album = new AlbumModel({ url: `/api/album/${id}` })
@@ -35,7 +35,7 @@ export default function (name, id) {
   // guardamos el id
   $player.data('playid', id)
 
-  album.fetchData(name, id).then(() => {
+  album.fetchData(id).then(() => {
 
     // obtenemos el album y lo agregamos a la coleccion
     playing.addSongs(album)

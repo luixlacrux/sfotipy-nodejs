@@ -1,5 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
+import qs from 'querystring'
 /* Views */
 import HeaderView from 'src/client/backbone/Views/Header/Main'
 import HomeView from 'src/client/backbone/Views/Home'
@@ -14,7 +15,7 @@ class Router extends Backbone.Router {
   get routes () {
     return {
       'top-albums': 'TopAlbumsRoute',
-      'play/:album/:id': 'PlayRoute',
+      'play': 'PlayRoute',
       'home/:action': 'LoginOrSignIn',
       'search/:query': 'SearchRoute',
       '@:username': 'ProfileRoute',
@@ -36,6 +37,7 @@ class Router extends Backbone.Router {
   // Funcion que se ejecutara cada vez que una ruta haga match
   execute (callback, args, name) {
     console.log('Match Route')
+    args.push(qs.parse(args.pop()))
     if (callback) callback.apply(this, args)
   }
 
@@ -44,9 +46,9 @@ class Router extends Backbone.Router {
     return TopAlbumsRoute()
   }
 
-  PlayRoute (album, id) {
-    this.headerView.setTitle(album.replace(/\+/g, ' '))
-    return PlayRoute(album, id)
+  PlayRoute (query) {
+    this.headerView.setTitle('Player')
+    return PlayRoute(query.album)
   }
 
   SearchRoute (q) {

@@ -8,9 +8,9 @@ class Album extends Backbone.Model {
     this.url = opts && opts.url ? opts.url : null
   }
 
-  fetchData (name, id) {
+  fetchData (id) {
     // generamos la key para acceder a localStorage
-    let key = `${name}-${id}`
+    let key = `album-${id}`
     return new Promise((resolve, reject) => {
 
       // si exite obtenemos los datos de localstorage

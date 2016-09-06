@@ -24,9 +24,8 @@ class AlbumView extends Backbone.View {
   }
 
   navigate () {
-    let { name, id } = this.model.attributes
-    name = name.replace(' ', '+')
-    app.navigate(`play/${name}/${id}`, { trigger:true })
+    const { id } = this.model.attributes
+    app.navigate(`play?album=${id}`, { trigger:true })
   }
 }
 
