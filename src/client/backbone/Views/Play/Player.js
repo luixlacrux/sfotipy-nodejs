@@ -17,6 +17,7 @@ class Player extends Backbone.View {
       'click .action.gray.icon-next': 'changeSong',
       'click .action.gray.icon-prev': 'restart',
       'click .action.gray.icon-random': 'reproRandom',
+      'click .action.gray#volume': 'volumeOrMute',
       'dblclick .action.gray.icon-prev': 'changeSong',
       'change  .range-vol': 'volume',
       'mousemove  .range-vol': 'volume',
@@ -30,7 +31,12 @@ class Player extends Backbone.View {
     this.audio = document.getElementById('audio')
     this.listenTo(this.model, 'change', this.render)
     this.on('autoplay', this.autoplay)
-    this.playerMin = new PlayerMinView({ model: new Song(), collection: this.collection })
+    // definimos el objeto jQuery $buttonVolume
+    this.$buttonVolume = this.$el.find('#volume')
+    // instaciamos un nueva vista playerMin
+    // con el modelo y coleccion de esta vista player
+    const { model, collection } = this
+    this.playerMin = new PlayerMinView({ model, collection })
   }
 
   autoplay () {
@@ -47,11 +53,11 @@ class Player extends Backbone.View {
     this.$el.append(this.audio)
     this.initEvents()
     this.play()
-    this.playerMin.model.set(song)
   }
 
   initEvents () {
     this.audio.onended = this.changeSong.bind(this)
+    this.audio.onvolumechange = this.volumeChanged.bind(this)
     this.audio.addEventListener('timeupdate', this.updateTime.bind(this))
     this.audio.addEventListener('durationchange', this.totalDuration.bind(this))
   }
@@ -148,9 +154,32 @@ class Player extends Backbone.View {
     let vol = parseFloat(ev.target.value)
     this.audio.volume = vol
     // modifica valor del input range de player min
-    this.playerMin.$el.find('.btns-min .icon-vol .range-vol')[0]
-      .value = vol
+    this.playerMin.$range.val(vol)
   }
+
+  volumeOrMute () {
+    if (this.audio.muted) {
+      return this.audio.muted = false
+    }
+
+    this.audio.muted = true
+  }
+
+  volumeChanged () {
+    const mute = 'icon-mute'
+    const vol = 'icon-vol'
+
+    if (this.audio.muted || this.audio.volume === 0) {
+      // removemos vol y agregamos mute de los dos botones
+      this.$buttonVolume.removeClass(vol).addClass(mute)
+      this.playerMin.$buttonVolume.removeClass(vol).addClass(mute)
+    } else {
+      // removemos mute y agregamos vol de los dos botones
+      this.$buttonVolume.removeClass(mute).addClass(vol)
+      this.playerMin.$buttonVolume.removeClass(mute).addClass(vol)
+    }
+  }
+
 
   pointTime (ev) {
     let $this = $('.progress .total')

@@ -12,6 +12,8 @@ class PlayerMin extends Backbone.View {
       'dblclick .icon-prev': 'songPrev',
       'click .icon-random': 'randomReproduction',
       'change .range-vol': 'volume',
+      'mousemove  .range-vol': 'volume',
+      'click #volume': 'volumeOrMute',
     }
   }
 
@@ -19,6 +21,9 @@ class PlayerMin extends Backbone.View {
     this.listenTo(this.model, 'change', this.render, this)
     console.log('player min')
     this.$player = $('.music .padding .play')
+    // los definimos para usarlo en la vista player
+    this.$range = this.$el.find('.range-vol')
+    this.$buttonVolume = this.$el.find('#volume')
   }
 
   render () {
@@ -49,14 +54,17 @@ class PlayerMin extends Backbone.View {
 
   volume (ev) {
     // Obtiene elemento audio
-    let $audio = this.$player.parent().parent().parent()
-      .find('.music #audio')[0]
+    const audio = window.audio
     // value de input range player-min
     let vol = parseFloat(ev.target.value)
     // modifica estado de input range de player
     this.$player.find('.range-vol')[0].value = vol
     // Modifica volumen de audio
-    $audio.volume = vol
+    audio.volume = vol
+  }
+
+  volumeOrMute () {
+    this.$player.find('#volume').click()
   }
 }
 
