@@ -6,7 +6,7 @@ class PlayerMin extends Backbone.View {
   get el () { return $('#player-min') }
   get events () {
     return {
-      'click .icon-play': 'playOrPause',
+      'click #play': 'playOrPause',
       'click .icon-next': 'songNext',
       'click .icon-prev': 'songReset',
       'dblclick .icon-prev': 'songPrev',
@@ -23,6 +23,7 @@ class PlayerMin extends Backbone.View {
     this.$player = $('.music .padding .play')
     // los definimos para usarlo en la vista player
     this.$range = this.$el.find('.range-vol')
+    this.$buttonPlay = this.$el.find('#play')
     this.$buttonVolume = this.$el.find('#volume')
   }
 
@@ -33,7 +34,7 @@ class PlayerMin extends Backbone.View {
   }
 
   playOrPause () {
-    this.$player.find('.icon-play').click()
+    this.$player.find('#play').click()
   }
 
   songNext () {

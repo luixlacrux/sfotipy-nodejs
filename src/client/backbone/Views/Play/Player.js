@@ -13,7 +13,7 @@ class Player extends Backbone.View {
       'click .action.icon-add': 'add',
 
       //Controls
-      'click .action.gray.icon-play': 'pause',
+      'click .action.gray#play': 'pause',
       'click .action.gray.icon-next': 'changeSong',
       'click .action.gray.icon-prev': 'restart',
       'click .action.gray.icon-random': 'reproRandom',
@@ -31,10 +31,10 @@ class Player extends Backbone.View {
     this.audio = document.getElementById('audio')
     this.listenTo(this.model, 'change', this.render)
     this.on('autoplay', this.autoplay)
-    // definimos el objeto jQuery $range
+    // definimos el algunos objectos jQuery
     this.$range = this.$el.find('.range-vol')
-    // definimos el objeto jQuery $buttonVolume
     this.$buttonVolume = this.$el.find('#volume')
+    this.$buttonPlay = this.$el.find('#play')
     // instaciamos un nueva vista playerMin
     // con el modelo y coleccion de esta vista player
     const { model, collection } = this
@@ -70,14 +70,21 @@ class Player extends Backbone.View {
   }
 
   pause () {
-    let song = this.model.toJSON()
+    const play = 'icon-play'
+    const stop = 'icon-stop'
+    const { id } = this.model.attributes
+
     if (this.audio.paused) {
       this.audio.play()
-      this.$song.eq( song.id-1 ).addClass('item-playing')
+      this.$song.eq( id-1 ).addClass('item-playing')
+      this.$buttonPlay.removeClass(play).addClass(stop)
+      this.playerMin.$buttonPlay.removeClass(play).addClass(stop)
     }
     else {
       this.audio.pause()
       this.$song.removeClass('item-playing')
+      this.$buttonPlay.removeClass(stop).addClass(play)
+      this.playerMin.$buttonPlay.removeClass(stop).addClass(play)
     }
   }
 
