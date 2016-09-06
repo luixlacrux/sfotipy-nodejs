@@ -3,6 +3,13 @@ input[type=range]
   -webkit-appearance none
   background none
   width 150px
+  &:disabled
+    &::-webkit-slider-runnable-track
+      background #ccc
+    &::-webkit-slider-thumb
+      display none
+    &:hover
+      cursor not-allowed
 
 
 input[type=range]::-webkit-slider-runnable-track
@@ -29,6 +36,13 @@ input[type=range]:focus
 
 input[type=range]:focus::-webkit-slider-runnable-track
   background gris_claro
+  
+input[type=range]
+  &:disabled
+    &::-moz-range-track
+      background #ccc
+    &::-moz-range-thumb
+      display none
 
 // Firefox
 input[type=range]::-moz-range-track

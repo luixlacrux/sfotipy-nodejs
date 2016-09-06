@@ -31,6 +31,8 @@ class Player extends Backbone.View {
     this.audio = document.getElementById('audio')
     this.listenTo(this.model, 'change', this.render)
     this.on('autoplay', this.autoplay)
+    // definimos el objeto jQuery $range
+    this.$range = this.$el.find('.range-vol')
     // definimos el objeto jQuery $buttonVolume
     this.$buttonVolume = this.$el.find('#volume')
     // instaciamos un nueva vista playerMin
@@ -159,10 +161,16 @@ class Player extends Backbone.View {
 
   volumeOrMute () {
     if (this.audio.muted) {
-      return this.audio.muted = false
+      // desactivamos la barra de volumen en los player
+      this.playerMin.$range.attr('disabled', false)
+      this.$range.attr('disabled', false)
+      this.audio.muted = false
+    } else {
+      // activamos la barra de volumen en los player
+      this.playerMin.$range.attr('disabled', true)
+      this.$range.attr('disabled', true)
+      this.audio.muted = true
     }
-
-    this.audio.muted = true
   }
 
   volumeChanged () {
