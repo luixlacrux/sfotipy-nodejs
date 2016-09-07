@@ -14,6 +14,7 @@ import SongModel from 'src/client/backbone/Models/Song'
 export default function (id) {
   const $app = $('#app')
   const $player = $('#player')
+  const $playerMin = $('#player-min')
   const album = new AlbumModel({ url: `/api/album/${id}` })
   const playing = new PlayingCollection()
 
@@ -34,6 +35,11 @@ export default function (id) {
 
   // guardamos el id
   $player.data('playid', id)
+  // eliminamos todos los eventos de $player
+  $player.find('*').unbind()
+  // eliminamos todos los eventos de $playerMin
+  // especificamente 'click' y 'dblclick'
+  $playerMin.off('click', '**').off('dblclick', '**')
 
   album.fetchData(id).then(() => {
 
