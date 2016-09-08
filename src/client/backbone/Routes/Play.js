@@ -21,6 +21,8 @@ export default function (id) {
   // vaciamos app y mostramos player
   $app.empty()
   $player.show()
+  // ocultamos playerMin
+  $playerMin.hide()
 
   // si el id conincide con el del player finalizamos
   // la ejecuccion retornado false

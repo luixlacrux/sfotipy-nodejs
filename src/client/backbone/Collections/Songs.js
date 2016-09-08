@@ -22,6 +22,7 @@ class Songs extends Backbone.Collection {
       id: song.track_number,
       album_cover: album.get('cover'),
       album_name: album.get('name'),
+      album_id: album.get('id'),
       author: album.get('author'),
       name: song.name,
       source: song.preview_url

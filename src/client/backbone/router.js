@@ -25,6 +25,8 @@ class Router extends Backbone.Router {
   }
 
   init () {
+    // Instancio $playerMin
+    this.$playerMin = $('#player-min')
     // Instancio la vista header y Home
     this.headerView = new HeaderView()
     this.homeView = new HomeView()
@@ -37,6 +39,8 @@ class Router extends Backbone.Router {
   // Funcion que se ejecutara cada vez que una ruta haga match
   execute (callback, args, name) {
     console.log('Match Route')
+    // Mostramos el $playerMin en cada ruta
+    this.$playerMin.show()
     args.push(qs.parse(args.pop()))
     if (callback) callback.apply(this, args)
   }

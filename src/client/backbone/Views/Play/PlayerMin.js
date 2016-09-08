@@ -1,6 +1,7 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import template from 'src/client/handlebars/Play/playerMin.hbs'
+import app from 'src/client/backbone/router'
 
 class PlayerMin extends Backbone.View {
   get el () { return $('#player-min') }
@@ -14,6 +15,7 @@ class PlayerMin extends Backbone.View {
       'change .range-vol': 'volume',
       'mousemove  .range-vol': 'volume',
       'click #volume': 'volumeOrMute',
+      'click #currentSong': 'showPlayer'
     }
   }
 
@@ -66,6 +68,11 @@ class PlayerMin extends Backbone.View {
 
   volumeOrMute () {
     this.$player.find('#volume').click()
+  }
+
+  showPlayer () {
+    const { album_id } = this.model.attributes
+    app.navigate(`play?album=${album_id}`, { trigger: true })
   }
 }
 
