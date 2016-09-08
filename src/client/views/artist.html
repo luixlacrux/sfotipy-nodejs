@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "./components/head.html" %}
+
+<body>
+  <header class="Header">
+
+    <div class="Header-logo">
+      <div class="container">
+
+        <figure class="image">
+          <img src="/assets/img/logo.png" alt="Sfotipy"/>
+        </figure>
+
+        <div class="search">
+          <form id="form-search" class="form ">
+            <span class="icon-search"></span>
+            <input type="search"  placeholder="Search" class="input">
+            <span class="close-icon">x</span>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <a href="#" class="Header-btnMenu icon-menu"></a>
+
+    <nav class="Header-menu">
+      <form action="" class="search-mobile relative">
+        <span class="icon-search"></span>
+        <input type="search">
+      </form>
+      <ul class="list center-block">
+        <li class="item">
+          <a href="/top-albums" id="btn-top_hits">Top Albums</a>
+        </li>
+        <li class="item">
+          <a href="/@{{ user.username }}" id="btn-profile">Profile</a>
+        </li>
+        <li class="item">
+          <a href="/@{{ user.username }}/settings">Settings</a>
+        </li>
+        <li class="item">
+          <a href="/@{{ user.username }}/playlists">Playlist</a>
+        </li>
+        <li class="item">
+          <a href="/logout">Logout</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="Header-title">
+      <span>
+        Top Albums
+      </span>
+    </div>
+  </header>
+
+  <main id="app" class="app">
+    <section class="ArtistView">
+      <div class="artist">
+        <div class="info-artist">
+          <div class="photo-artist"></div>
+          <div class="name-artist">
+            Avril Lavigne
+          </div>
+          <div class="option-artist">
+            <a href="#">Seguir</a>
+            <a href="#">Compartir</a>
+          </div>
+          <div class="followers-artist">
+            Seguidores:
+            <span>1732787</span>
+          </div>
+        </div>
+        <div class="top-tracks">
+          <h2 class="title">
+            Canciones más Populares
+          </h2>
+          <ul class="songs">
+            <li class="item">
+              <div class="click">
+                Complicate
+              </div>
+              <span class="right">
+                <a href="" class="action icon-add gray"></a>
+                <a href="" class="action icon-love gray"></a>
+                <a href="" class="action icon-share gray"></a>
+              </span>
+            </li>
+            <li class="item">
+              <div class="click">
+                Sk8er Boi
+              </div>
+              <span class="right">
+                <a href="" class="action icon-add gray"></a>
+                <a href="" class="action icon-love gray"></a>
+                <a href="" class="action icon-share gray"></a>
+              </span>
+            </li>
+            <li class="item">
+              <div class="click">
+                Grilfrend
+              </div>
+              <span class="right">
+                <a href="" class="action icon-add gray"></a>
+                <a href="" class="action icon-love gray"></a>
+                <a href="" class="action icon-share gray"></a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="player-min">
+    <div class="progress-min">
+      <div class="state">
+
+      </div>
+    </div>
+    <span id="currentSong">
+      <figure class="image-min">
+        <img src="http://www.andreagal.com/wp-content/themes/andreagal/images/no-track-image.png" />
+      </figure>
+    </span>
+    <div class="btns-min play center-text padding-tb">
+      <input class="range-vol" type="range" min="0" max="1" step="0.01" value="1">
+      <button id="volume" class="action gray icon-vol"></button>
+      <button class="action gray icon-random"></button>
+      <button class="action gray icon-prev"></button>
+      <button id="play" class="action gray icon-stop"></button>
+      <button class="action gray icon-next"></button>
+    </div>
+  </section>
+  <script src="/app.js"></script>
+  </body>
+</html>

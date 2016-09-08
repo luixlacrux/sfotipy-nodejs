@@ -14,6 +14,10 @@ export default function (app, passport) {
   app.get('/play', isLoggedIn, renderIndex)
   app.get('/search/:query', isLoggedIn, renderIndex)
 
+  app.get('/artist', (req, res) => {
+    res.render('artist', {user: req.user})
+  })
+
   app.get('/logout', (req, res) => {
     req.logout()
     res.redirect('/home')
