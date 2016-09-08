@@ -14,23 +14,6 @@
       .play
         .range-vol
           padding .35em
-      //   .icon-vol
-      //     position relative
-      //     .range-vol
-      //       display none
-      //       transform rotate(270deg)
-      //       width 100px
-      //       height 20px
-      //       background none
-      //       position absolute
-      //       top 30px
-      //       left -30px
-      //     &:hover
-      //       margin-top -105px
-      //       padding-top 105px
-      //       .range-vol
-      //         display block
-      // Barra de progreso
       .progress
         margin 1em 0
         position relative
@@ -103,14 +86,16 @@
         .item
           cursor pointer
           padding 1em 0
+          border-left 3px solid gris_mas_claro
           div.click
-            display inline
+            display inline-block
             height 18px
             margin 0 .3em
+            margin-left 1em
             overflow hidden
             text-overflow ellipsis
             white-space nowrap
-            width calc(100% - 15%)
+            width calc(100% - 40%)
         .item-playing
           border-left 3px solid rojo
           text-shadow 1px -1px rgba(189, 37, 91, 0.61)
