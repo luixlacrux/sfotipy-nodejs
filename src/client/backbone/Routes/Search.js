@@ -10,6 +10,9 @@ import AlbumsView from 'src/client/backbone/Views/Search/Albums'
 // Songs
 import SongsCollections from 'src/client/backbone/Collections/Songs'
 import SongsView from 'src/client/backbone/Views/Search/Songs'
+// Users
+import UsersCollections from 'src/client/backbone/Collections/Users'
+import UserView from 'src/client/backbone/Views/Search/Users'
 
 export default function (query) {
   // Defino la url con el query
@@ -20,6 +23,7 @@ export default function (query) {
   const artists = new ArtistsCollections()
   const albums = new AlbumsCollections()
   const songs = new SongsCollections()
+  const users = new UsersCollections()
 
   // ocultamos el player
   $player.hide()
@@ -33,12 +37,15 @@ export default function (query) {
     // obtengo la data, y ejecuto renderView
     const artistsData = res.artists.items
     renderView(artistsData, artists, ArtistsView, artists.addArtist)
-    
+
     const albumsData = res.albums.items
     renderView(albumsData, albums, AlbumsView, albums.addAlbum)
 
     const songsData = res.tracks.items
     renderView(songsData, songs, SongsView, songs.addSongMoreInfo)
+
+    const userData = res.users
+    renderView(userData, users, UserView, users.addUser)
 
   }).error(console.log)
 

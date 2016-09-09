@@ -1,0 +1,15 @@
+<figure class="coverConten user">
+  <img class="cover" width="128" height="128" src="{{ avatar }}" alt="">
+</figure>
+<div class="titleConten">
+  <span class="title">
+  {{ username }}
+  </span>
+  <span class="slug">
+    {{# if first_name }}
+      {{# if last_name }}
+        <span>{{ first_name }} {{ last_name}}</span>
+      {{/ if}}
+    {{/ if }}
+  </span>
+</div>
