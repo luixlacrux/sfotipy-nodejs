@@ -8,20 +8,12 @@ export default function (apiRoute, app) {
     // Get data of user authenticate ==
     // ================================
     .get((req, res) => {
-      let reqUser = req.user.dataValues
-      let user = {
-        id: reqUser.id,
-        first_name: reqUser.first_name,
-        last_name: reqUser.last_name,
-        username: reqUser.username,
-        email: reqUser.email,
-        facebookid: reqUser.facebookid,
-        twitterid: reqUser.twitterid,
-        has_password: false
-      }
+      let user = req.user.dataValues
 
-      if (reqUser.password)
-        user.has_password = true
+      user.password = user.password ? true : false
+
+      delete user.facebooktoken
+      delete user.twittertoken
 
       res.json(user)
     })
@@ -106,12 +98,14 @@ export default function (apiRoute, app) {
     if (!username)
       return res.format({ default: () => res.sendStatus(400) })
 
-    User.findOne({ where: { username: username } })
-      .then(user => {
+    User.findOne({
+      where: { username: username },
+      attributes: ['id', 'username', 'first_name', 'last_name']
+    }).then(user => {
         if (!user)
           return res.format({ default: () => res.sendStatus(404) })
 
-        res.json(user.dataValues)
+        res.json(user)
       })
   })
 }

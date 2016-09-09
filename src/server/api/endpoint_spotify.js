@@ -1,4 +1,5 @@
 import spotify from 'spotify-finder'
+import { User } from 'src/server/models'
 
 const client = spotify.createClient()
 const ids = ['3zXjR3y2dUWklKmmp6lEhy','3qsdWsIePeTOvpsRJV5yQB',
@@ -11,7 +12,14 @@ export default function (apiRoute, app) {
     client.search(query, 'all', 6, (err, data) => {
       if (err) return res.status(500).send(err)
 
-      res.json(data)
+      User.findAll({
+        where: { username: { $like: `${query}%`}},
+        attributes: ['id', 'username', 'first_name', 'last_name'],
+      }).then(users => {
+        data.users = users
+        res.json(data)
+      })
+
     })
   })
 
