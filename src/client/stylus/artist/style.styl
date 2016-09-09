@@ -33,6 +33,7 @@ section.ArtistView
     .top-tracks
       .title
         font-size 1.3em
+        font-weight 500
         text-align center
         background #818181
         height 2em
@@ -44,6 +45,7 @@ section.ArtistView
         .item
           padding 1em
           border-bottom 1px solid gris_oscuro
+          cursor pointer
           .click
             display inline-block
           .right
@@ -52,36 +54,63 @@ section.ArtistView
   h2.title-2
     font-size 1.2em
     padding .5em 0
-    margin .5em 0
+    margin .5em
     border-bottom 1px solid gris_oscuro
     color gris_oscuro
+    font-weight 500
   .albums-artist
     .album
+      margin-bottom 2em
       .info-album
         position relative
         .photo-album
           background url("https://i.scdn.co/image/8bfd094f04e3918075a80a72c2e683f2e10e8fb7")
           width 130px
           height 130px
+          margin .5em
           background-repeat no-repeat
           background-size cover
         .year
           position absolute
           top 10px
-          left 140px
+          left 148px
           margin 0
           font-size .8em
         .name
           position absolute
           top 40px
-          left 140px
+          left 148px
           font-size 1.4em
           margin 0
         .btn-save
           position absolute
-          top 80px
-          left 140px
+          top 95px
+          left 148px
           padding .5em 1em
           background rojo
           color white
           border-radius 5px
+      .songs
+        margin-top 1em
+        list-style none
+        .item
+          padding 1em 0
+          border-bottom 1px solid gris_oscuro
+          cursor pointer
+          .number
+            margin 0 .5em
+            font-weight lighter
+            float left
+          .duration
+            float right
+            margin-right .5em
+            font-weight lighter
+          .click
+            display inline-block
+            overflow hidden
+            text-overflow ellipsis
+            white-space nowrap
+            width calc(100% - 5em)
+        .item-fixed
+          font-weight lighter
+          cursor initial
