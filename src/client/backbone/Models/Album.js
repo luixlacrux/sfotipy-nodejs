@@ -29,7 +29,7 @@ class Album extends Backbone.Model {
         this.setAlbum(album)
         // retornamos success
         return resolve()
-      }).error(err => reject(err))      
+      }).error(err => reject(err))
     })
   }
 

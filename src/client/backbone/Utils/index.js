@@ -35,6 +35,15 @@ export default {
     }
   },
 
+  parseArtist (artist) {
+    return {
+      id: artist.id,
+      name: artist.name,
+      image: artist.images[1].url || song.album.images[0].url || null,
+      followers: artist.followers.total
+    }
+  },
+
   cache: {
     save (key, jsonData, expirationMin=720) {
       let expirationMS = expirationMin * 60 * 1000

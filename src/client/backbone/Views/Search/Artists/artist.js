@@ -20,7 +20,7 @@ class ArtistView extends Backbone.View {
   navigate () {
     let { id, name } = this.model.attributes
     name = name.replace(/\s/g, '+')
-    app.navigate(`artist/${name}/${id}`, { trigger: true })
+    app.navigate(`artist/${id}`, { trigger: true })
   }
 }
 

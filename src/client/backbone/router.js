@@ -6,6 +6,7 @@ import HeaderView from 'src/client/backbone/Views/Header/Main'
 import HomeView from 'src/client/backbone/Views/Home'
 /* Routes */
 import PlayRoute from 'src/client/backbone/Routes/Play'
+import ArtistRoute from 'src/client/backbone/Routes/Artist'
 import TopAlbumsRoute from 'src/client/backbone/Routes/TopAlbums'
 import SearchRoute from 'src/client/backbone/Routes/Search'
 import ProfileRoute from 'src/client/backbone/Routes/Profile'
@@ -16,6 +17,7 @@ class Router extends Backbone.Router {
     return {
       'top-albums': 'TopAlbumsRoute',
       'play': 'PlayRoute',
+      'artist/:query': 'ArtistRoute',
       'home/:action': 'LoginOrSignIn',
       'search/:query': 'SearchRoute',
       '@:username': 'ProfileRoute',
@@ -53,6 +55,11 @@ class Router extends Backbone.Router {
   PlayRoute (query) {
     this.headerView.setTitle('Player')
     return PlayRoute(query.album)
+  }
+
+  ArtistRoute (query) {
+    console.log(query)
+    return ArtistRoute(query)
   }
 
   SearchRoute (q) {
