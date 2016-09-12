@@ -7,29 +7,25 @@ class TopTracks extends Backbone.Collection {
   constructor(opts) {
     super(opts)
     this.model = Song
+    this.url = opts && opts.url ? opts.url : null
   }
 
-  addSongs (album) {
-    let songs = album.get('songs')
-    songs.forEach(song => {
-      this.parseSong(song, album)
+  getSong (id) {
+    this.reset()
+
+    return new Promise((resolve, reject) => {
+
+      $.get(this.url).done((songs) => {
+        // Por cada cancion
+        // esta es agregada a la colleccion
+        songs.tracks.forEach(this.addSong, this)
+        // retorno exitoso
+        return resolve()
+      }).error((err) => reject(err))
     })
   }
 
-  parseSong (song, album) {
-    this.add(new Song({
-      id_spotify: song.id,
-      id: song.track_number,
-      album_cover: album.get('cover'),
-      album_name: album.get('name'),
-      album_id: album.get('id'),
-      author: album.get('author'),
-      name: song.name,
-      source: song.preview_url
-    }))
-  }
-
-  addSongMoreInfo (song) {
+  addSong (song) {
     this.add(new Song(utils.parseSong(song)))
   }
 }
