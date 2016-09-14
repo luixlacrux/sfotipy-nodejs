@@ -58,4 +58,13 @@ export default function (apiRoute, app) {
       res.json(artist)
     })
   })
+
+  app.get(`${apiRoute}/artist/:id/albums`, (req, res) => {
+    let id = req.params.id
+
+    client.getArtist(id, { albums: true }, null, (err, artist) => {
+      if (err) return res.status(500).send(err)
+      res.json(artist)
+    })
+  })
 }
