@@ -22,6 +22,15 @@ export default {
     }
   },
 
+  parseAlbumArtist (album) {
+    return {
+      id: album.id,
+      name: album.name,
+      year: '2000',
+      cover: album.images[1].url || album.images[0].url || null
+    }
+  },
+
   parseSong (song) {
     return {
       id: song.id,

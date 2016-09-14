@@ -36,9 +36,29 @@ class Albums extends Backbone.Collection {
     })
   }
 
+  getAlbumsArtist (id) {
+    this.reset()
+
+    return new Promise((resolve, reject) => {
+
+      $.get(this.url).done((albums) => {
+        // Por cada album
+        // este es agregado a la colleccion
+        albums.items.forEach(this.addAlbumArtist, this)
+        // retorno exitoso
+        return resolve()
+      }).error((err) => reject(err))
+    })
+  }
+
   addAlbum (album) {
     // agregamos el album a la coleccion
     this.add(new Album(utils.parseAlbum(album)))
+  }
+
+  addAlbumArtist (album) {
+    // agregamos el album a la coleccion
+    this.add(new Album(utils.parseAlbumArtist(album)))
   }
 
   isEmpty () {
