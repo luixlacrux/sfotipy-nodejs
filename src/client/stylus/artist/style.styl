@@ -6,6 +6,7 @@ section.ArtistView
   .artist
     .info-artist
       position relative
+      overflow hidden
       .photo-artist
         display inline-block
         width 130px
@@ -48,6 +49,10 @@ section.ArtistView
           cursor pointer
           .click
             display inline-block
+            overflow hidden
+            text-overflow ellipsis
+            white-space nowrap
+            width calc(100% - 8em)
           .right
             font-size .8em
             margin-top .5em
