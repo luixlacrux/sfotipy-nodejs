@@ -18,7 +18,7 @@ class TopTracksView extends Backbone.View {
   render () {
     this.$el.empty()
     this.addAll()
-    this.player.trigger('autoplay')
+    //this.player.trigger('autoplay')
   }
 
   addOne (song) {

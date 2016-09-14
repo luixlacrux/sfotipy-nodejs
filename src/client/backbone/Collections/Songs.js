@@ -7,6 +7,22 @@ class Songs extends Backbone.Collection {
   constructor(opts) {
     super(opts)
     this.model = Song
+    this.url = opts && opts.url ? opts.url : null
+  }
+
+  getSong (id) {
+    this.reset()
+
+    return new Promise((resolve, reject) => {
+
+      $.get(this.url).done((songs) => {
+        // Por cada cancion
+        // esta es agregada a la colleccion
+        songs.tracks.forEach(this.addSongMoreInfo, this)
+        // retorno exitoso
+        return resolve()
+      }).error((err) => reject(err))
+    })
   }
 
   addSongs (album) {
@@ -17,16 +33,7 @@ class Songs extends Backbone.Collection {
   }
 
   parseSong (song, album) {
-    this.add(new Song({
-      id_spotify: song.id,
-      id: song.track_number,
-      album_cover: album.get('cover'),
-      album_name: album.get('name'),
-      album_id: album.get('id'),
-      author: album.get('author'),
-      name: song.name,
-      source: song.preview_url
-    }))
+    this.add(new Song(utils.parseSong2(song, album)))
   }
 
   addSongMoreInfo (song) {

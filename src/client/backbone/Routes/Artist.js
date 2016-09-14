@@ -7,7 +7,7 @@ import Artist from 'src/client/handlebars/Artist/main.hbs'
 // Artist Model
 import ArtistModel from 'src/client/backbone/Models/Artist'
 // Collection
-import TopTracksCollection from 'src/client/backbone/Collections/topTracks'
+import TopTracksCollection from 'src/client/backbone/Collections/Songs'
 // import ArtistCollection from 'src/client/backbone/Collections/Artists'
 // import Views
 import TopTracksView from 'src/client/backbone/Views/Artist/topTracks'
