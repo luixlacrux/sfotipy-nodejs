@@ -34,10 +34,20 @@ export default function (apiRoute, app) {
   app.get(`${apiRoute}/album/:id`, (req, res) => {
     let id = req.params.id
 
-    client.getAlbum(id, {traks:false}, (err, album) => {
+    client.getAlbum(id, { tracks:false }, (err, album) => {
       if (err) return res.status(500).send(err)
 
       res.json(album)
+    })
+  })
+
+  app.get(`${apiRoute}/album/:id/tracks`, (req, res) => {
+    let id = req.params.id
+
+    client.getAlbum(id, { tracks:true }, (err, tracks) => {
+      if (err) return res.status(500).send(err)
+
+      res.json(tracks)
     })
   })
 
