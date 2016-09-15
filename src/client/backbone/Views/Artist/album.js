@@ -1,6 +1,7 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import template from 'src/client/handlebars/Artist/album.hbs'
+import app from 'src/client/backbone/router'
 
 class AlbumView extends Backbone.View {
   get tagName () { return 'article' }
@@ -8,7 +9,7 @@ class AlbumView extends Backbone.View {
   get events () {
     return {
       'click .btn-save': 'save',
-      'click .photo-album': 'play'
+      'click .btn-play': 'play'
     }
   }
 
@@ -25,10 +26,13 @@ class AlbumView extends Backbone.View {
 
   save (){
     console.log('no save :)')
+    return false
   }
 
   play () {
-    console.log('yet without functionality :(')
+    const id = this.model.id
+    app.navigate(`play?album=${id}`, { trigger:true })
+    return false
   }
 }
 
