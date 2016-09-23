@@ -8,6 +8,12 @@ const config = {
     'consumerKey': process.env.T_CLIENT,
     'consumerSecret': process.env.T_SECRET,
     'callbackURL': 'http://localhost:3000/auth/twitter/callback'
+  },
+  'spotifyAuth': {
+    'consumer': {
+      'key': process.env.S_CLIENT,
+      'secret': process.env.S_SECRET
+    }
   }
 }
 export default config
