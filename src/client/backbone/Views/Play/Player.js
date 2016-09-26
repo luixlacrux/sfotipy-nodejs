@@ -30,7 +30,6 @@ class Player extends Backbone.View {
   initialize () {
     this.audio = document.getElementById('audio')
     this.listenTo(this.model, 'change', this.render)
-    this.on('autoplay', this.autoplay)
     // definimos el algunos objectos jQuery
     this.$range = this.$el.find('.range-vol')
     this.$buttonVolume = this.$el.find('#volume')
@@ -41,16 +40,12 @@ class Player extends Backbone.View {
     this.playerMin = new PlayerMinView({ model, collection })
   }
 
-  autoplay () {
-    this.model.set(this.collection.at(0).toJSON())
-  }
-
   render () {
     let song = this.model.toJSON()
     this.$el.find('.image').html(template(song))
     this.$song = $('.playlist ul').find('li')
-    this.$song.eq( song.id-1 ).addClass('item-playing')
-    this.$song.eq( song.id-1 ).siblings('li').removeClass('item-playing')
+    this.$song.eq( song.index-1 ).addClass('item-playing')
+    this.$song.eq( song.index-1 ).siblings('li').removeClass('item-playing')
 
     this.$el.append(this.audio)
     this.initEvents()
@@ -72,11 +67,11 @@ class Player extends Backbone.View {
   pause () {
     const play = 'icon-play'
     const stop = 'icon-stop'
-    const { id } = this.model.attributes
+    const { index } = this.model.attributes
 
     if (this.audio.paused) {
       this.audio.play()
-      this.$song.eq( id-1 ).addClass('item-playing')
+      this.$song.eq( index-1 ).addClass('item-playing')
       this.$buttonPlay.removeClass(play).addClass(stop)
       this.playerMin.$buttonPlay.removeClass(play).addClass(stop)
     }
@@ -91,7 +86,7 @@ class Player extends Backbone.View {
   changeSong (ev) {
 
     let idx = this.collection.findIndex({
-      id_spotify: this.model.attributes.id_spotify
+      index: this.model.attributes.index
     })
     let $this = $(ev.target)
     let length = this.collection.length

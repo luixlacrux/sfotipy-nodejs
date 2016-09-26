@@ -26,7 +26,8 @@ class Songs extends Backbone.Collection {
   }
 
   addSongs (album) {
-    let songs = album.get('songs')
+    this.reset()
+    const songs = album.get('songs')
     songs.forEach(song => {
       this.parseSong(song, album)
     })
@@ -38,6 +39,10 @@ class Songs extends Backbone.Collection {
 
   addSongMoreInfo (song) {
     this.add(new Song(utils.parseSong(song)))
+  }
+
+  getAlbumId () {
+    return this.models.length ? this.at(0).get('album_id') : null
   }
 }
 

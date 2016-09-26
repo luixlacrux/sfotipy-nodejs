@@ -35,24 +35,24 @@ export default {
     return {
       id: song.id,
       name: song.name,
-      source: song.preview_url,
+      index: song.track_number,
       artists: song.artists,
       album: song.album.name,
       album_id: song.album.id,
-      track_number: song.track_number,
-      cover: song.album.images[1].url || song.album.images[0].url || null
+      cover: song.album.images[1].url || song.album.images[0].url || null,
+      source: song.preview_url,
     }
   },
 
   parseSong2 (song, album) {
     return {
-      id_spotify: song.id,
-      id: song.track_number,
-      cover: album.get('cover'),
-      album_name: album.get('name'),
+      id: song.id,
+      name: song.name,
+      index: song.track_number,
+      album: album.get('name'),
       album_id: album.get('id'),
       author: album.get('author'),
-      name: song.name,
+      cover: album.get('cover'),
       source: song.preview_url
     }
   },

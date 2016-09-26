@@ -18,7 +18,7 @@ class Album extends Backbone.Model {
       let album = utils.cache.load(key)
       if (album) {
         this.setAlbum(album)
-        return resolve()
+        return resolve(this)
       }
 
       $.get(this.url).done(album => {
@@ -28,7 +28,7 @@ class Album extends Backbone.Model {
         // parseamos los datos y agregamos al modelo
         this.setAlbum(album)
         // retornamos success
-        return resolve()
+        return resolve(this)
       }).error(err => reject(err))
     })
   }

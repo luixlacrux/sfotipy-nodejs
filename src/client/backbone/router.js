@@ -1,9 +1,17 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import qs from 'querystring'
+
 /* Views */
 import HeaderView from 'src/client/backbone/Views/Header/Main'
 import HomeView from 'src/client/backbone/Views/Home'
+// import PlayerView from 'src/client/backbone/Views/Play/Player'
+import PlayingView from 'src/client/backbone/Views/Play/List'
+
+/* Models, Collections */
+import PlayingCollection from 'src/client/backbone/Collections/Songs'
+// import AlbumModel from 'src/client/backbone/Models/Album'
+
 /* Routes */
 import PlayRoute from 'src/client/backbone/Routes/Play'
 import ArtistRoute from 'src/client/backbone/Routes/Artist'
@@ -27,11 +35,13 @@ class Router extends Backbone.Router {
   }
 
   init () {
-    // Instancio $playerMin
+    // Defino $playerMin
     this.$playerMin = $('#player-min')
     // Instancio la vista header y Home
     this.headerView = new HeaderView()
     this.homeView = new HomeView()
+    // Instancio la vista playingView
+    this.playingView = new PlayingView({ collection: new PlayingCollection })
     Backbone.history.start({ root: '/', pushState: true })
   }
 
@@ -54,7 +64,7 @@ class Router extends Backbone.Router {
 
   PlayRoute (query) {
     this.headerView.setTitle('Player')
-    return PlayRoute(query.album)
+    return PlayRoute(query.album, query.song)
   }
 
   ArtistRoute (query) {
