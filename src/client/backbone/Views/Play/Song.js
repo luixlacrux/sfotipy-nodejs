@@ -29,7 +29,6 @@ class Song extends Backbone.View {
   }
 
   select () {
-    debugger
     const model = this.model.attributes
     this.player.model.set(model)
     return false

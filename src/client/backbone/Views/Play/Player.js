@@ -44,8 +44,8 @@ class Player extends Backbone.View {
     let song = this.model.toJSON()
     this.$el.find('.image').html(template(song))
     this.$song = $('.playlist ul').find('li')
-    this.$song.eq( song.index-1 ).addClass('item-playing')
-    this.$song.eq( song.index-1 ).siblings('li').removeClass('item-playing')
+    this.$song.eq( song.index ).addClass('item-playing')
+    this.$song.eq( song.index ).siblings('li').removeClass('item-playing')
 
     this.$el.append(this.audio)
     this.initEvents()
