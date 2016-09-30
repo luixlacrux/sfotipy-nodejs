@@ -1,8 +1,7 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 // Import View Song
-import SongView from 'src/client/backbone/Views/Play/Song'
-import PlayerView from 'src/client/backbone/Views/Play/Player'
+import SongView from './song'
 // import Models
 import Song from 'src/client/backbone/Models/Song'
 
@@ -12,17 +11,15 @@ class TopTracksView extends Backbone.View {
   initialize () {
     this.listenTo(this.collection, 'add', this.addOne, this)
     this.listenTo(this.collection, 'reset', this.render, this)
-    this.player = new PlayerView({ model: new Song(), collection: this.collection })
   }
 
   render () {
     this.$el.empty()
     this.addAll()
-    //this.player.trigger('autoplay')
   }
 
   addOne (song) {
-    let songView = new SongView({ model: song, player: this.player })
+    let songView = new SongView({ model: song, collection: this.collection })
     this.$el.append(songView.render().el)
   }
 

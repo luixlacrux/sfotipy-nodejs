@@ -1,34 +1,21 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/handlebars/Artist/song'
+import SongView from 'src/client/backbone/Views/Play/Song'
+import app from 'src/client/backbone/router'
 
-class SongView extends Backbone.View {
-  get tagName () { return 'li' }
-  get className () { return 'item' }
-  get events () {
-    return {
-      'click': 'select'
-    }
-  }
-
+class SongTopTrackView extends SongView {
   constructor (opts) {
     super(opts)
-  }
-
-  initialize () {
-    this.listenTo(this.model, 'change', this.render, this)
-  }
-
-  render () {
-    let song = this.model.toJSON()
-    let html = template(song)
-    this.$el.html(html)
-    return this
+    this.playing = app.playingView
+    this.player = this.playing.player
   }
 
   select () {
-    console.log('Oops!')
+    const { index } = this.model.attributes
+    this.playing.collection.reset()
+    this.collection.forEach(model => this.playing.collection.add(model))
+    this.playing.autoplay(index)
   }
 }
 
-export default SongView
+export default SongTopTrackView

@@ -71,4 +71,31 @@ export default function (apiRoute, app) {
       res.status(500).send(err)
     }
   })
+
+  app.get(`${apiRoute}/artist/:id/info`, (req, res) => {
+    const { id } = req.params
+
+    client.getArtist(id)
+      .then(artist => res.json(artist))
+      .catch(err => res.status(500).send(err))
+  })
+
+  app.get(`${apiRoute}/artist/:id/top-tracks`, (req, res) => {
+    const { id } = req.params
+
+    client.getArtist(id, { topTracks: true })
+      .then(tracks => res.json(tracks))
+      .catch(err => res.status(500).send(err))
+  })
+
+  app.get(`${apiRoute}/artist/:id/albums`, (req, res) => {
+    const { id } = req.params
+    const querys = Object.assign({ albums: true }, req.query)
+    console.log(querys)
+
+    client.getArtist(id, querys)
+      .then(albums => res.json(albums))
+      .catch(err => res.status(500).send(err))
+  })
+
 }

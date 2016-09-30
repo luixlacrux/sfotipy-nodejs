@@ -84,10 +84,9 @@ class Player extends Backbone.View {
   }
 
   changeSong (ev) {
+    const { id }  =  this.model.attributes
+    let idx = this.collection.findIndex({ id })
 
-    let idx = this.collection.findIndex({
-      index: this.model.attributes.index
-    })
     let $this = $(ev.target)
     let length = this.collection.length
 
@@ -102,7 +101,7 @@ class Player extends Backbone.View {
 
     idx = idx > length - 1 || idx < 1 ? idx = 0 : idx
 
-    let song = this.collection.at(idx).toJSON()
+    const song = this.collection.at(idx).toJSON()
     this.model.set(song)
   }
 

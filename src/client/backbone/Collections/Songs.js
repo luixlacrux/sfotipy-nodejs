@@ -10,7 +10,7 @@ class Songs extends Backbone.Collection {
     this.url = opts && opts.url ? opts.url : null
   }
 
-  getSong (id) {
+  getSongs (id) {
     this.reset()
 
     return new Promise((resolve, reject) => {
@@ -18,7 +18,7 @@ class Songs extends Backbone.Collection {
       $.get(this.url).done((songs) => {
         // Por cada cancion
         // esta es agregada a la colleccion
-        songs.tracks.forEach(this.addSongMoreInfo, this)
+        songs.tracks.forEach(this.parseSongTopTrack, this)
         // retorno exitoso
         return resolve()
       }).error((err) => reject(err))
@@ -29,16 +29,23 @@ class Songs extends Backbone.Collection {
     this.reset()
     const songs = album.get('songs')
     songs.forEach(song => {
-      this.parseSong(song, album)
+      this.parseSongAlbum(song, album)
     })
   }
 
-  parseSong (song, album) {
-    this.add(new Song(utils.parseSong2(song, album)))
+  parseSongAlbum (song, album) {
+    const newSong = utils.parseSongAlbum.apply(this, arguments)
+    this.add(new Song(newSong))
   }
 
-  addSongMoreInfo (song) {
-    this.add(new Song(utils.parseSong(song)))
+  parseSongSearch (song) {
+    const newSong = utils.parseSongSearch.apply(this, arguments)
+    this.add(new Song(newSong))
+  }
+
+  parseSongTopTrack (song, index) {
+    const newSong = utils.parseSongTopTrack.apply(this, arguments)
+    this.add(new Song(newSong))
   }
 
   getAlbumId () {

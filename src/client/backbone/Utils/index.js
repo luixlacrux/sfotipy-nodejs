@@ -31,29 +31,42 @@ export default {
     }
   },
 
-  parseSong (song) {
+  parseSongAlbum (song, album) {
     return {
       id: song.id,
       name: song.name,
       index: song.track_number,
-      artists: song.artists,
-      album: song.album.name,
-      album_id: song.album.id,
-      cover: song.album.images[1].url || song.album.images[0].url || null,
       source: song.preview_url,
+      album: album.get('name'),
+      album_id: album.get('id'),
+      cover: album.get('cover'),
+      author: album.get('author')
     }
   },
 
-  parseSong2 (song, album) {
+  parseSongTopTrack (song, index) {
+    return {
+      id: song.id,
+      name: song.name,
+      index: index,
+      source: song.preview_url,
+      album: song.album.name,
+      album_id: song.album.id,
+      artists: song.artists,
+      cover: song.album.images[1].url || song.album.images[0].url || null
+    }
+  },
+
+  parseSongSearch (song) {
     return {
       id: song.id,
       name: song.name,
       index: song.track_number,
-      album: album.get('name'),
-      album_id: album.get('id'),
-      author: album.get('author'),
-      cover: album.get('cover'),
-      source: song.preview_url
+      source: song.preview_url,
+      album: song.album.name,
+      album_id: song.album.id,
+      artists: song.artists,
+      cover: song.album.images[1].url || song.album.images[0].url || null
     }
   },
 

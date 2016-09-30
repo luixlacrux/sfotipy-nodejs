@@ -16,7 +16,7 @@ import AlbumsArtistView from 'src/client/backbone/Views/Artist/albums'
 export default function (id) {
   const $app = $('#app')
   const $player = $('#player')
-  const artist = new ArtistModel({ url: `/api/artist/${id}` })
+  const artist = new ArtistModel({ url: `/api/artist/${id}/info` })
   const songs = new TracksCollection({ url: `/api/artist/${id}/top-tracks` })
   const albums = new AlbumsCollection({ url: `/api/artist/${id}/albums` })
 
@@ -30,7 +30,7 @@ export default function (id) {
     $app.find('.info-artist').html(artistView.render().el)
   })
   // Obtenemos Canciones Mas Populares
-  songs.getSong(id).then(() => {
+  songs.getSongs(id).then(() => {
     const topTracksView = new TopTracksView({ collection: songs })
     topTracksView.render()
   })

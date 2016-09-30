@@ -37,7 +37,7 @@
     "pg": "^4.5.5",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.23.1",
-    "spotify-finder": "^2.0.1",
+    "spotify-finder": "^2.0.2",
     "stylus": "^0.54.5",
     "swig": "^1.4.2",
     "underscore": "^1.8.3",
