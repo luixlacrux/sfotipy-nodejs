@@ -5,5 +5,13 @@
   {{name}}
 </p>
 <p class="author">
-  {{author.name}}
+  <span class="slug">
+    {{# each artists }}
+      {{# if @last }}
+        <span data-href="/artist/{{ this.name }}/{{ this.id }}">{{ this.name }}</span>
+      {{ else }}
+        <span data-href="/artist/{{ this.name }}/{{ this.id }}">{{ this.name }},</span>
+      {{/ if}}
+    {{/ each }}
+  </span>
 </p>

@@ -16,7 +16,7 @@ export default {
       id: album.id,
       name: album.name,
       cover: album.images[1].url || album.images[0].url || null,
-      author: album.artists ? album.artists[0] : null,
+      artists: album.artists,
       songs: album.tracks ? album.tracks.items : null,
       album: album.album_type
     }
@@ -40,7 +40,7 @@ export default {
       album: album.get('name'),
       album_id: album.get('id'),
       cover: album.get('cover'),
-      author: album.get('author')
+      artists: album.get('artists')
     }
   },
 
@@ -48,7 +48,7 @@ export default {
     return {
       id: song.id,
       name: song.name,
-      index: index,
+      index: index + 1,
       source: song.preview_url,
       album: song.album.name,
       album_id: song.album.id,

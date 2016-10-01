@@ -3,5 +3,16 @@
 </figure>
 <div class="info-min">
   <span class="name">{{ name }}</span>
-  <span class="artist">{{ author.name }}</span>
+  <span class="artist">
+    <span class="slug">
+      {{# each artists }}
+        {{# if @last }}
+          <span data-href="/artist/{{ this.name }}/{{ this.id }}">{{ this.name }}</span>
+        {{ else }}
+          <span data-href="/artist/{{ this.name }}/{{ this.id }}">{{ this.name }},</span>
+        {{/ if}}
+      {{/ each }}
+    </span>
+
+  </span>
 </div>

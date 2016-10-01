@@ -19,6 +19,7 @@ class List extends Backbone.View {
   }
 
   autoplay (index) {
+    index = (parseInt(index) - 1)
     const length = this.collection.models.length
     if (length) {
       if (index > length) {

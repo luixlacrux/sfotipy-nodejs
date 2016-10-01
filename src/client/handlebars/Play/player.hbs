@@ -7,7 +7,17 @@
   </div>
   <div class="description center-text border-bottom">
     <p class="name">
-      {{name}} - {{author.name}}
+      {{name}}
+      -
+      <span class="slug">
+        {{# each artists }}
+          {{# if @last }}
+            <span data-href="/artist/{{ this.name }}/{{ this.id }}">{{ this.name }}</span>
+          {{ else }}
+            <span data-href="/artist/{{ this.name }}/{{ this.id }}">{{ this.name }},</span>
+          {{/ if}}
+        {{/ each }}
+      </span>
     </p>
   </div>
 </figure>
