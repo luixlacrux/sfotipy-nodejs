@@ -15,7 +15,21 @@ class AlbumView extends Backbone.View {
 
   initialize () {
     this.listenTo(this.model, 'change', this.render, this)
+    // $(window).on('scroll resize', this.visible.bind(this) )
   }
+
+  // visible () {
+  //   let element = this.$el
+  //   // demiensiones del navegador
+  //   let windowTop = $(document).scrollTop()
+  //   let windowBottom = windowTop + window.innerHeight
+  //   // Posicion del elemento
+  //   let elementPositionTop = element.offset().top
+  //   let elementPositionBottom = elementPositionTop + element.height()
+  //   if (windowBottom > elementPositionTop) {
+  //     console.log(element.find('div .name').text())
+  //   }
+  // }
 
   render () {
     let album = this.model.toJSON()
