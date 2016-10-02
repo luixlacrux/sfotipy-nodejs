@@ -25,9 +25,13 @@ section.ArtistView
         font-size 1.3em
       .option-artist
         position absolute
-        top 6em
-        left 12.5em
         font-size .8em
+        top .8em
+        left auto
+        right .3em
+        width 170px
+          a
+            padding .5em
       .followers-artist
         position absolute
         bottom 1em
@@ -67,7 +71,7 @@ section.ArtistView
     font-weight 500
   .albums-artist
     .album
-      margin-bottom 2em
+      margin-bottom 1em
       .info-album
         position relative
         overflow hidden
@@ -87,19 +91,22 @@ section.ArtistView
           position absolute
           top 40px
           left 148px
-          font-size 1.4em
+          font-size 1em
           margin 0
         .btn-save
-          position absolute
-          top 95px
-          left 148px
         .btn-play
           position absolute
           top 95px
-          left 255px
+          font-size .8em
+          padding .5em
+        .btn-save
+          left 148px
+        .btn-play
+          left 220px
       .songs
         margin-top 1em
         list-style none
+        display none
         .item
           padding .5em 0
           border-bottom 1px solid gris_oscuro
