@@ -10,21 +10,6 @@ class Songs extends Backbone.Collection {
     this.url = opts && opts.url ? opts.url : null
   }
 
-  getSongs (id) {
-    this.reset()
-
-    return new Promise((resolve, reject) => {
-
-      $.get(this.url).done((songs) => {
-        // Por cada cancion
-        // esta es agregada a la colleccion
-        songs.tracks.forEach(this.parseSongTopTrack, this)
-        // retorno exitoso
-        return resolve()
-      }).error((err) => reject(err))
-    })
-  }
-
   addSongs (album) {
     this.reset()
     const songs = album.get('songs')

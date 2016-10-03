@@ -24,7 +24,7 @@ class Album extends Backbone.Model {
       $.get(this.url).done(album => {
         // guardamos en cache
         // @params key, jsonData, expireTime
-        utils.cache.save(key, album)
+        utils.cache.save(key, album, 2880)
         // parseamos los datos y agregamos al modelo
         this.setAlbum(album)
         // retornamos success
