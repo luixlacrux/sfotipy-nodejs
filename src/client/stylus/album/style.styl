@@ -1,0 +1,86 @@
+// Album from artist
+.ViewAlbum
+  max-width 1000px
+  margin 0 auto
+  margin-bottom 50px
+  .info-album
+    background white
+    padding .5em
+    overflow hidden
+    position initial
+    .photo-album
+      background-position center
+      background-size cover
+      background-repeat no-repeat
+      border 2px solid gris_claro
+      width 100px
+      height 100px
+      float left
+    .type
+      margin-left calc(100px + 1em)
+    .name
+      margin 0
+      margin-left calc(100px + .4em)
+      font-size 1.5em
+      font-style italic
+      font-weight normal
+    .description
+      margin 0
+      margin-left calc(100px + 1em)
+      position absolute
+      top 175px
+      left -105px
+      font-size .8em
+    .btn-more-mobile
+      float right
+      padding .3em .8em
+    .options
+      display none
+      overflow hidden
+      height 40px
+      padding 1em 0 0 0
+      position relative
+      float left
+      width 300px
+      margin-left -155px
+      margin-top .5em
+      a
+        position absolute
+      .btn-play
+        left 110px
+      .btn-more
+        left 242px
+
+  .songs
+    background white
+    list-style none
+    padding-top 2.5em
+    .item
+      padding .5em 0
+      border-bottom 1px solid gris_oscuro
+      cursor pointer
+      .number
+        margin 0 .5em
+        font-weight lighter
+        float left
+      .duration
+        float right
+        margin-right .5em
+        font-weight lighter
+        font-size .9em
+        margin-top .2em
+      .click
+        display inline-block
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+        width calc(100% - 6em)
+    .item-fixed
+      font-weight lighter
+      cursor initial
+  .copyrights
+    margin-top .3em
+    padding .5em 0
+    font-size .7em
+    p
+      margin .5em
