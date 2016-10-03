@@ -26,8 +26,8 @@ class Router extends Backbone.Router {
     return {
       'top-albums': 'TopAlbumsRoute',
       'play': 'PlayRoute',
-      'artist/:query': 'ArtistRoute',
-      'album': 'AlbumRoute',
+      'artist/:id': 'ArtistRoute',
+      'album/:id': 'AlbumRoute',
       'home/:action': 'LoginOrSignIn',
       'search/:query': 'SearchRoute',
       '@:username': 'ProfileRoute',
@@ -69,13 +69,12 @@ class Router extends Backbone.Router {
     return PlayRoute(query.album, query.song)
   }
 
-  ArtistRoute (query) {
-    console.log(query)
-    return ArtistRoute(query)
+  ArtistRoute (id) {
+    return ArtistRoute(id)
   }
 
-  AlbumRoute (query) {
-    AlbumRoute(query.album)
+  AlbumRoute (id) {
+    return AlbumRoute(id)
   }
 
   SearchRoute (q) {

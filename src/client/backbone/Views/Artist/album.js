@@ -38,7 +38,7 @@ class AlbumView extends Backbone.View {
 
   show () {
     const id = this.model.id
-    app.navigate(`album?album=${id}`, { trigger:true })
+    app.navigate(`album/${id}`, { trigger:true })
     return false
   }
 }

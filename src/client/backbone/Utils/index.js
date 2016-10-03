@@ -25,10 +25,11 @@ export default {
   },
 
   parseAlbum (album) {
+		const images = album.images
     return {
       id: album.id,
       name: album.name,
-      cover: album.images[1].url || album.images[0].url || null,
+      cover: images.length ? images[1].url || images[0].url : null,
       artists: album.artists,
       songs: album.tracks ? album.tracks.items : null,
       album: album.album_type,
@@ -40,11 +41,12 @@ export default {
   },
 
   parseAlbumArtist (album) {
+		const images = album.images
     return {
       id: album.id,
       name: album.name,
       year: '2000',
-      cover: album.images[1].url || album.images[0].url || null
+      cover: images.length ? images[1].url || images[0].url : null
     }
   },
 
@@ -63,6 +65,7 @@ export default {
   },
 
   parseSongTopTrack (song, index) {
+		const images = song.album.images
     return {
       id: song.id,
       name: song.name,
@@ -71,11 +74,12 @@ export default {
       album: song.album.name,
       album_id: song.album.id,
       artists: song.artists,
-      cover: song.album.images[1].url || song.album.images[0].url || null
+      cover: images.length ? images[1].url || images[0].url : null
     }
   },
 
   parseSongSearch (song) {
+		const images = song.album.images
     return {
       id: song.id,
       name: song.name,
@@ -84,15 +88,16 @@ export default {
       album: song.album.name,
       album_id: song.album.id,
       artists: song.artists,
-      cover: song.album.images[1].url || song.album.images[0].url || null
+      cover: images.length ? images[1].url || images[0].url : null
     }
   },
 
   parseArtist (artist) {
+		const images = artist.images
     return {
       id: artist.id,
       name: artist.name,
-      image: artist.images[1].url || song.album.images[0].url || null,
+      image: images.length ? images[1].url || images[0].url : null,
       followers: artist.followers.total
     }
   },
