@@ -7,7 +7,7 @@ class Albums extends Backbone.Collection {
   constructor(opts) {
     super()
     this.model = Album
-    this.url = opts && opts.url ? opts.url : null 
+    this.url = opts && opts.url ? opts.url : null
   }
 
   getAlbums () {
@@ -26,7 +26,7 @@ class Albums extends Backbone.Collection {
       $.get(this.url).done(albums => {
         // guardamos en cache
         // key, jsonData, expireTime
-        utils.cache.save('topAlbums', albums, 60)  
+        utils.cache.save('topAlbums', albums, 60)
         // por cada elemento ejecutaremos addAlbum
         albums.forEach(this.addAlbum, this)
         // al terminar retornamos success
@@ -36,16 +36,36 @@ class Albums extends Backbone.Collection {
     })
   }
 
+  getAlbumsArtist (id) {
+    this.reset()
+
+    return new Promise((resolve, reject) => {
+
+      $.get(this.url).done((albums) => {
+        // Por cada album
+        // este es agregado a la colleccion
+        albums.items.forEach(this.addAlbumArtist, this)
+        // retorno exitoso
+        return resolve()
+      }).error((err) => reject(err))
+    })
+  }
+
   addAlbum (album) {
     // agregamos el album a la coleccion
     this.add(new Album(utils.parseAlbum(album)))
+  }
+
+  addAlbumArtist (album) {
+    // agregamos el album a la coleccion
+    this.add(new Album(utils.parseAlbumArtist(album)))
   }
 
   isEmpty () {
     if (!this.length)
       return this.getAlbums()
 
-    return Promise.resolve() 
+    return Promise.resolve()
   }
 }
 

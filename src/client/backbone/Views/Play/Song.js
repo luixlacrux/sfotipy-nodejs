@@ -2,6 +2,7 @@ import Backbone from 'backbone'
 import $ from 'jquery'
 import Share from 'src/client/backbone/Views/Share'
 import template from 'src/client/handlebars/Play/song.hbs'
+import app from 'src/client/backbone/router'
 
 class Song extends Backbone.View {
   get tagName () { return 'li' }
@@ -15,13 +16,9 @@ class Song extends Backbone.View {
     }
   }
 
-  constructor(opts) {
-    super(opts)
-    this.player = opts.player
-  }
-  
   initialize () {
     this.listenTo(this.model, 'change', this.render, this)
+    this.player = app.playingView.player
   }
 
   render () {
@@ -32,7 +29,7 @@ class Song extends Backbone.View {
   }
 
   select () {
-    let model = this.model.toJSON()
+    const model = this.model.attributes
     this.player.model.set(model)
     return false
   }

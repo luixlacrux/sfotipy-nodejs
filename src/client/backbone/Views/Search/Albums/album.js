@@ -8,7 +8,7 @@ class AlbumView extends Backbone.View {
   get className () { return 'Search-item' }
   get events () {
     return {
-      'click': 'navigate'
+      'click': 'show'
     }
   }
 
@@ -20,6 +20,12 @@ class AlbumView extends Backbone.View {
   navigate () {
     const { id } = this.model.attributes
     app.navigate(`play?album=${id}`, { trigger: true })
+  }
+
+  show () {
+    const id = this.model.id
+    app.navigate(`album?album=${id}`, { trigger:true })
+    return false
   }
 }
 

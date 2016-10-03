@@ -12,11 +12,9 @@ export default function (app, passport) {
   app.get('/@:username/edit', isLoggedIn, renderIndex)
   app.get('/album/:name', isLoggedIn, renderIndex)
   app.get('/play', isLoggedIn, renderIndex)
+  app.get('/album', isLoggedIn, renderIndex)
+  app.get('/artist/:id', isLoggedIn, renderIndex)
   app.get('/search/:query', isLoggedIn, renderIndex)
-
-  app.get('/artist', (req, res) => {
-    res.render('artist', {user: req.user})
-  })
 
   app.get('/logout', (req, res) => {
     req.logout()

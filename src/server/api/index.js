@@ -1,7 +1,7 @@
-import endpoint_spotify from 'src/server/api/endpoint_spotify'
-import endpoint_users from 'src/server/api/endpoint_users'
-import endpoint_playlists from 'src/server/api/endpoint_playlists'
-import endpoint_songs from 'src/server/api/endpoint_songs'
+import spotifyRoutes from 'src/server/api/routes/spotify'
+import playlistsRoutes from 'src/server/api/routes/playlists'
+import songsRoutes from 'src/server/api/routes/songs'
+import usersRoutes from 'src/server/api/routes/users'
 import { requestAuthenticated } from 'src/server/lib/middlewares'
 
 export default function (apiRoute, app) {
@@ -9,11 +9,11 @@ export default function (apiRoute, app) {
   // app.all(`${apiRoute}/*`, requestAuthenticated)
   app.all(`${apiRoute}/*`)
   // set endpoints to client of spotify
-  endpoint_spotify(apiRoute, app)
+  spotifyRoutes(apiRoute, app)
   // set endpoints to User's
-  endpoint_users(apiRoute, app)
+  usersRoutes(apiRoute, app)
 
-  endpoint_playlists(apiRoute, app)
+  playlistsRoutes(apiRoute, app)
 
-  endpoint_songs(apiRoute, app)
+  usersRoutes(apiRoute, app)
 }

@@ -1,10 +1,6 @@
 <figure class="coverConten">
-  {{# if images}}
-  {{# each images }}
-    {{# if @last }}
-      <img class="cover" width="128" height="128" src="{{ this.url }}" alt="{{ name }}">
-    {{/ if }}
-  {{/ each }}
+  {{# if image}}
+    <img class="cover" width="128" height="128" src="{{ image }}" alt="{{ name }}">
   {{else}}
     <img class="cover" width="128" height="128" src="http://www.andreagal.com/wp-content/themes/andreagal/images/no-track-image.png" alt="no track">
   {{/ if }}

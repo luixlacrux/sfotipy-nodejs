@@ -7,30 +7,34 @@ class Songs extends Backbone.Collection {
   constructor(opts) {
     super(opts)
     this.model = Song
+    this.url = opts && opts.url ? opts.url : null
   }
 
   addSongs (album) {
-    let songs = album.get('songs')
+    this.reset()
+    const songs = album.get('songs')
     songs.forEach(song => {
-      this.parseSong(song, album)
+      this.parseSongAlbum(song, album)
     })
   }
 
-  parseSong (song, album) {
-    this.add(new Song({
-      id_spotify: song.id,
-      id: song.track_number,
-      album_cover: album.get('cover'),
-      album_name: album.get('name'),
-      album_id: album.get('id'),
-      author: album.get('author'),
-      name: song.name,
-      source: song.preview_url
-    }))
+  parseSongAlbum (song, album) {
+    const newSong = utils.parseSongAlbum.apply(this, arguments)
+    this.add(new Song(newSong))
   }
 
-  addSongMoreInfo (song) {
-    this.add(new Song(utils.parseSong(song)))
+  parseSongSearch (song) {
+    const newSong = utils.parseSongSearch.apply(this, arguments)
+    this.add(new Song(newSong))
+  }
+
+  parseSongTopTrack (song, index) {
+    const newSong = utils.parseSongTopTrack.apply(this, arguments)
+    this.add(new Song(newSong))
+  }
+
+  getAlbumId () {
+    return this.models.length ? this.at(0).get('album_id') : null
   }
 }
 

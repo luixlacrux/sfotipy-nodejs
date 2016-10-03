@@ -42,7 +42,7 @@ export default function (query) {
     renderView(albumsData, albums, AlbumsView, albums.addAlbum)
 
     const songsData = res.tracks.items
-    renderView(songsData, songs, SongsView, songs.addSongMoreInfo)
+    renderView(songsData, songs, SongsView, songs.parseSongSearch)
 
     const userData = res.users
     renderView(userData, users, UserView, users.addUser)

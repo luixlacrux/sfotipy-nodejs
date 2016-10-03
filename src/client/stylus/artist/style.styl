@@ -3,17 +3,21 @@ section.ArtistView
   margin 0 auto
   padding-bottom 70px
 
+  div.loader.small
+    margin 50px auto
+
   .artist
     .info-artist
       position relative
+      overflow hidden
       .photo-artist
         display inline-block
         width 130px
         height 130px
         border-radius 50%
-        background-image url("https://i.scdn.co/image/f86162368f30fa42f4d71a09270b9ce3f48995d9")
-        background-position -25px -15px
+        background-size cover
         background-repeat no-repeat
+        background-position center
         margin 1em
       .name-artist
         position absolute
@@ -22,9 +26,13 @@ section.ArtistView
         font-size 1.3em
       .option-artist
         position absolute
-        top 6em
-        left 12.5em
         font-size .8em
+        top .8em
+        left auto
+        right .3em
+        width 170px
+          a
+            padding .5em
       .followers-artist
         position absolute
         bottom 1em
@@ -48,6 +56,10 @@ section.ArtistView
           cursor pointer
           .click
             display inline-block
+            overflow hidden
+            text-overflow ellipsis
+            white-space nowrap
+            width calc(100% - 8em)
           .right
             font-size .8em
             margin-top .5em
@@ -60,11 +72,11 @@ section.ArtistView
     font-weight 500
   .albums-artist
     .album
-      margin-bottom 2em
+      margin-bottom 1em
       .info-album
         position relative
+        overflow hidden
         .photo-album
-          background url("https://i.scdn.co/image/8bfd094f04e3918075a80a72c2e683f2e10e8fb7")
           width 130px
           height 130px
           margin .5em
@@ -80,37 +92,18 @@ section.ArtistView
           position absolute
           top 40px
           left 148px
-          font-size 1.4em
+          font-size 1em
           margin 0
+          cursor pointer
+          &:hover
+            text-decoration underline
         .btn-save
+        .btn-play
           position absolute
           top 95px
+          font-size .8em
+          padding .5em
+        .btn-save
           left 148px
-          padding .5em 1em
-          background rojo
-          color white
-          border-radius 5px
-      .songs
-        margin-top 1em
-        list-style none
-        .item
-          padding 1em 0
-          border-bottom 1px solid gris_oscuro
-          cursor pointer
-          .number
-            margin 0 .5em
-            font-weight lighter
-            float left
-          .duration
-            float right
-            margin-right .5em
-            font-weight lighter
-          .click
-            display inline-block
-            overflow hidden
-            text-overflow ellipsis
-            white-space nowrap
-            width calc(100% - 5em)
-        .item-fixed
-          font-weight lighter
-          cursor initial
+        .btn-play
+          left 220px

@@ -71,8 +71,7 @@ class PlayerMin extends Backbone.View {
   }
 
   showPlayer () {
-    const { album_id } = this.model.attributes
-    app.navigate(`play?album=${album_id}`, { trigger: true })
+    app.navigate(`play`, { trigger: true })
   }
 }
 

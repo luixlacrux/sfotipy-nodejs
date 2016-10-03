@@ -16,11 +16,22 @@ class List extends Backbone.View {
   render () {
     this.$el.empty()
     this.addAll()
-    this.player.trigger('autoplay')
+  }
+
+  autoplay (index) {
+    index = (parseInt(index) - 1)
+    const length = this.collection.models.length
+    if (length) {
+      if (index > length) {
+        this.player.model.set(this.collection.at(length - 1).toJSON())
+      } else {
+        this.player.model.set(this.collection.at(index).toJSON())
+      }
+    }
   }
 
   addOne (song) {
-    var songView = new SongView({ model: song, player: this.player })
+    const songView = new SongView({ model: song })
     this.$el.append(songView.render().el)
   }
 

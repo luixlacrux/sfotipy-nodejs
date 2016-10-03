@@ -1,3 +1,16 @@
+function secondsToTime (s) {
+	  function addZ(n) {
+	    return (n<10? '0':'') + n;
+	  }
+	  var ms = s % 1000;
+	  s = (s - ms) / 1000;
+	  var secs = s % 60;
+	  s = (s - secs) / 60;
+	  var mins = s % 60;
+
+	  return addZ(mins) + ':' + addZ(secs);
+}
+
 export default {
   validPassword (passwd) {
     return new Promise((resolve, reject) => {
@@ -12,26 +25,80 @@ export default {
   },
 
   parseAlbum (album) {
+		const images = album.images
     return {
       id: album.id,
       name: album.name,
-      cover: album.images[1].url || album.images[0].url || null,
-      author: album.artists ? album.artists[0] : null,
+      cover: images.length ? images[1].url || images[0].url : null,
+      artists: album.artists,
       songs: album.tracks ? album.tracks.items : null,
-      album: album.album_type
+      album: album.album_type,
+			total: album.tracks ? album.tracks.total : null,
+			type: album.album_type,
+			date: album.release_date,
+			copyrights: album.copyrights
     }
   },
 
-  parseSong (song) {
+  parseAlbumArtist (album) {
+		const images = album.images
+    return {
+      id: album.id,
+      name: album.name,
+      year: '2000',
+      cover: images.length ? images[1].url || images[0].url : null
+    }
+  },
+
+  parseSongAlbum (song, album) {
     return {
       id: song.id,
       name: song.name,
-      song: song.preview_url,
-      artists: song.artists,
+      index: song.track_number,
+      duration: secondsToTime(song.duration_ms),
+      source: song.preview_url,
+      album: album.get('name'),
+      album_id: album.get('id'),
+      cover: album.get('cover'),
+      artists: album.get('artists')
+    }
+  },
+
+  parseSongTopTrack (song, index) {
+		const images = song.album.images
+    return {
+      id: song.id,
+      name: song.name,
+      index: index + 1,
+      source: song.preview_url,
       album: song.album.name,
       album_id: song.album.id,
-      track_number: song.track_number,
-      cover: song.album.images[1].url || song.album.images[0].url || null
+      artists: song.artists,
+      cover: images.length ? images[1].url || images[0].url : null
+    }
+  },
+
+  parseSongSearch (song) {
+		const images = song.album.images
+    return {
+      id: song.id,
+      name: song.name,
+      index: song.track_number,
+      source: song.preview_url,
+      album: song.album.name,
+      album_id: song.album.id,
+      artists: song.artists,
+      cover: images.length ? images[1].url || images[0].url : null
+    }
+  },
+
+  parseArtist (artist) {
+		const images = artist.images
+    return {
+      id: artist.id,
+      name: artist.name,
+      image: images.length ? images[1].url || images[0].url : null,
+      followers: artist.followers.total
     }
   },
 

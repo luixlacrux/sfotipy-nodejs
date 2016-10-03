@@ -47,6 +47,27 @@ wrap()
     max-width 980px
 fixed()
     position fixed
+// Botones
+.btn
+    padding .5em 1em
+    background gris_claro
+    color #fff
+    border-radius 5px
+    border 1px solid transparent
+    cursor pointer
+.btn-red
+  background rojo
+  &:hover
+    background white
+    color rojo
+    border 1px solid
+.btn-white
+    background white
+    color rojo
+    border 1px solid
+    &:hover
+        background rojo
+        color white
 btn-submit()
     border none
     margin 0 auto
@@ -271,11 +292,14 @@ text-wrapper()
 @import 'playerDown/style.styl'
 @import 'player/style.styl'
 @import 'artist/style.styl'
+@import 'album/style.styl'
 
 @media screen and (min-width:480px)
     @import 'home/tablet480.styl'
     @import 'user/mobile480.styl'
     @import 'player/mobile480.styl'
+    @import 'artist/mobile480.styl'
+    @import 'album/mobile480.styl'
     .cover-hit
         img
             margin-bottom 0
@@ -304,3 +328,4 @@ text-wrapper()
     @import 'playerDown/desktop1000.styl'
     @import 'player/desktop1000.styl'
     @import 'artist/desktop1000.styl'
+    @import 'album/desktop1000.styl'
