@@ -15,6 +15,7 @@ import PlayingCollection from 'src/client/backbone/Collections/Songs'
 /* Routes */
 import PlayRoute from 'src/client/backbone/Routes/Play'
 import ArtistRoute from 'src/client/backbone/Routes/Artist'
+import AlbumRoute from 'src/client/backbone/Routes/Album'
 import TopAlbumsRoute from 'src/client/backbone/Routes/TopAlbums'
 import SearchRoute from 'src/client/backbone/Routes/Search'
 import ProfileRoute from 'src/client/backbone/Routes/Profile'
@@ -26,6 +27,7 @@ class Router extends Backbone.Router {
       'top-albums': 'TopAlbumsRoute',
       'play': 'PlayRoute',
       'artist/:query': 'ArtistRoute',
+      'album': 'AlbumRoute',
       'home/:action': 'LoginOrSignIn',
       'search/:query': 'SearchRoute',
       '@:username': 'ProfileRoute',
@@ -70,6 +72,10 @@ class Router extends Backbone.Router {
   ArtistRoute (query) {
     console.log(query)
     return ArtistRoute(query)
+  }
+
+  AlbumRoute (query) {
+    AlbumRoute(query.album)
   }
 
   SearchRoute (q) {

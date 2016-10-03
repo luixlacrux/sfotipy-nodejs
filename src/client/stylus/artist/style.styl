@@ -17,6 +17,7 @@ section.ArtistView
         border-radius 50%
         background-size cover
         background-repeat no-repeat
+        background-position center
         margin 1em
       .name-artist
         position absolute
@@ -93,6 +94,9 @@ section.ArtistView
           left 148px
           font-size 1em
           margin 0
+          cursor pointer
+          &:hover
+            text-decoration underline
         .btn-save
         .btn-play
           position absolute
@@ -128,3 +132,7 @@ section.ArtistView
         .item-fixed
           font-weight lighter
           cursor initial
+
+// Album from artist
+.ViewAlbum
+  pass

@@ -1,3 +1,16 @@
+function secondsToTime (s) {
+	  function addZ(n) {
+	    return (n<10? '0':'') + n;
+	  }
+	  var ms = s % 1000;
+	  s = (s - ms) / 1000;
+	  var secs = s % 60;
+	  s = (s - secs) / 60;
+	  var mins = s % 60;
+
+	  return addZ(mins) + ':' + addZ(secs);
+}
+
 export default {
   validPassword (passwd) {
     return new Promise((resolve, reject) => {
@@ -16,7 +29,7 @@ export default {
       id: album.id,
       name: album.name,
       cover: album.images[1].url || album.images[0].url || null,
-      artists: album.artists,
+      artists: album.artists[0],
       songs: album.tracks ? album.tracks.items : null,
       album: album.album_type
     }
@@ -36,6 +49,7 @@ export default {
       id: song.id,
       name: song.name,
       index: song.track_number,
+      duration: secondsToTime(song.duration_ms),
       source: song.preview_url,
       album: album.get('name'),
       album_id: album.get('id'),

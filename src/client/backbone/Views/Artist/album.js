@@ -9,27 +9,14 @@ class AlbumView extends Backbone.View {
   get events () {
     return {
       'click .btn-save': 'save',
-      'click .btn-play': 'play'
+      'click .btn-play': 'play',
+      'click .name': 'show'
     }
   }
 
   initialize () {
     this.listenTo(this.model, 'change', this.render, this)
-    // $(window).on('scroll resize', this.visible.bind(this) )
   }
-
-  // visible () {
-  //   let element = this.$el
-  //   // demiensiones del navegador
-  //   let windowTop = $(document).scrollTop()
-  //   let windowBottom = windowTop + window.innerHeight
-  //   // Posicion del elemento
-  //   let elementPositionTop = element.offset().top
-  //   let elementPositionBottom = elementPositionTop + element.height()
-  //   if (windowBottom > elementPositionTop) {
-  //     console.log(element.find('div .name').text())
-  //   }
-  // }
 
   render () {
     let album = this.model.toJSON()
@@ -46,6 +33,12 @@ class AlbumView extends Backbone.View {
   play () {
     const id = this.model.id
     app.navigate(`play?album=${id}`, { trigger:true })
+    return false
+  }
+
+  show () {
+    const id = this.model.id
+    app.navigate(`album?album=${id}`, { trigger:true })
     return false
   }
 }
