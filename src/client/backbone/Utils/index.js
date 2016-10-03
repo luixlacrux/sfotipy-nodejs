@@ -29,9 +29,13 @@ export default {
       id: album.id,
       name: album.name,
       cover: album.images[1].url || album.images[0].url || null,
-      artists: album.artists[0],
+      artists: album.artists,
       songs: album.tracks ? album.tracks.items : null,
-      album: album.album_type
+      album: album.album_type,
+			total: album.tracks ? album.tracks.total : null,
+			type: album.album_type,
+			date: album.release_date,
+			copyrights: album.copyrights
     }
   },
 
