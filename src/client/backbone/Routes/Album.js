@@ -1,5 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
+import loader from 'src/client/handlebars/Utils/loader.hbs'
 // Views
 import AlbumView from 'src/client/backbone/Views/Album/main'
 import ListSongView from 'src/client/backbone/Views/Album/list'
@@ -16,8 +17,7 @@ export default function (id) {
   const songs = new SongsCollection()
 
   $player.hide()
-  $app.empty()
-  $app.html('<div class="loader fixed"><div>')
+  $app.html(loader({ big: true }))
 
   albumModel.fetchData(id).then(() => {
     const albumView = new AlbumView({ model: albumModel })

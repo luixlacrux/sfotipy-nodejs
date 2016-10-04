@@ -14,9 +14,8 @@ class Song extends Backbone.View {
 
   initialize () {
     this.listenTo(this.model, 'change', this.render, this)
-    this.player = app.playingView.player
-  }
 
+  }
   render () {
     let song = this.model.toJSON()
     let html = template(song)
@@ -25,8 +24,8 @@ class Song extends Backbone.View {
   }
 
   select () {
-    const model = this.model.attributes
-    this.player.model.set(model)
+    const { album_id, index } = this.model.attributes
+    app.navigate(`play?album=${album_id}&song=${index}`, { trigger: true })
     return false
   }
 }
