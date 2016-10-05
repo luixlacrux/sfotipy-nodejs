@@ -65,7 +65,7 @@ class Player extends Backbone.View {
     const { index } = this.model.attributes
     const { models } = this.collection
     const record = { index, models }
-    utils.cache.save('lastPlay', record, 2880)
+    utils.cache.set('lastPlay', record)
   }
 
   play () {

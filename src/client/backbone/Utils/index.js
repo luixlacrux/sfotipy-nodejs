@@ -103,6 +103,12 @@ export default {
   },
 
   cache: {
+		set (key, jsonData) {
+			localStorage.setItem(key, JSON.stringify(jsonData))
+		},
+		get (key) {
+			return JSON.parse(localStorage.getItem(key))
+		},
     save (key, jsonData, expirationMin=720) {
       let expirationMS = expirationMin * 60 * 1000
       let record = { value: JSON.stringify(jsonData), timestamp: new Date().getTime() + expirationMS }

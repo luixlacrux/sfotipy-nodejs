@@ -53,7 +53,7 @@ class Router extends Backbone.Router {
   initPlayer () {
     // Instancio la vista playingView
     this.playingView = new PlayingView({ collection: new PlayingCollection })
-    const data = utils.cache.load('lastPlay')
+    const data = utils.cache.get('lastPlay')
     const { collection } = this.playingView
 
     if (data) {
