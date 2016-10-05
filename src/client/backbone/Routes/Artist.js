@@ -25,7 +25,7 @@ export default async function (id) {
   $app.empty()
   $app.html(Artist())
 
-  // Obtenemos toda informaciondel artist
+  // Obtenemos toda la informacion del artist
   const data = await getData(id)
 
   // parsemos info del artista

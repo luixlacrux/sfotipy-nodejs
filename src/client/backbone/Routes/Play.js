@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import PlayAlbumRoute from './PlayAlbum'
+import loader from 'src/client/handlebars/Utils/loader.hbs'
 
 export default async function (id, index=1) {
   const $app = $('#app')
@@ -13,6 +14,7 @@ export default async function (id, index=1) {
   $playerMin.hide()
 
   if (id) {
+    $player.find('.playlist .list').html(loader())
     PlayAlbumRoute(id, index)
   } else {
     otherSomeFunction()

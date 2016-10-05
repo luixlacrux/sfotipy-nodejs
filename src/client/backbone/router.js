@@ -1,6 +1,7 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import qs from 'querystring'
+import utils from 'src/client/backbone/Utils'
 
 /* Views */
 import HeaderView from 'src/client/backbone/Views/Header/Main'
@@ -42,9 +43,28 @@ class Router extends Backbone.Router {
     // Instancio la vista header y Home
     this.headerView = new HeaderView()
     this.homeView = new HomeView()
+    Backbone.history.start({ root: '/', pushState: true })
+  }
+
+  initPlayer () {
     // Instancio la vista playingView
     this.playingView = new PlayingView({ collection: new PlayingCollection })
-    Backbone.history.start({ root: '/', pushState: true })
+  }
+
+  lastPlay () {
+    const data = utils.cache.load('lastPlay')
+    const { collection } = this.playingView
+
+    if (data) {
+      // reseteamos la collection del player
+      collection.reset()
+      // agregamos los modelos, pasamos la collection como contexto
+      data.models.forEach(collection.add, collection)
+      // colocamos la ultima cancion reproducida
+      // pausamos el player
+      this.playingView.autoplay(data.index)
+      this.playingView.player.pause()
+    }
   }
 
   // retornara un 404 Not Found
@@ -53,6 +73,13 @@ class Router extends Backbone.Router {
   // Funcion que se ejecutara cada vez que una ruta haga match
   execute (callback, args, name) {
     console.log('Match Route')
+    // si el player aun no esta instanciado
+    if (!this.playingView) {
+      this.initPlayer()
+      // si la ruta es dirente a de play
+      // cargamos la ultima cancion en el player
+      if (callback !== this.PlayRoute) this.lastPlay()
+    }
     // Mostramos el $playerMin en cada ruta
     this.$playerMin.show()
     args.push(qs.parse(args.pop()))

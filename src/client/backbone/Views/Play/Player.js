@@ -4,6 +4,7 @@ import Share from 'src/client/backbone/Views/Share'
 import template from 'src/client/handlebars/Play/player.hbs'
 import PlayerMinView from './PlayerMin'
 import Song from 'src/client/backbone/Models/Song'
+import utils from 'src/client/backbone/Utils'
 
 class Player extends Backbone.View {
   get el () { return $('#music > .music') }
@@ -49,6 +50,7 @@ class Player extends Backbone.View {
 
     this.$el.append(this.audio)
     this.initEvents()
+    this.saveAtCache()
     this.play()
   }
 
@@ -57,6 +59,13 @@ class Player extends Backbone.View {
     this.audio.onvolumechange = this.volumeChanged.bind(this)
     this.audio.addEventListener('timeupdate', this.updateTime.bind(this))
     this.audio.addEventListener('durationchange', this.totalDuration.bind(this))
+  }
+
+  saveAtCache () {
+    const { index } = this.model.attributes
+    const { models } = this.collection
+    const record = { index, models }
+    utils.cache.save('lastPlay', record, 2880)
   }
 
   play () {
