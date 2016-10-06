@@ -5,7 +5,7 @@ import app from 'src/client/backbone/router'
 
 class Song extends Backbone.View {
   get tagName () { return 'li' }
-  get className () { return 'item' }
+  get className () { return 'item border-bottom' }
   get events () {
     return {
       'click': 'select'

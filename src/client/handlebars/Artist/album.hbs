@@ -1,11 +1,15 @@
-<div class="info-album">
+<div class="info-album border-bottom">
+  {{#if cover}}
   <div class="photo-album" style="background-image: url('{{ cover }}')"></div>
-  <p class="year">
-    {{ year }}
+  {{else}}
+  <div class="photo-album" style="background-image: url('http://www.andreagal.com/wp-content/themes/andreagal/images/no-track-image.png')"></div>
+  {{/if}}
+  <p class="type">
+    {{ type }}
   </p>
   <p class="name">
     {{ name }}
   </p>
-  <a href="#" class="btn btn-red btn-save">Guardar</a>
-  <a href="#" class="btn btn-white btn-play">Reproducir</a>
+  <a href="#" class="btn btn-red btn-save">Save</a>
+  <a href="#" class="btn btn-white btn-play">Play</a>
 </div>

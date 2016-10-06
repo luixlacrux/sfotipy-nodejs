@@ -7,6 +7,7 @@ section.ArtistView
     margin 50px auto
 
   .artist
+    margin-bottom .5em
     .info-artist
       position relative
       overflow hidden
@@ -52,8 +53,9 @@ section.ArtistView
         list-style none
         .item
           padding 1em
-          border-bottom 1px solid gris_oscuro
           cursor pointer
+          &:hover
+            background rgba(gris_claro, .3)
           .click
             display inline-block
             overflow hidden
@@ -66,8 +68,7 @@ section.ArtistView
   h2.title-2
     font-size 1.2em
     padding .5em 0
-    margin .5em
-    border-bottom 1px solid gris_oscuro
+    text-indent .5em
     color gris_oscuro
     font-weight 500
   .albums-artist
@@ -82,11 +83,13 @@ section.ArtistView
           margin .5em
           background-repeat no-repeat
           background-size cover
-        .year
+        .type
+          color: gris_claro
           position absolute
           top 10px
           left 148px
           margin 0
+          text-transform: uppercase;
           font-size .8em
         .name
           position absolute
@@ -106,4 +109,4 @@ section.ArtistView
         .btn-save
           left 148px
         .btn-play
-          left 220px
+          left 200px
