@@ -5,6 +5,7 @@ import template from 'src/client/handlebars/Play/player.hbs'
 import PlayerMinView from './PlayerMin'
 import Song from 'src/client/backbone/Models/Song'
 import utils from 'src/client/backbone/Utils'
+import app from 'src/client/backbone/router'
 
 class Player extends Backbone.View {
   get el () { return $('#music > .music') }
@@ -12,6 +13,7 @@ class Player extends Backbone.View {
     return {
       'click .action.icon-share': 'share',
       'click .action.icon-add': 'add',
+      'click .description .name .slug a': 'navigate',
 
       //Controls
       'click .action.gray#play': 'pause',
@@ -229,6 +231,12 @@ class Player extends Backbone.View {
 
   add () {
     Sfotipy.events.trigger('playlist', this.model)
+    return false
+  }
+
+  navigate (ev) {
+    const url = ev.target.attributes.href.value.substr(1)
+    app.navigate(url, { trigger: true })
     return false
   }
 }
