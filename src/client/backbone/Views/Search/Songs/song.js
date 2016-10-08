@@ -17,7 +17,12 @@ class SongView extends Backbone.View {
     return this
   }
 
-  navigate () {
+  navigate (ev) {
+    if (ev.target.nodeName === 'A') {
+      const url = ev.target.attributes.href.value.substr(1)
+      app.navigate(url, { trigger: true })
+      return false
+    }
     const { album_id, index } = this.model.attributes
     app.navigate(`play?album=${album_id}&song=${index}`, { trigger: true })
   }

@@ -4,7 +4,6 @@
   margin 0 auto
   margin-bottom 50px
   .info-album
-    background white
     padding .5em
     overflow hidden
     position initial
@@ -12,7 +11,6 @@
       background-position center
       background-size cover
       background-repeat no-repeat
-      border 2px solid gris_claro
       width 100px
       height 100px
       float left
@@ -31,6 +29,11 @@
       top 175px
       left -105px
       font-size .8em
+      a
+        font-weight bold
+        color gris_oscuro
+        &:hover
+          text-decoration underline
     .btn-more-mobile
       float right
       padding .3em .8em
@@ -42,23 +45,24 @@
       position relative
       float left
       width 300px
-      margin-left -155px
+      margin-left -150px
       margin-top .5em
       a
         position absolute
       .btn-play
-        left 110px
+        left 85px
       .btn-more
-        left 242px
+        left 180px
 
   .songs
-    background white
     list-style none
     padding-top 2.5em
     .item
-      padding .5em 0
-      border-bottom 1px solid gris_oscuro
+      padding .8em 0
       cursor pointer
+      &:hover
+        background rgba(gris_claro, .3)
+
       .number
         margin 0 .5em
         font-weight lighter
@@ -78,6 +82,8 @@
     .item-fixed
       font-weight lighter
       cursor initial
+      &:hover
+        background none
   .copyrights
     margin-top .3em
     padding .5em 0

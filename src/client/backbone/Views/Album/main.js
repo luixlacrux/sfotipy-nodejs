@@ -9,7 +9,8 @@ class AlbumView extends Backbone.View {
     return {
       'click .btn-save': 'save',
       'click .btn-play': 'play',
-      'click .btn-more': 'more'
+      'click .btn-more': 'more',
+      'click .description a': 'artist',
     }
   }
 
@@ -51,8 +52,14 @@ class AlbumView extends Backbone.View {
   }
 
   MaysPrimera (string){
-  return string.charAt(0).toUpperCase() + string.slice(1)
-}
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
+
+  artist () {
+    const { id } = this.model.attributes.artists[0]
+    app.navigate(`artist/${id}`, { trigger: true })
+    return false
+  }
 }
 
 export default AlbumView

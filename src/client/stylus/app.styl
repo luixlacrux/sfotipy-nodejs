@@ -134,6 +134,8 @@ text-wrapper()
     top 50%
 //oocss classes
 .container
+    margin 0 auto
+    max-width 980px
     padding 1.4rem 0
     text-align center
 .action
@@ -176,6 +178,10 @@ text-wrapper()
         width 100%
         position absolute
         top 0
+        .slug a
+          color white
+          &:hover
+            text-decoration underline
 // .music
 //     display none
 .actions
@@ -240,6 +246,47 @@ text-wrapper()
     vertical-align top
     width 8rem
     cursor pointer
+    position relative
+    &:hover
+      .button
+        display block
+      .image img
+        transform scale(1.2)
+    .image
+      height: 128px
+      background-image url(http://www.andreagal.com/wp-content/themes/andreagal/images/no-track-image.png)
+      background-size cover
+      overflow hidden
+      img
+        transition all .5s ease
+    .button
+      z-index: 2
+      display none
+      position absolute
+      width 128px
+      height 128px
+      line-height 135px
+      text-align center
+      background rgba(#000, .5)
+      .icon-play
+        outline none
+        box-shadow 0px 0px 15px #000
+        background rgba(#000, .7)
+        padding .8em
+        border 1px gris_mas_claro solid
+        border-radius 50%
+        font-size 1.2em
+        color gris_mas_claro
+        cursor default
+        transition all .2s ease
+        &:hover
+          color white
+          background rgba(#000, .9)
+          border-color white
+          transform scale(1.1)
+        &:before
+          position relative
+          left 2px
     p
         text-wrapper()
         margin .5em 0

@@ -41,9 +41,13 @@ class Router extends Backbone.Router {
   init () {
     // Defino $playerMin
     this.$playerMin = $('#player-min')
-    // Instancio la vista header y Home
-    this.headerView = new HeaderView()
+    // Instancio la vista Home
     this.homeView = new HomeView()
+    // Si la ruta es diferente de home
+    if (Backbone.history.location.pathname.indexOf('/home') === -1) {
+      this.headerView = new HeaderView()
+      this.initPlayer()
+    }
     Backbone.history.start({ root: '/', pushState: true })
     this.events.on('playlist', () => {
       return GetPlaylist()
@@ -56,10 +60,7 @@ class Router extends Backbone.Router {
   initPlayer () {
     // Instancio la vista playingView
     this.playingView = new PlayingView({ collection: new PlayingCollection })
-  }
-
-  lastPlay () {
-    const data = utils.cache.load('lastPlay')
+    const data = utils.cache.get('lastPlay')
     const { collection } = this.playingView
 
     if (data) {
@@ -80,14 +81,6 @@ class Router extends Backbone.Router {
   // Funcion que se ejecutara cada vez que una ruta haga match
   execute (callback, args, name) {
     console.log('Match Route')
-    // si el player aun no esta instanciado
-    if (!this.playingView) {
-      this.initPlayer()
-      // si la ruta es dirente a de play
-      // cargamos la ultima cancion en el player
-      if (callback !== this.PlayRoute) this.lastPlay()
-    }
-    // Mostramos el $playerMin en cada ruta
     this.$playerMin.show()
     args.push(qs.parse(args.pop()))
     if (callback) callback.apply(this, args)

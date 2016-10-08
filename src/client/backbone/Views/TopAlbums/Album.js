@@ -23,9 +23,12 @@ class AlbumView extends Backbone.View {
     return this
   }
 
-  navigate () {
+  navigate (ev) {
     const { id } = this.model.attributes
-    app.navigate(`play?album=${id}`, { trigger:true })
+    if (ev.target.classList[0] === 'icon-play') {
+      return app.navigate(`play?album=${id}`, { trigger:true })
+    }
+    app.navigate(`album/${id}`, { trigger:true })
   }
 }
 

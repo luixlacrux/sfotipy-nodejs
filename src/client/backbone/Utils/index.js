@@ -45,7 +45,7 @@ export default {
     return {
       id: album.id,
       name: album.name,
-      year: '2000',
+      type: album.album_type,
       cover: images.length ? images[1].url || images[0].url : null
     }
   },
@@ -60,7 +60,7 @@ export default {
       album: album.get('name'),
       album_id: album.get('id'),
       cover: album.get('cover'),
-      artists: album.get('artists')
+      artists: song.artists
     }
   },
 
@@ -103,6 +103,12 @@ export default {
   },
 
   cache: {
+		set (key, jsonData) {
+			localStorage.setItem(key, JSON.stringify(jsonData))
+		},
+		get (key) {
+			return JSON.parse(localStorage.getItem(key))
+		},
     save (key, jsonData, expirationMin=720) {
       let expirationMS = expirationMin * 60 * 1000
       let record = { value: JSON.stringify(jsonData), timestamp: new Date().getTime() + expirationMS }
