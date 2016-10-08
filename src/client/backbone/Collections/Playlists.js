@@ -14,9 +14,9 @@ class Playlists extends Backbone.Collection {
     this.reset()
     return new Promise((resolve, reject) => {
 
-      $.get(this.url).done(playlists => {
+      $.get(this.url).done(data => {
         // por cada elemento ejecutaremos addPlaylist
-        playlists.forEach(this.playlist, this)
+        data.playlists.forEach(this.addPlaylist, this)
         // al terminar retornamos success
         return resolve()
       }).error(err => reject(err))
@@ -24,8 +24,8 @@ class Playlists extends Backbone.Collection {
     })
   }
 
-  addPlaylist (album) {
-    // agregamos el playlist a la coleccion 
+  addPlaylist (playlist) {
+    // agregamos el playlist a la coleccion
     this.add(new Playlist(playlist))
   }
 
@@ -33,7 +33,7 @@ class Playlists extends Backbone.Collection {
     if (!this.length)
       return this.getPlaylists()
 
-    return Promise.resolve() 
+    return Promise.resolve()
   }
 }
 

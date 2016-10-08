@@ -21,6 +21,7 @@ import TopAlbumsRoute from 'src/client/backbone/Routes/TopAlbums'
 import SearchRoute from 'src/client/backbone/Routes/Search'
 import ProfileRoute from 'src/client/backbone/Routes/Profile'
 import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
+import { GetPlaylist, NewPlaylist } from 'src/client/backbone/Routes/Playlists'
 
 class Router extends Backbone.Router {
   get routes () {
@@ -44,6 +45,12 @@ class Router extends Backbone.Router {
     this.headerView = new HeaderView()
     this.homeView = new HomeView()
     Backbone.history.start({ root: '/', pushState: true })
+    this.events.on('playlist', () => {
+      return GetPlaylist()
+    })
+    this.events.on('playlist:new', (title) => {
+      return NewPlaylist(title)
+    })
   }
 
   initPlayer () {

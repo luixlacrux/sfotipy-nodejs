@@ -7,6 +7,7 @@ class Playlist extends Backbone.View {
 
   initialize () {
     this.listenTo(this.collection, 'add', this.addOne, this)
+    this.listenTo(this.collection, 'reset', this.render, this)
   }
 
   render () {

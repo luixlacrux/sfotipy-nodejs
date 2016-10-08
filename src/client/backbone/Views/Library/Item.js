@@ -21,10 +21,10 @@ class PlaylistItem extends Backbone.View {
     return this
   }
 
-  // add () {
-  //   Sfotipy.events.trigger('playlist:add', this.model)
-  //   return false
-  // }
+  add () {
+    Sfotipy.events.trigger('playlist:add', this.model)
+    return false
+  }
 }
 
 export default PlaylistItem
