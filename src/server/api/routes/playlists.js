@@ -1,4 +1,4 @@
-import { newPlaylist, getPlaylist } from 'src/server/lib/createPlaylist'
+import { newPlaylist, getPlaylist, detailPlaylist } from 'src/server/lib/createPlaylist'
 
 export default function (apiRoute, app) {
   app.route(`${apiRoute}/playlist`)
@@ -6,9 +6,7 @@ export default function (apiRoute, app) {
     // Create New PlayList
     .post((req, res) => {
       let data = {
-        // Estoy enviando 1 por defecto porque no esta activada la authenticacion
-        // userId: req.user.id  << este es el original.
-        userId: 1,
+        userId: req.user.id,
         title: req.body.title
       }
       newPlaylist(data)
@@ -16,12 +14,20 @@ export default function (apiRoute, app) {
         .catch(err => res.send(err))
     })
 
-    // Get PlayList
+    // Get PlayLists
     .get((req, res) => {
-      // let user = req.user.id << este es el original
-      let user = 1
+      let user = req.user.id
       getPlaylist(user)
         .then(data => res.json(data))
         .catch(err => res.send(err))
+    })
+
+  app.route(`${apiRoute}/playlist/:id`)
+    .get((req, res) => {
+      const id = req.params.id
+      console.log(id)
+      detailPlaylist(id)
+      .then(data => res.json(data))
+      .catch(err => res.send(err))
     })
 }

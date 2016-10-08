@@ -15,5 +15,5 @@ export default function (apiRoute, app) {
 
   playlistsRoutes(apiRoute, app)
 
-  usersRoutes(apiRoute, app)
+  songsRoutes(apiRoute, app)
 }

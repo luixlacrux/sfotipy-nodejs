@@ -1,4 +1,4 @@
-import { User, PlayList } from 'src/server/models'
+import { User, PlayList, Song } from 'src/server/models'
 
 function newPlaylist (playlist) {
   return new Promise((resolve, reject) => {
@@ -30,4 +30,18 @@ function getPlaylist (user_id) {
   })
 }
 
-export { newPlaylist, getPlaylist }
+function detailPlaylist (playlist_id) {
+  return new Promise((resolve, reject) => {
+    PlayList.findById(playlist_id).then((playlist) => {
+      playlist.getSong()
+      .then((songs) => {
+        resolve({ playlist, songs })
+      })
+    })
+    .catch(err => {
+      reject(`this is the error ${err}`)
+    })
+  })
+}
+
+export { newPlaylist, getPlaylist, detailPlaylist }
