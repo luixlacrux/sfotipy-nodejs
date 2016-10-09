@@ -1,19 +1,27 @@
-
 export default function (sequelize, DataTypes) {
   return sequelize.define('playlist', {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         primaryKey: true,
         allowNull: false,
-        autoIncrement: true,
         unique: true
     },
-    uid: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
-      primaryKey: true
-    },
     // title
-    title: DataTypes.STRING
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  },{
+    classMethods: {
+      guid: function () {
+        function s4() {
+          return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1)
+            .toUpperCase()
+        }
+        return s4() + s4() + s4() + s4() + s4()
+      }
+    }
   })
 }

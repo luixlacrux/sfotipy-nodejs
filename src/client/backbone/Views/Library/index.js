@@ -7,9 +7,10 @@ class PlaylistView extends Backbone.View {
 
   get events () {
     return {
+      'click': 'stopEvent',
       'click #showForm': 'showForm',
       'submit #form': 'newPlaylist',
-      'click .Share-close': 'close'
+      'click .Share-close': 'hide'
     }
   }
 
@@ -25,23 +26,31 @@ class PlaylistView extends Backbone.View {
   showForm (e) {
     let $form = this.$el.find('#form')
     let $btn = $(e.target)
-    $btn.css('display', 'none')
-    $form.css('display', 'block')
+    $btn.hide()
+    $form.show()
     $form.find('input').focus()
     return false
   }
 
   newPlaylist (e) {
-    let $form = this.$el.find('#form')
-    let text = $form.find('input').val()
-    Sfotipy.events.trigger('playlist:new', text)
+    let title = $('#form input').val()
+    Sfotipy.events.trigger('playlist:new', title)
     return false
   }
 
-  close (e) {
-    this.$el.css('right', '-80%')
-    return false
+  show () {
+    document.addEventListener('click', this.hide.bind(this))
+    this.$el.animate({ 'right': 0 }, 500)
   }
+
+  hide (ev) {
+    if (ev) ev.preventDefault()
+    document.removeEventListener('click', this.hide)
+    this.$el.animate({ 'right': '-100%' }, 500)
+    this.undelegateEvents()
+  }
+
+  stopEvent (ev) { ev.stopPropagation() }
 }
 
 export default PlaylistView

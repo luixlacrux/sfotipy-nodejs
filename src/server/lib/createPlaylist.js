@@ -4,6 +4,7 @@ function newPlaylist (playlist) {
   return new Promise((resolve, reject) => {
     PlayList.sync().then(() => {
       let data = {
+        id: PlayList.guid(),
         userId: playlist.userId,
         title: playlist.title
       }

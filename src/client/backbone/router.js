@@ -21,7 +21,7 @@ import TopAlbumsRoute from 'src/client/backbone/Routes/TopAlbums'
 import SearchRoute from 'src/client/backbone/Routes/Search'
 import ProfileRoute from 'src/client/backbone/Routes/Profile'
 import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
-import { GetPlaylist, NewPlaylist } from 'src/client/backbone/Routes/Playlists'
+import { Main, GetPlaylist, NewPlaylist } from 'src/client/backbone/Routes/Playlists'
 
 class Router extends Backbone.Router {
   get routes () {
@@ -39,6 +39,8 @@ class Router extends Backbone.Router {
   }
 
   init () {
+    // Iniciar eventos
+    this.initEvents()
     // Defino $playerMin
     this.$playerMin = $('#player-min')
     // Instancio la vista Home
@@ -49,9 +51,14 @@ class Router extends Backbone.Router {
       this.initPlayer()
     }
     Backbone.history.start({ root: '/', pushState: true })
+  }
+
+  initEvents () {
+    // Renderiza el formulario de playlist
     this.events.on('playlist', () => {
-      return GetPlaylist()
+      Main()
     })
+    // New Playlist
     this.events.on('playlist:new', (title) => {
       return NewPlaylist(title)
     })
