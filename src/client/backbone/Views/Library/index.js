@@ -25,8 +25,6 @@ class PlaylistView extends Backbone.View {
 
   showForm (e) {
     let $form = this.$el.find('#form')
-    let $btn = $(e.target)
-    $btn.hide()
     $form.show()
     $form.find('input').focus()
     return false
@@ -35,6 +33,7 @@ class PlaylistView extends Backbone.View {
   newPlaylist (e) {
     let title = $('#form input').val()
     Sfotipy.events.trigger('playlist:new', title)
+    this.$el.find('#form').hide().empty()
     return false
   }
 

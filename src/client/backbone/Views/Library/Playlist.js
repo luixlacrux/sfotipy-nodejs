@@ -17,7 +17,7 @@ class Playlist extends Backbone.View {
 
   addOne (playlist) {
     let playlistView = new PlaylistItem({ model: playlist })
-    this.$el.append(playlistView.render().el)
+    this.$el.prepend(playlistView.render().el)
   }
 }
 

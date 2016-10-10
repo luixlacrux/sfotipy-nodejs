@@ -22,7 +22,7 @@ class PlaylistItem extends Backbone.View {
   }
 
   add () {
-    Sfotipy.events.trigger('playlist:add', this.model)
+    Sfotipy.events.trigger('playlist:add', this.model.toJSON())
     return false
   }
 }

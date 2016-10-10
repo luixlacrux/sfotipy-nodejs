@@ -3,13 +3,7 @@ import { PlayList, Song } from 'src/server/models'
 function newSong (song) {
   return new Promise((resolve, reject) => {
     Song.sync().then(() => {
-      let data = {
-        playlistId: song.playlistId,
-        name: song.name,
-        artist: song.artist,
-        song: song.song
-      }
-      Song.create(data)
+      Song.create(song)
         .then((data) => {
           resolve(`success, song created, ${data}`)
         })

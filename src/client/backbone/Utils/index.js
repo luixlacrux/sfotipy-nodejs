@@ -1,14 +1,14 @@
 function secondsToTime (s) {
 	  function addZ(n) {
-	    return (n<10? '0':'') + n;
+	    return (n<10? '0':'') + n
 	  }
-	  var ms = s % 1000;
-	  s = (s - ms) / 1000;
-	  var secs = s % 60;
-	  s = (s - secs) / 60;
-	  var mins = s % 60;
+	  let ms = s % 1000
+	  s = (s - ms) / 1000
+	  let secs = s % 60
+	  s = (s - secs) / 60
+	  let mins = s % 60
 
-	  return addZ(mins) + ':' + addZ(secs);
+	  return addZ(mins) + ':' + addZ(secs)
 }
 
 export default {
@@ -70,6 +70,7 @@ export default {
       id: song.id,
       name: song.name,
       index: index + 1,
+			duration: secondsToTime(song.duration_ms),
       source: song.preview_url,
       album: song.album.name,
       album_id: song.album.id,

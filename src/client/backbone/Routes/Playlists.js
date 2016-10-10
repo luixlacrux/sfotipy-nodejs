@@ -4,6 +4,7 @@ import $ from 'jquery'
 import PlaylistCollection from 'src/client/backbone/Collections/Playlists'
 // Models
 import PlaylistModel from 'src/client/backbone/Models/Playlist'
+import SongModel from 'src/client/backbone/Models/Song'
 // Views
 import MainPlayList from 'src/client/backbone/Views/Library/index'
 import PlaylistView from 'src/client/backbone/Views/Library/Playlist'
@@ -29,5 +30,12 @@ export function NewPlaylist (title) {
   const playlistModel = new PlaylistModel({ url: `/api/playlist/` })
   playlistModel.newPlaylist(title).then(() => {
     GetPlaylist()
+  })
+}
+
+export function AddSong (playlist, song) {
+  const modelSong = new SongModel({ url: `/api/song/` })
+  modelSong.addSongToPlaylist(playlist, song).then(() => {
+    console.log(`${song.name} saved in ${playlist.title}`)
   })
 }

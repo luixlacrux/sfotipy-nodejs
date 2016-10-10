@@ -6,11 +6,13 @@ export default function (apiRoute, app) {
     // Guarda a new song
     .post((req, res) => {
       let data = {
-        userId: req.user.id,
-        playlistId: req.body.id,
-        name: req.body.name,
-        artist: req.body.artist,
-        song: req.body.song
+        playlistId: req.body.playlist.id,
+        id_song: req.body.song.id,
+        name: req.body.song.name,
+        song: req.body.song.source,
+        duration: req.body.song.duration,
+        cover: req.body.song.cover,
+        artist: req.body.song.artists[0].name
       }
       newSong(data)
         .then(data => res.json(data))
