@@ -10,6 +10,7 @@ const sequelize = new Sequelize(configDB.url, {
 const User = sequelize.import('./user.js')
 const PlayList = sequelize.import('./playlist.js')
 const Song = sequelize.import('./song.js')
+const Album = sequelize.import('./album.js')
 
 // Relation of PlayList
 User.hasMany(PlayList, {
@@ -25,6 +26,13 @@ PlayList.hasMany(Song, {
 })
 Song.belongsTo(PlayList, { as: 'playlist' })
 
+// Ralation of Album
+User.hasMany(Album, {
+  as: 'Albums',
+  onDelete: 'cascade'
+})
+Album.belongsTo(User, { as: 'user' })
+
 sequelize.sync()
 
-export { User, PlayList, Song }
+export { User, PlayList, Song, Album }

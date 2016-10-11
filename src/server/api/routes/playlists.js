@@ -25,7 +25,6 @@ export default function (apiRoute, app) {
   app.route(`${apiRoute}/playlist/:id`)
     .get((req, res) => {
       const id = req.params.id
-      console.log(id)
       detailPlaylist(id)
       .then(data => res.json(data))
       .catch(err => res.send(err))

@@ -2,6 +2,7 @@ import spotifyRoutes from 'src/server/api/routes/spotify'
 import playlistsRoutes from 'src/server/api/routes/playlists'
 import songsRoutes from 'src/server/api/routes/songs'
 import usersRoutes from 'src/server/api/routes/users'
+import albumsRoutes from 'src/server/api/routes/albums'
 import { requestAuthenticated } from 'src/server/lib/middlewares'
 
 export default function (apiRoute, app) {
@@ -16,4 +17,6 @@ export default function (apiRoute, app) {
   playlistsRoutes(apiRoute, app)
 
   songsRoutes(apiRoute, app)
+
+  albumsRoutes(apiRoute, app)
 }
