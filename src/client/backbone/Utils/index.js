@@ -56,13 +56,12 @@ export default {
   },
 
   parseAlbumArtist (album, artist) {
-		const images = album.images
     return {
       id: album.id,
       name: album.name,
 			artist: artist ? artist.name : album.artist,
       type: album.album_type ? album.album_type : album.type,
-      cover: images.length ? images[1].url || images[0].url : null
+      cover: album.images ? album.images[1].url || album.images[0].url : album.cover
     }
   },
 

@@ -23,6 +23,7 @@ import ProfileRoute from 'src/client/backbone/Routes/Profile'
 import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
 import { Main, GetPlaylist, NewPlaylist, AddSong } from 'src/client/backbone/Routes/Playlists'
 import { saveAlbum, deleteAlbum } from 'src/client/backbone/Routes/saveAlbum'
+import { albumsChecker } from 'src/client/backbone/Routes/Checker'
 
 class Router extends Backbone.Router {
   get routes () {
@@ -72,7 +73,7 @@ class Router extends Backbone.Router {
     this.events.on('album:save', (album) => {
       saveAlbum(album)
     })
-
+    // Delete album
     this.events.on('album:delete', (album) => {
       deleteAlbum(album)
     })
@@ -118,10 +119,12 @@ class Router extends Backbone.Router {
   }
 
   ArtistRoute (id) {
+    albumsChecker()
     return ArtistRoute(id)
   }
 
   AlbumRoute (id) {
+    albumsChecker()
     return AlbumRoute(id)
   }
 
