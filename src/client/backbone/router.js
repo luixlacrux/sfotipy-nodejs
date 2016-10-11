@@ -22,6 +22,7 @@ import SearchRoute from 'src/client/backbone/Routes/Search'
 import ProfileRoute from 'src/client/backbone/Routes/Profile'
 import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
 import { Main, GetPlaylist, NewPlaylist, AddSong } from 'src/client/backbone/Routes/Playlists'
+import { saveAlbum, deleteAlbum } from 'src/client/backbone/Routes/saveAlbum'
 
 class Router extends Backbone.Router {
   get routes () {
@@ -66,6 +67,14 @@ class Router extends Backbone.Router {
     // Add song to playlist
     this.events.on('playlist:add', (playlist) => {
       return AddSong(playlist, Sfotipy.currentSong)
+    })
+    // Save album
+    this.events.on('album:save', (album) => {
+      saveAlbum(album)
+    })
+
+    this.events.on('album:delete', (album) => {
+      deleteAlbum(album)
     })
   }
 

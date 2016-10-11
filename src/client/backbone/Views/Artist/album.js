@@ -26,7 +26,7 @@ class AlbumView extends Backbone.View {
   }
 
   save (){
-    console.log('no save :)')
+    Sfotipy.events.trigger('album:save', this.model.toJSON())
     return false
   }
 

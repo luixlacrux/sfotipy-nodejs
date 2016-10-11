@@ -1,4 +1,3 @@
-import Backbone from 'backbone'
 import $ from 'jquery'
 import utils from 'src/client/backbone/Utils'
 // Views
@@ -42,10 +41,15 @@ export default async function (id) {
 
   // Agregamos cada album a la collection
   // definimos la vista y renderizamos
-  data.albums.items.forEach(albums.addAlbumArtist, albums)
+  data.albums.items.forEach(addAlbum, this)
   const albumsArtistView = new AlbumsArtistView({ collection: albums })
   albumsArtistView.render()
+
+  function addAlbum(album) {
+    albums.addAlbumArtist(album, data.info)
+  }
 }
+
 
 async function getData (id) {
   const url = `/api/artist/${id}`

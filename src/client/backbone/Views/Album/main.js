@@ -10,6 +10,7 @@ class AlbumView extends Backbone.View {
       'click .btn-save': 'save',
       'click .btn-play': 'play',
       'click .btn-more': 'more',
+      'click .btn-unfollowing': 'unfollowing',
       'click .description a': 'artist',
     }
   }
@@ -38,7 +39,21 @@ class AlbumView extends Backbone.View {
     return this
   }
 
-  save () {
+  save (e) {
+    Sfotipy.events.trigger('album:save', this.model.toJSON())
+    let $btn = $(e.target)
+    $btn.text('Drop')
+    $btn.removeClass('btn-save')
+    $btn.addClass('btn-unfollowing')
+    return false
+  }
+
+  unfollowing (e) {
+    let $btn = $(e.target)
+    $btn.text('Save')
+    $btn.removeClass('btn-unfollowing')
+    $btn.addClass('btn-save')
+    Sfotipy.events.trigger('album:delete', this.model.toJSON())
     return false
   }
 

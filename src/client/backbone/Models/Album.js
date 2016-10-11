@@ -47,6 +47,27 @@ class Album extends Backbone.Model {
 
     return { duration: utils.countSongsTime(time) }
   }
+
+  saveAlbum (album) {
+    return new Promise((resolve, reject) => {
+      $.post(this.url, { album }).done((data) => {
+        console.log(data)
+        return resolve()
+      }).error((err) => reject(err))
+    })
+  }
+
+  deleteAlbum () {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        url: this.url,
+        type: 'DELETE',
+        success: (result) => {
+          return resolve()
+        }
+      })
+    })
+  }
 }
 
 export default Album
