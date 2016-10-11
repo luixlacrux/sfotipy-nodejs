@@ -37,5 +37,8 @@ export function AddSong (playlist, song) {
   const modelSong = new SongModel({ url: `/api/song/` })
   modelSong.addSongToPlaylist(playlist, song).then(() => {
     console.log(`${song.name} saved in ${playlist.title}`)
+    // Ocultar la vista de playlist
+    let main = new MainPlayList()
+    main.hide()
   })
 }
