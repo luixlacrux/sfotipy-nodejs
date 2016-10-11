@@ -26,11 +26,11 @@ function getAlbums (user_id) {
   })
 }
 
-function deleteAlbum (album_id) {
+function deleteAlbum (id) {
   return new Promise((resolve, reject) => {
     Album.destroy({
       where: {
-        album_id: album_id
+        id: id
       }
     }).then(result => {
       resolve(result)

@@ -1,7 +1,8 @@
 export default function (sequelize, DataTypes) {
   return sequelize.define('album', {
-    album_id: {
+    id: {
       type: DataTypes.STRING,
+      primaryKey: true,
       unique: true,
       allowNull: false
     },
