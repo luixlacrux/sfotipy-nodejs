@@ -34,7 +34,18 @@ class Album extends Backbone.Model {
   }
 
   setAlbum (album) {
-    this.set(utils.parseAlbum(album))
+    const duration = this.countSongsTime(album.tracks.items)
+
+    this.set(
+      Object.assign(utils.parseAlbum(album), duration)
+    )
+  }
+
+  countSongsTime (songs) {
+    let time = 0
+    songs.forEach(song => time += song.duration_ms)
+
+    return { duration: utils.countSongsTime(time) }
   }
 }
 

@@ -27,6 +27,7 @@ class AlbumView extends Backbone.View {
       type: this.MaysPrimera(data.type),
       total: data.total,
       date: data.date,
+      duration: data.duration,
       copyrights: {
         c: data.copyrights[0],
         p: data.copyrights[1]

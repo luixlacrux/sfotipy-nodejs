@@ -7,11 +7,26 @@ function secondsToTime (s) {
 	  let secs = s % 60
 	  s = (s - secs) / 60
 	  let mins = s % 60
+		let hrs = (s - mins) / 60
+
+		if (hrs) {
+			return `${addZ(hrs)}:${addZ(mins)}:${addZ(secs)}`
+		}
 
 	  return addZ(mins) + ':' + addZ(secs)
 }
 
 export default {
+	countSongsTime (ms) {
+		let time = secondsToTime(ms).split(':')
+
+		if (time.length === 3) {
+			return `${time[0]} hr ${time[1]} min`
+		}
+
+		return `${time[0]} min`
+	},
+
   validPassword (passwd) {
     return new Promise((resolve, reject) => {
       if (!passwd.old || !passwd.new || !passwd.confirm)
@@ -56,6 +71,7 @@ export default {
       name: song.name,
       index: song.track_number,
       duration: secondsToTime(song.duration_ms),
+			duration_ms: song.duration_ms,
       source: song.preview_url,
       album: album.get('name'),
       album_id: album.get('id'),
@@ -71,6 +87,7 @@ export default {
       name: song.name,
       index: index + 1,
 			duration: secondsToTime(song.duration_ms),
+			duration_ms: song.duration_ms,
       source: song.preview_url,
       album: song.album.name,
       album_id: song.album.id,
