@@ -237,6 +237,7 @@ text-wrapper()
         text-align center
 
 .song
+    background #818181
     display inline-block
     font-size 1rem
     margin-bottom 1em
@@ -245,12 +246,24 @@ text-wrapper()
     text-align left
     vertical-align top
     width 8rem
-    cursor pointer
     position relative
-    &:hover
+    .name
+    .author
+      cursor pointer
+      position initial
+      left 10px
+
+    .name
+      color white
+      font-size 15px
+    .author
+      color rgba(255, 255, 255, 0.81)
+      bottom 20px
+      font-size .8em
+    .image:hover
       .button
         display block
-      .image img
+      img
         transform scale(1.2)
     .image
       height: 128px
@@ -260,7 +273,8 @@ text-wrapper()
       img
         transition all .5s ease
     .button
-      z-index: 2
+      cursor pointer
+      z-index 2
       display none
       position absolute
       width 128px
@@ -371,6 +385,10 @@ text-wrapper()
 @media screen and (min-width:1000px)
     body
         background gris_mas_claro
+    .song
+      .name
+      .author
+        position absolute
 
     @import 'home/desktop.styl'
     @import 'header/desktop.styl'
@@ -380,3 +398,4 @@ text-wrapper()
     @import 'player/desktop1000.styl'
     @import 'artist/desktop1000.styl'
     @import 'album/desktop1000.styl'
+    @import 'library/desktop1000.styl'

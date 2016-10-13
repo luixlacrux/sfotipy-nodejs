@@ -56,10 +56,12 @@ export default {
   },
 
   parseAlbumArtist (album, artist) {
+		if (artist == 0) artist = undefined
     return {
-      id: album.id,
+      id: album.id_album ? album.id_album : album.id,
       name: album.name,
-			artist: artist ? artist.name : album.artist,
+			id_artist: artist ? artist.id : album.id_artist,
+			artist: artist ? artist.name || album.artist : album.artist,
       type: album.album_type ? album.album_type : album.type,
       cover: album.images ? album.images[1].url || album.images[0].url : album.cover
     }

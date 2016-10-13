@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/handlebars/Library/main.hbs'
+import template from 'src/client/handlebars/LibraryMin/main.hbs'
 
 class PlaylistView extends Backbone.View {
   get el () { return $('.Share') }

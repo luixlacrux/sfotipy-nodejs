@@ -6,8 +6,8 @@ import PlaylistCollection from 'src/client/backbone/Collections/Playlists'
 import PlaylistModel from 'src/client/backbone/Models/Playlist'
 import SongModel from 'src/client/backbone/Models/Song'
 // Views
-import MainPlayList from 'src/client/backbone/Views/Library/index'
-import PlaylistView from 'src/client/backbone/Views/Library/Playlist'
+import MainPlayList from 'src/client/backbone/Views/LibraryMin/index'
+import PlaylistView from 'src/client/backbone/Views/LibraryMin/Playlist'
 
 export function Main () {
   let main = new MainPlayList()

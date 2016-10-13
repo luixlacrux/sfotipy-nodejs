@@ -10,6 +10,7 @@ export default function (app, passport) {
   app.get('/home/:action', isNotLoggedIn, renderHome)
   app.get('/@:username', isLoggedIn, renderIndex)
   app.get('/@:username/edit', isLoggedIn, renderIndex)
+  app.get('/@:username/library/:something', isLoggedIn, renderIndex)
   app.get('/album/:name', isLoggedIn, renderIndex)
   app.get('/play', isLoggedIn, renderIndex)
   app.get('/album', isLoggedIn, renderIndex)

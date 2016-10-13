@@ -6,11 +6,7 @@ export default function (apiRoute, app) {
     .post((req, res) => {
       let data = {
         userId: req.user.id,
-        id: req.body.album.id,
-        name: req.body.album.name,
-        artist: req.body.album.artist,
-        cover: req.body.album.cover,
-        type: req.body.album.type
+        album: req.body.album.id
       }
       saveAlbum(data)
         .then(data => res.json(data))

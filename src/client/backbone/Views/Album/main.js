@@ -17,6 +17,15 @@ class AlbumView extends Backbone.View {
 
   initialize () {
     this.listenTo(this.model, 'change', this.render, this)
+    // Checker of albums
+    // Sfotipy.events.on('albums:saved', (id) => {
+    //   if (id == this.model.toJSON().id) {
+    //     this.$el.find('.btn-save')
+    //       .text('Saved')
+    //       .removeClass('btn-save')
+    //       .addClass('btn-saved')
+    //   }
+    // })
   }
 
   render () {

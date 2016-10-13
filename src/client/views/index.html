@@ -41,8 +41,14 @@
         <li class="item">
           <a href="/@{{ user.username }}/settings">Settings</a>
         </li>
-        <li class="item">
-          <a href="/@{{ user.username }}/playlists">Playlist</a>
+        <li class="item" id="btn-library">
+          <a href="#" class="library-menu">Your Music</a>
+          <ul class="submenu library">
+            <li class="subItem"><a href="/@{{ user.username }}/library/artists">Artist</a></li>
+            <li class="subItem"><a href="/@{{ user.username }}/library/albums">Albums</a></li>
+            <li class="subItem"><a href="/@{{ user.username }}/library/playlists">Playlist</a></li>
+            <li class="subItem"><a href="/@{{ user.username }}/library/musics">Music</a></li>
+          </ul>
         </li>
         <li class="item">
           <a href="/logout">Logout</a>

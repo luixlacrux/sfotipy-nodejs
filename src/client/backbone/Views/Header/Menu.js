@@ -8,6 +8,7 @@ class Menu extends Backbone.View {
     return {
       'click': 'stopEvent',
       'click .item': 'navigate',
+      'click .library-menu': 'libraryMenu',
       'submit .search-mobile': 'search'
     }
   }
@@ -47,6 +48,13 @@ class Menu extends Backbone.View {
     const query = this.$input.val().replace(/\s/g, '+')
     app.navigate(`search/${query}`, { trigger: true })
     this.hide()
+  }
+
+  libraryMenu (e) {
+    $(e.target)
+      .parent().css('background', 'white')
+      .find('.submenu').css('display', 'block')
+    return false
   }
 }
 

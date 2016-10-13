@@ -1,7 +1,7 @@
-<div class="button">
-  <button class="icon-play"></button>
-</div>
 <figure class="image">
+  <div class="button">
+    <button class="icon-play"></button>
+  </div>
   <img src="{{cover}}" width="128" height="128" alt="{{name}} - {{author.name}}">
 </figure>
 <p class="name">
@@ -9,12 +9,6 @@
 </p>
 <p class="author">
   <span class="slug">
-    {{# each artists }}
-      {{# if @last }}
-        <span data-href="/artist/{{ this.name }}/{{ this.id }}">{{ this.name }}</span>
-      {{ else }}
-        <span data-href="/artist/{{ this.name }}/{{ this.id }}">{{ this.name }},</span>
-      {{/ if}}
-    {{/ each }}
+    {{ artist.name }}
   </span>
 </p>

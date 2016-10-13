@@ -6,7 +6,7 @@ export function albumsChecker () {
   albums.getAlbumsSaved().then(() => {
     albums.forEach(iterate, this)
     function iterate (album) {
-      Sfotipy.events.trigger('following', album.id)
+      Sfotipy.events.trigger('albums:saved', album.id)
     }
   })
 }
