@@ -24,7 +24,7 @@ import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
 import { Main, GetPlaylist, NewPlaylist, AddSong } from 'src/client/backbone/Routes/Playlists'
 import { saveAlbum, deleteAlbum } from 'src/client/backbone/Routes/saveAlbum'
 import { albumsChecker } from 'src/client/backbone/Routes/Checker'
-import { AlbumsLibrary } from 'src/client/backbone/Routes/Library'
+import { AlbumsLibrary, PlaylistsLibrary } from 'src/client/backbone/Routes/Library'
 
 class Router extends Backbone.Router {
   get routes () {
@@ -38,6 +38,7 @@ class Router extends Backbone.Router {
       '@:username': 'ProfileRoute',
       '@:username/edit': 'ProfileEditRoute',
       '@:username/library/albums': 'LibraryAlbums',
+      '@:username/library/playlists': 'LibraryPlaylists',
       '*notFound': 'notFound',
     }
   }
@@ -150,6 +151,11 @@ class Router extends Backbone.Router {
   LibraryAlbums (username) {
     this.headerView.setTitle('Your Music')
     return AlbumsLibrary(username)
+  }
+
+  LibraryPlaylists (username) {
+    this.headerView.setTitle('Your Music')
+    return PlaylistsLibrary(username)
   }
 
   LoginOrSignIn (action) {

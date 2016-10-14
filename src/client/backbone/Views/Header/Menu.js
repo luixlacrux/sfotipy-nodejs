@@ -50,10 +50,9 @@ class Menu extends Backbone.View {
     this.hide()
   }
 
-  libraryMenu (e) {
-    $(e.target)
-      .parent().css('background', 'white')
-      .find('.submenu').css('display', 'block')
+  libraryMenu (ev) {
+    $(ev.target).parent()
+      .find('.submenu').slideToggle()
     return false
   }
 }

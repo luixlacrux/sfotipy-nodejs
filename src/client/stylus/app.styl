@@ -237,7 +237,7 @@ text-wrapper()
         text-align center
 
 .song
-    background #818181
+    background transparent
     display inline-block
     font-size 1rem
     margin-bottom 1em
@@ -251,13 +251,12 @@ text-wrapper()
     .author
       cursor pointer
       position initial
-      left 10px
+      color gris_oscuro
+      left 5px
 
     .name
-      color white
       font-size 15px
     .author
-      color rgba(255, 255, 255, 0.81)
       bottom 20px
       font-size .8em
     .image:hover
@@ -385,10 +384,6 @@ text-wrapper()
 @media screen and (min-width:1000px)
     body
         background gris_mas_claro
-    .song
-      .name
-      .author
-        position absolute
 
     @import 'home/desktop.styl'
     @import 'header/desktop.styl'

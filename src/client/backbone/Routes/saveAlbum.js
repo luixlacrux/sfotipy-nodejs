@@ -7,7 +7,7 @@ export function saveAlbum (album) {
     console.log(`${album.name} saved :)`)
   })
   .catch((err) => {
-    console.log(`${album.name} not saved :(`)
+    console.log(`${err.status}\n${album.name} not saved :(`)
   })
 }
 
