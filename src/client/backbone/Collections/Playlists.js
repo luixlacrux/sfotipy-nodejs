@@ -15,8 +15,11 @@ class Playlists extends Backbone.Collection {
     return new Promise((resolve, reject) => {
 
       $.get(this.url).done(data => {
+        let playlist = data.playlists.sort((a, b) => {
+          return (b.title < a.title)
+        })
         // por cada elemento ejecutaremos addPlaylist
-        data.playlists.forEach(this.addPlaylist, this)
+        playlist.forEach(this.addPlaylist, this)
         // al terminar retornamos success
         return resolve()
       }).error(err => reject(err))
