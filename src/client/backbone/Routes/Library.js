@@ -8,16 +8,16 @@ import PlaylistsCollections from 'src/client/backbone/Collections/Playlists'
 // Views
 import AlbumsListView from 'src/client/backbone/Views/Library/Albums/albums'
 import PlaylistsView from 'src/client/backbone/Views/Library/Playlists/playlists'
+import LibraryView from 'src/client/backbone/Views/Library/main.js'
 
-function init (name) {
+function init (data) {
   $('#player').hide()
-  $('main#app')
-    .empty()
-    .html(template({ name }))
+  const viewLibrary = new LibraryView({ model: data })
+  viewLibrary.render()
 }
 
 export function AlbumsLibrary (username) {
-  init('Albums')
+  init({type: 'Album', something: 'Artist'})
   const albums = new AlbumsCollections({ url: '/api/following/albums' })
   albums.getAlbumsSaved().then(() => {
 
@@ -32,7 +32,7 @@ export function AlbumsLibrary (username) {
 }
 
 export function PlaylistsLibrary (username) {
-  init('Playlist')
+  init({type: 'Playlist', something: 'date of create'})
   const playlists = new PlaylistsCollections({ url: '/api/playlist' })
   playlists.getPlaylists().then(() => {
     const view = new PlaylistsView({ collection: playlists })
