@@ -149,12 +149,12 @@ class Router extends Backbone.Router {
   }
 
   LibraryAlbums (username) {
-    this.headerView.setTitle('Your Music')
+    this.headerView.setTitle('Your Music / Albums')
     return AlbumsLibrary(username)
   }
 
   LibraryPlaylists (username) {
-    this.headerView.setTitle('Your Music')
+    this.headerView.setTitle('Your Music / Playlists')
     return PlaylistsLibrary(username)
   }
 
