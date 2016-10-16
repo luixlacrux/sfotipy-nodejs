@@ -3,7 +3,7 @@
     <button class="icon-play"></button>
   </div>
   {{#if cover}}
-    <img src="{{cover}}" width="128" height="128" alt="{{name}} - {{author.name}}">     
+    <img src="{{cover}}" width="128" height="128" alt="{{name}} - {{author.name}}">
   {{/if}}
 </figure>
 <p class="name">
@@ -14,7 +14,7 @@
     {{#if date}}
       {{date.day}} / {{date.month}} / {{date.year}}
     {{else}}
-      {{ artist.name }}
+      {{ artist }}
     {{/if}}
   </span>
 </p>

@@ -40,11 +40,11 @@ export default {
   },
 
   parseAlbum (album) {
-		const images = album.images
+		const images = album.images || []
     return {
       id: album.id,
       name: album.name,
-      cover: images.length ? images[1].url || images[0].url : null,
+      cover: images.length ? images[1].url || images[0].url : album.cover,
       artists: album.artists,
       songs: album.tracks ? album.tracks.items : null,
       album: album.album_type,
@@ -56,7 +56,7 @@ export default {
   },
 
   parseAlbumArtist (album, artist) {
-		if (artist == 0) artist = undefined
+		if (Number.isInteger(artist)) artist = undefined
     return {
       id: album.id_album ? album.id_album : album.id,
       name: album.name,

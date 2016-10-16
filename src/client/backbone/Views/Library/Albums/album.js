@@ -19,13 +19,7 @@ class AlbumView extends Backbone.View {
   }
 
   render () {
-    let data = this.model.toJSON()
-    let album = {
-      cover: data.cover,
-      artist: data.artists[0],
-      name: data.name,
-      total: data.total,
-    }
+    let album = this.model.toJSON()
     let html = template(album)
     this.$el.html(html)
     return this
@@ -46,7 +40,7 @@ class AlbumView extends Backbone.View {
   }
 
   artist (e) {
-    let id = this.model.toJSON().artists[0].id
+    let id = this.model.toJSON().id_artist
     app.navigate(`/artist/${id}`, { trigger:true })
     return false
   }

@@ -7,8 +7,8 @@ class AlbumView extends Backbone.View {
   get el () { return $('main#app') }
   get events () {
     return {
-      'click .btn-save': 'save',
-      'click .btn-saved': 'delete',
+      'click .btn-save-album': 'save',
+      'click .btn-saved-album': 'delete',
       'click .btn-play': 'play',
       'click .btn-more': 'more',
       'click .description a': 'artist',
@@ -18,14 +18,14 @@ class AlbumView extends Backbone.View {
   initialize () {
     this.listenTo(this.model, 'change', this.render, this)
     // Checker of albums
-    // Sfotipy.events.on('albums:saved', (id) => {
-    //   if (id == this.model.toJSON().id) {
-    //     this.$el.find('.btn-save')
-    //       .text('Saved')
-    //       .removeClass('btn-save')
-    //       .addClass('btn-saved')
-    //   }
-    // })
+    Sfotipy.events.on('albums:saved', (id) => {
+      if (id == this.model.toJSON().id) {
+        this.$el.find('.btn-save-album')
+          .text('Saved')
+          .removeClass('btn-save-album')
+          .addClass('btn-saved-album')
+      }
+    })
   }
 
   render () {
@@ -52,8 +52,8 @@ class AlbumView extends Backbone.View {
     Sfotipy.events.trigger('album:save', this.model.toJSON())
     $(e.target)
       .text('Saved')
-      .removeClass('btn-save')
-      .addClass('btn-saved')
+      .removeClass('btn-save-album')
+      .addClass('btn-saved-album')
     return false
   }
 
@@ -61,8 +61,8 @@ class AlbumView extends Backbone.View {
     Sfotipy.events.trigger('album:delete', this.model.toJSON())
     $(e.target)
       .text('Save')
-      .removeClass('btn-saved')
-      .addClass('btn-save')
+      .removeClass('btn-saved-album')
+      .addClass('btn-save-album')
     return false
   }
 

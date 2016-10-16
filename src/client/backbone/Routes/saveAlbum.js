@@ -1,7 +1,16 @@
 import $ from 'jquery'
 import AlbumModel from 'src/client/backbone/Models/Album'
 
-export function saveAlbum (album) {
+export function saveAlbum (data) {
+  let artist = data.artists ? data.artists[0] : data.artist
+  let album = {
+    id: data.id,
+    name: data.name,
+    artist: artist.name ? artist.name : artist,
+    id_artist: artist.id ? artist.id : data.id_artist,
+    cover: data.cover,
+    type: data.type
+  }
   const modelAlbum = new AlbumModel({ url: `/api/following/albums` })
   modelAlbum.saveAlbum(album).then(() => {
     console.log(`${album.name} saved :)`)
