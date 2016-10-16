@@ -7,8 +7,8 @@ import { requestAuthenticated } from 'src/server/lib/middlewares'
 
 export default function (apiRoute, app) {
   // Desactive la authenticacion para poder usar las api derectamente desde un cliente de REST
-  // app.all(`${apiRoute}/*`, requestAuthenticated)
-  app.all(`${apiRoute}/*`)
+  app.all(`${apiRoute}/*`, requestAuthenticated)
+  // app.all(`${apiRoute}/*`)
   // set endpoints to client of spotify
   spotifyRoutes(apiRoute, app)
   // set endpoints to User's

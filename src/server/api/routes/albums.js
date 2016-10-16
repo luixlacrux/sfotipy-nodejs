@@ -4,11 +4,16 @@ export default function (apiRoute, app) {
   app.route(`${apiRoute}/following/albums`)
     // save album
     .post((req, res) => {
+      let user = req.user
       let data = {
-        userId: req.user.id,
-        album: req.body.album.id
+        id: req.body.album.id,
+        name: req.body.album.name,
+        artist: req.body.album.artist,
+        id_artist: req.body.album.id_artist,
+        cover: req.body.album.cover,
+        type: req.body.album.type
       }
-      saveAlbum(data)
+      saveAlbum(data, user)
         .then(data => res.json(data))
         .catch(err => res.send(err))
     })
@@ -23,8 +28,9 @@ export default function (apiRoute, app) {
 
   app.route(`${apiRoute}/following/album/:id`)
     .delete((req, res) => {
+      let user = req.user.id
       let album = req.params.id
-      deleteAlbum(album)
+      deleteAlbum(album, user)
         .then(data => res.json(data))
         .catch(err => res.send(err))
     })

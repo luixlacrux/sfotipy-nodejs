@@ -27,11 +27,8 @@ PlayList.hasMany(Song, {
 Song.belongsTo(PlayList, { as: 'playlist' })
 
 // Ralation of Album
-User.hasMany(Album, {
-  as: 'Albums',
-  onDelete: 'cascade'
-})
-Album.belongsTo(User, { as: 'user' })
+User.belongsToMany(Album, { as: 'Album', through: 'follow_albums' })
+Album.belongsToMany(User, { as: 'User', through: 'follow_albums' })
 
 sequelize.sync()
 

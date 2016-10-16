@@ -2,41 +2,29 @@ import { User, Album } from 'src/server/models'
 import Spotify from 'spotify-finder'
 const client = new Spotify()
 
-function saveAlbum (album) {
+function saveAlbum (album, user) {
   return new Promise((resolve, reject) => {
     Album.sync().then(() => {
-      Album.create(album)
-        .then((data) => {
-          resolve(`success, album saved, ${data}`)
-        })
-        .catch((err) => {
-          reject(`this is the error ${err}`)
-        })
+      Album.findOrCreate({
+        where: {id: album.id},
+        defaults: album
+      }).spread((album, created) => {
+        user.addAlbum(album)
+          .then(() => {
+            return resolve('album saved :)')
+          })
+          .catch((err) => reject(err))
+      })
     })
   })
 }
 
 function getAlbums (user_id) {
-  let ids = ''
   return new Promise((resolve, reject) => {
     User.findById(user_id).then(user => {
-      user.getAlbums()
+      user.getAlbum()
         .then((albums) => {
-          albums.forEach((album) => {
-            ids += `${album.album},`
-          })
-          ids = ids.slice(0, -1)
-          if (ids) {
-            client.getAlbums(ids)
-              .then(data => {
-                let albums = data.albums
-                resolve({ user, albums })
-              })
-          }
-          else {
-            let albums = []
-            return resolve({ user, albums })
-          }
+          return resolve({ user, albums })
         })
     })
     .catch((err) => {
@@ -45,18 +33,17 @@ function getAlbums (user_id) {
   })
 }
 
-function deleteAlbum (id) {
+function deleteAlbum (albumId, userId) {
   return new Promise((resolve, reject) => {
-    Album.destroy({
-      where: {
-        album: id
-      }
-    }).then(result => {
-      resolve(result)
-    })
-    .catch((err) => {
-      reject(err)
-    })
+    User.findById(userId)
+      .then((user) => {
+        Album.findById(albumId)
+          .then((album) => {
+            user.removeAlbum(album)
+            return resolve()
+          })
+          .catch((err) => reject(`this is error ${err}`))
+      })
   })
 }
 
