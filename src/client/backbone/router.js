@@ -24,7 +24,7 @@ import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
 import { Main, GetPlaylist, NewPlaylist, AddSong } from 'src/client/backbone/Routes/Playlists'
 import { saveAlbum, deleteAlbum } from 'src/client/backbone/Routes/saveAlbum'
 import { followArtist, unfollowArtist } from 'src/client/backbone/Routes/followArtist'
-import { albumsChecker } from 'src/client/backbone/Routes/Checker'
+import { albumsChecker, artistsChecker } from 'src/client/backbone/Routes/Checker'
 import { AlbumsLibrary, PlaylistsLibrary, ArtistsLibrary } from 'src/client/backbone/Routes/Library'
 
 class Router extends Backbone.Router {
@@ -86,6 +86,10 @@ class Router extends Backbone.Router {
     this.events.on('artist:save', (artist) => {
       followArtist(artist)
     })
+    // Unfollowing Artist
+    this.events.on('artist:delete', (artist) => {
+      unfollowArtist(artist)
+    })
   }
 
   initPlayer () {
@@ -129,6 +133,7 @@ class Router extends Backbone.Router {
 
   ArtistRoute (id) {
     albumsChecker()
+    artistsChecker()
     return ArtistRoute(id)
   }
 

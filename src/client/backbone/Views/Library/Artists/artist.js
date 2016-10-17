@@ -8,7 +8,7 @@ class ArtistView extends Backbone.View {
   get className() { return 'song' }
   get events () {
     return {
-      'click .author': 'seeArtist'
+      'click .name': 'seeArtist'
       }
   }
 

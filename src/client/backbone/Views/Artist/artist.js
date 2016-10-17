@@ -8,12 +8,24 @@ class ViewArtistView extends Backbone.View {
 
   get events () {
     return {
-      'click .btn-follow-artist': 'follow'
+      'click .btn-follow-artist': 'follow',
+      'click .btn-unfollowing-artist': 'unfollowing',
+      'mouseover .btn-unfollowing-artist': 'changeDown',
+      'mouseout .btn-unfollowing-artist': 'changeUp',
     }
   }
 
   initialize () {
     this.listenTo(this.model, 'change', this.render, this)
+    // Checker of artist
+    Sfotipy.events.on('artists:saved', (id) => {
+      if (id == this.model.toJSON().id) {
+        this.$el.find('.btn-follow-artist')
+          .text('Following')
+          .removeClass('btn-follow-artist')
+          .addClass('btn-unfollowing-artist')
+      }
+    })
   }
 
   render () {
@@ -25,7 +37,28 @@ class ViewArtistView extends Backbone.View {
 
   follow (e) {
     Sfotipy.events.trigger('artist:save', this.model.toJSON())
+    $(e.target)
+      .text('Following')
+      .removeClass('btn-follow-artist')
+      .addClass('btn-unfollowing-artist')
     return false
+  }
+
+  unfollowing (e) {
+    Sfotipy.events.trigger('artist:delete', this.model.toJSON())
+    $(e.target)
+      .text('Follow')
+      .removeClass('btn-unfollowing-artist')
+      .addClass('btn-follow-artist')
+    return false
+  }
+
+  changeDown (e) {
+    $(e.target).text('Unfollowing')
+  }
+
+  changeUp (e) {
+    $(e.target).text('Following')
   }
 }
 
