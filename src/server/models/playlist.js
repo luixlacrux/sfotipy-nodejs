@@ -10,6 +10,10 @@ export default function (sequelize, DataTypes) {
     title: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },{
     classMethods: {

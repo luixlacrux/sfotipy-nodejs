@@ -1,19 +1,23 @@
 import { User, PlayList, Song } from 'src/server/models'
 
-function newPlaylist (playlist) {
+function newPlaylist (playlist, user) {
   return new Promise((resolve, reject) => {
     PlayList.sync().then(() => {
       let data = {
         id: PlayList.guid(),
         userId: playlist.userId,
-        title: playlist.title
+        title: playlist.title,
+        username: playlist.username
       }
       PlayList.create(data)
-        .then((data) => {
-          resolve(`success, playlist created, ${data}`)
-        })
-        .catch((err) => {
-          reject(`this is the error ${err}`)
+        .then((playlist) => {
+          user.addPlaylist(playlist)
+            .then(() => {
+              return resolve(`success, playlist created, ${playlist}`)
+            })
+            .catch((err) => {
+              reject(`this is the error ${err}`)
+            })
         })
     })
   })
@@ -22,7 +26,7 @@ function newPlaylist (playlist) {
 function getPlaylist (user_id) {
   return new Promise((resolve, reject) => {
     User.findById(user_id).then(user => {
-        user.getPlaylists() // Este el metodo que se crea al hacer la relacion HasMany y asignandole un nombre
+        user.getPlaylist() // Este el metodo que se crea al hacer la relacion HasMany y asignandole un nombre
           .then(playlists => resolve({ user, playlists }))
       })
       .catch(err => {

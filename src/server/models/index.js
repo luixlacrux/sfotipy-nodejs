@@ -13,11 +13,8 @@ const Song = sequelize.import('./song.js')
 const Album = sequelize.import('./album.js')
 
 // Relation of PlayList
-User.hasMany(PlayList, {
-  as: 'Playlists', // para que se agregen estos metodos al modelo getPlaylists() y setPlaylists()
-  onDelete: 'cascade' // para que al borrar un usuario se borren sus playlists
-})
-PlayList.belongsTo(User, { as: 'user' })
+User.belongsToMany(PlayList, { as: 'Playlist', through: 'follow_playlist' })
+PlayList.belongsToMany(User, { as: 'User', through: 'follow_playlist' })
 
 // Ralation of Song
 PlayList.hasMany(Song, {

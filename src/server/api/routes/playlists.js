@@ -5,11 +5,13 @@ export default function (apiRoute, app) {
 
     // Create New PlayList
     .post((req, res) => {
+      let user = req.user
       let data = {
         userId: req.user.id,
-        title: req.body.title
+        title: req.body.title,
+        username: req.user.username
       }
-      newPlaylist(data)
+      newPlaylist(data, user)
         .then(data => res.json(data))
         .catch(err => res.send(err))
     })
