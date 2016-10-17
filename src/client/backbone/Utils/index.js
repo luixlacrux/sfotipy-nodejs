@@ -113,12 +113,12 @@ export default {
   },
 
   parseArtist (artist) {
-		const images = artist.images
+		const images = artist.images ? artist.images[1] || artist.images[0] : null
     return {
       id: artist.id,
       name: artist.name,
-      image: images.length ? images[1].url || images[0].url : null,
-      followers: artist.followers.total
+      image: images ? images.url : artist.cover,
+      followers: artist.followers ? artist.followers.total : null
     }
   },
 

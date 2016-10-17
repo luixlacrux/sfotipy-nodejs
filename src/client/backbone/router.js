@@ -23,8 +23,9 @@ import ProfileRoute from 'src/client/backbone/Routes/Profile'
 import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
 import { Main, GetPlaylist, NewPlaylist, AddSong } from 'src/client/backbone/Routes/Playlists'
 import { saveAlbum, deleteAlbum } from 'src/client/backbone/Routes/saveAlbum'
+import { followArtist, unfollowArtist } from 'src/client/backbone/Routes/followArtist'
 import { albumsChecker } from 'src/client/backbone/Routes/Checker'
-import { AlbumsLibrary, PlaylistsLibrary } from 'src/client/backbone/Routes/Library'
+import { AlbumsLibrary, PlaylistsLibrary, ArtistsLibrary } from 'src/client/backbone/Routes/Library'
 
 class Router extends Backbone.Router {
   get routes () {
@@ -37,6 +38,7 @@ class Router extends Backbone.Router {
       'search/:query': 'SearchRoute',
       '@:username': 'ProfileRoute',
       '@:username/edit': 'ProfileEditRoute',
+      '@:username/library/artists': 'LibraryArtists',
       '@:username/library/albums': 'LibraryAlbums',
       '@:username/library/playlists': 'LibraryPlaylists',
       '*notFound': 'notFound',
@@ -79,6 +81,10 @@ class Router extends Backbone.Router {
     // Delete album
     this.events.on('album:delete', (album) => {
       deleteAlbum(album)
+    })
+    // Follow Artist
+    this.events.on('artist:save', (artist) => {
+      followArtist(artist)
     })
   }
 
@@ -146,6 +152,12 @@ class Router extends Backbone.Router {
   ProfileEditRoute (username) {
     this.headerView.setTitle('Profile Edit')
     return ProfileEditRoute(username)
+  }
+
+  // Rutas de la biblioteca
+  LibraryArtists (username) {
+    this.headerView.setTitle('Your Music / Artist')
+    return ArtistsLibrary(username)
   }
 
   LibraryAlbums (username) {
