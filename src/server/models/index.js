@@ -11,6 +11,11 @@ const User = sequelize.import('./user.js')
 const PlayList = sequelize.import('./playlist.js')
 const Song = sequelize.import('./song.js')
 const Album = sequelize.import('./album.js')
+const Artist = sequelize.import('./artist.js')
+
+// Relation of Artist
+User.belongsToMany(Artist, { as: 'Artist', through: 'follow_artists' })
+Artist.belongsToMany(User, { as: 'User', through: 'follow_artists' })
 
 // Relation of PlayList
 User.belongsToMany(PlayList, { as: 'Playlist', through: 'follow_playlist' })
@@ -29,4 +34,4 @@ Album.belongsToMany(User, { as: 'User', through: 'follow_albums' })
 
 sequelize.sync()
 
-export { User, PlayList, Song, Album }
+export { User, PlayList, Song, Album, Artist }

@@ -1,6 +1,4 @@
 import { User, Album } from 'src/server/models'
-import Spotify from 'spotify-finder'
-const client = new Spotify()
 
 function saveAlbum (album, user) {
   return new Promise((resolve, reject) => {
@@ -26,9 +24,9 @@ function getAlbums (user_id) {
         .then((albums) => {
           return resolve({ user, albums })
         })
-    })
-    .catch((err) => {
-      reject(`this is the error ${err}`)
+        .catch((err) => {
+          reject(`this is the error ${err}`)
+        })
     })
   })
 }
