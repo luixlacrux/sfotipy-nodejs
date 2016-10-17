@@ -1,11 +1,11 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import template from 'src/client/handlebars/TopAlbums/album.hbs'
+import template from 'src/client/handlebars/Components/Artist/artist.hbs'
 import app from 'src/client/backbone/router'
 
 class ArtistView extends Backbone.View {
   get tagName() { return 'article' }
-  get className() { return 'song' }
+  get className() { return 'artist' }
   get events () {
     return {
       'click .name': 'seeArtist'
