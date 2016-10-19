@@ -3,10 +3,16 @@ article.artist
   height 280px
   width 200px
 
-
+  .author
+    cursor pointer
+    position absolute
+    bottom .5em
+    left 5px
+    color #5a5a5a
+    font-size .8em
   .name
     position absolute
-    color gris_oscuro
+    width 100%
 
   .button
     width 200px
@@ -16,9 +22,16 @@ article.artist
   .image
     height 200px
     position relative
-    background-position center
-    background-size 280px
+    background-color black
 
+    .image-background
+      background-position center
+      background-repeat no-repeat
+      background-size 280px
+      position absolute
+      height 100%
+      width 100%
+      top 0
     .opacity-background
       background-color rgba(0, 0, 0, 0.65)
       width 100%

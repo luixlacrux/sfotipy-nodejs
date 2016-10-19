@@ -1,8 +1,9 @@
-<figure class="image" style="background-image: url('{{ image }}')">
+<figure class="image">
   <div class="button">
     <button class="icon-play"></button>
   </div>
   <div class="img" style="background-image: url('{{ image }}')"></div>
+  <div class="image-background"  style="background-image: url('{{ image }}')"></div>
   <div class="opacity-background"></div>
 </figure>
 <p class="name">
@@ -10,10 +11,6 @@
 </p>
 <p class="author">
   <span class="slug">
-    {{#if date}}
-      {{date.day}} / {{date.month}} / {{date.year}}
-    {{else}}
-      {{ artist }}
-    {{/if}}
+    SIGUIENTDO
   </span>
 </p>
