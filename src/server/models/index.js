@@ -21,16 +21,17 @@ Artist.belongsToMany(User, { as: 'User', through: 'follow_artists' })
 User.belongsToMany(PlayList, { as: 'Playlist', through: 'follow_playlist' })
 PlayList.belongsToMany(User, { as: 'User', through: 'follow_playlist' })
 
-// Ralation of Song
-PlayList.hasMany(Song, {
-  as: 'Song', // para que se agregen estos metodos al modelo getPlaylists() y setPlaylists()
-  onDelete: 'cascade' // para que al borrar un usuario se borren sus playlists
-})
-Song.belongsTo(PlayList, { as: 'playlist' })
+// Ralation of Song from playlists
+PlayList.belongsToMany(Song, { as: 'Song', through: 'song_playlist' })
+Song.belongsToMany(PlayList, { as: 'PlayList', through: 'song_playlist' })
 
 // Ralation of Album
 User.belongsToMany(Album, { as: 'Album', through: 'follow_albums' })
 Album.belongsToMany(User, { as: 'User', through: 'follow_albums' })
+
+// Relation of Songs
+User.belongsToMany(Song, { as: 'Song', through: 'love_song' })
+Song.belongsToMany(User, { as: 'User', through: 'love_song' })
 
 sequelize.sync()
 

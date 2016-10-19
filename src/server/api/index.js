@@ -4,6 +4,7 @@ import songsRoutes from 'src/server/api/routes/songs'
 import usersRoutes from 'src/server/api/routes/users'
 import albumsRoutes from 'src/server/api/routes/albums'
 import artistsRoutes from 'src/server/api/routes/artists'
+import songLoveRoutes from 'src/server/api/routes/loveSongs'
 import { requestAuthenticated } from 'src/server/lib/middlewares'
 
 export default function (apiRoute, app) {
@@ -22,4 +23,6 @@ export default function (apiRoute, app) {
   albumsRoutes(apiRoute, app)
 
   artistsRoutes(apiRoute, app)
+
+  songLoveRoutes(apiRoute, app)
 }
