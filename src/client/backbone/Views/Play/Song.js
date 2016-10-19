@@ -11,7 +11,8 @@ class Song extends Backbone.View {
     return {
       'click': 'select',
       'click .action.icon-add': 'add',
-      'click .action.icon-love': 'love',
+      'click .action.btn-love': 'love',
+      'click .action.btn-loved': 'delete',
       'click .action.icon-share': 'share'
     }
   }
@@ -19,6 +20,15 @@ class Song extends Backbone.View {
   initialize () {
     this.listenTo(this.model, 'change', this.render, this)
     this.player = app.playingView.player
+
+    // Checker of songs
+    Sfotipy.events.on('songs:loved', (id) => {
+      if (id == this.model.toJSON().id) {
+        this.$el.find('.btn-love')
+          .removeClass('btn-love')
+          .addClass('btn-loved')
+      }
+    })
   }
 
   render () {
@@ -34,8 +44,20 @@ class Song extends Backbone.View {
     return false
   }
 
-  love () {
+  love (e) {
+    Sfotipy.events.trigger('song:love', this.model.toJSON())
+    $(e.target)
+      .removeClass('btn-love')
+      .addClass('btn-loved')
+    return false
+  }
 
+  delete (e) {
+    Sfotipy.events.trigger('song:remove', this.model.toJSON())
+    $(e.target)
+      .removeClass('btn-loved')
+      .addClass('btn-love')
+    return false
   }
 
   share () {

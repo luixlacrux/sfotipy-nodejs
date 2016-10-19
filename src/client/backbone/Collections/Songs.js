@@ -18,6 +18,18 @@ class Songs extends Backbone.Collection {
     })
   }
 
+  getSongs () {
+    return new Promise((resolve, reject) => {
+      $.get(this.url).done((data) => {
+        let songs = data.songs.sort((a, b) => {
+          return (b.album < a.album)
+        })
+        songs.forEach(this.parseSongAlbum, this)
+        return resolve()
+      }).error(err => reject(err))
+    })
+  }
+
   parseSongAlbum (song, album) {
     const newSong = utils.parseSongAlbum.apply(this, arguments)
     this.add(new Song(newSong))

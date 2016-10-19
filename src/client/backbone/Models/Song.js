@@ -19,6 +19,27 @@ class Song extends Backbone.Model {
       }).error((err) => reject(err))
     })
   }
+
+  addSongToLove (song) {
+    return new Promise((resolve, reject) => {
+      $.post(this.url, { song }).done((response) => {
+        console.log(response)
+        return resolve()
+      }).error((err) => reject(err))
+    })
+  }
+
+  deleteSongLoved () {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        url: this.url,
+        type: 'DELETE',
+        success: (result) => {
+          return resolve()
+        }
+      })
+    })
+  }
 }
 
 export default Song

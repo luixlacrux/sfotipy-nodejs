@@ -13,6 +13,8 @@ class Player extends Backbone.View {
     return {
       'click .action.icon-share': 'share',
       'click .action.icon-add': 'add',
+      'click .action.btn-love': 'love',
+      'click .action.btn-loved': 'delete',
       'click .description .name .slug a': 'navigate',
 
       //Controls
@@ -33,6 +35,14 @@ class Player extends Backbone.View {
   initialize () {
     this.audio = document.getElementById('audio')
     this.listenTo(this.model, 'change', this.render)
+    // Checker of songs
+    Sfotipy.events.on('songs:loved', (id) => {
+      if (id == this.model.toJSON().id) {
+        this.$el.find('.btn-love')
+          .removeClass('btn-love')
+          .addClass('btn-loved')
+      }
+    })
     // definimos el algunos objectos jQuery
     this.$range = this.$el.find('.range-vol')
     this.$buttonVolume = this.$el.find('#volume')
@@ -237,6 +247,22 @@ class Player extends Backbone.View {
   navigate (ev) {
     const url = ev.target.attributes.href.value.substr(1)
     app.navigate(url, { trigger: true })
+    return false
+  }
+
+  love (e) {
+    Sfotipy.events.trigger('song:love', this.model.toJSON())
+    $(e.target)
+      .removeClass('btn-love')
+      .addClass('btn-loved')
+    return false
+  }
+
+  delete (e) {
+    Sfotipy.events.trigger('song:remove', this.model.toJSON())
+    $(e.target)
+      .removeClass('btn-loved')
+      .addClass('btn-love')
     return false
   }
 }

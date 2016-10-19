@@ -24,7 +24,8 @@ import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
 import { Main, GetPlaylist, NewPlaylist, AddSong } from 'src/client/backbone/Routes/Playlists'
 import { saveAlbum, deleteAlbum } from 'src/client/backbone/Routes/saveAlbum'
 import { followArtist, unfollowArtist } from 'src/client/backbone/Routes/followArtist'
-import { albumsChecker, artistsChecker } from 'src/client/backbone/Routes/Checker'
+import { loveSong, deleteSong } from 'src/client/backbone/Routes/loveSong'
+import { albumsChecker, artistsChecker, songChecker } from 'src/client/backbone/Routes/Checker'
 import { AlbumsLibrary, PlaylistsLibrary, ArtistsLibrary } from 'src/client/backbone/Routes/Library'
 
 class Router extends Backbone.Router {
@@ -90,6 +91,14 @@ class Router extends Backbone.Router {
     this.events.on('artist:delete', (artist) => {
       unfollowArtist(artist)
     })
+    // Love Song
+    this.events.on('song:love', (song) => {
+      loveSong(song)
+    })
+    // delete Song loved
+    this.events.on('song:remove', (song) => {
+      deleteSong(song)
+    })
   }
 
   initPlayer () {
@@ -128,16 +137,20 @@ class Router extends Backbone.Router {
 
   PlayRoute (query) {
     this.headerView.setTitle('Player')
+    songChecker()
     return PlayRoute(query.album, query.song)
   }
 
   ArtistRoute (id) {
+    this.headerView.setTitle('Artist')
     albumsChecker()
     artistsChecker()
+    songChecker()
     return ArtistRoute(id)
   }
 
   AlbumRoute (id) {
+    this.headerView.setTitle('Album')
     albumsChecker()
     return AlbumRoute(id)
   }

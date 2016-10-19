@@ -68,6 +68,7 @@ export default {
   },
 
   parseSongAlbum (song, album) {
+		if (Number.isInteger(album)) album = undefined
     return {
       id: song.id,
       name: song.name,
@@ -75,9 +76,9 @@ export default {
       duration: secondsToTime(song.duration_ms),
 			duration_ms: song.duration_ms,
       source: song.preview_url,
-      album: album.get('name'),
-      album_id: album.get('id'),
-      cover: album.get('cover'),
+      album: album ? album.get('name') : song.album,
+      album_id: album ? album.get('id') : song.id_album,
+      cover: album ? album.get('cover') : song.cover,
       artists: song.artists
     }
   },
