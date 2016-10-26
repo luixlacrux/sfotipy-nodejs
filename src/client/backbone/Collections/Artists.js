@@ -21,7 +21,7 @@ class Artists extends Backbone.Collection {
     return new Promise((resolve, reject) => {
       $.get(this.url).done(data => {
         let artists = data.artists.sort((a, b) => {
-          return (b.name < a.name)
+          return (b.name < a.name) ? 1 : -1
         })
         artists.forEach(this.addArtist, this)
         return resolve()

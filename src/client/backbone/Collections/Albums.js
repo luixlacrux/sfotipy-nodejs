@@ -41,7 +41,7 @@ class Albums extends Backbone.Collection {
     return new Promise((resolve, reject) => {
       $.get(this.url).done(data => {
         let album = data.albums.sort((a, b) => {
-          return (b.artist < a.artist)
+          return (b.artist < a.artist) ? 1 : -1
         })
         album.forEach(this.addAlbumArtist, this)
         return resolve()

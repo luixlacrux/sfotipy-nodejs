@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 function secondsToTime (s) {
 	  function addZ(n) {
 	    return (n<10? '0':'') + n
@@ -68,18 +70,26 @@ export default {
   },
 
   parseSongAlbum (song, album) {
+		let index = album+1
 		if (Number.isInteger(album)) album = undefined
+		let duration = song.duration_ms ? song.duration_ms : song.duration
+		let date = song.createdAt ? moment(song.createdAt).fromNow() : null
+		let artists = song.artists ? song.artists : [{
+			id: song.id_artist,
+			name: song.artist
+		}]
     return {
       id: song.id,
       name: song.name,
-      index: song.track_number,
-      duration: secondsToTime(song.duration_ms),
-			duration_ms: song.duration_ms,
-      source: song.preview_url,
+      index: song.track_number ? song.track_number : index,
+      duration: secondsToTime(duration),
+			duration_ms: duration,
+      source: song.preview_url ? song.preview_url : song.song,
       album: album ? album.get('name') : song.album,
       album_id: album ? album.get('id') : song.id_album,
       cover: album ? album.get('cover') : song.cover,
-      artists: song.artists
+      artists: artists,
+			date: date
     }
   },
 

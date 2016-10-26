@@ -16,7 +16,7 @@ class Playlists extends Backbone.Collection {
 
       $.get(this.url).done(data => {
         let playlist = data.playlists.sort((a, b) => {
-          return (b.title < a.title)
+          return (b.title < a.title) ? 1 : -1
         })
         // por cada elemento ejecutaremos addPlaylist
         playlist.forEach(this.addPlaylist, this)

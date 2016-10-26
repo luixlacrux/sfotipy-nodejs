@@ -21,12 +21,18 @@ import TopAlbumsRoute from 'src/client/backbone/Routes/TopAlbums'
 import SearchRoute from 'src/client/backbone/Routes/Search'
 import ProfileRoute from 'src/client/backbone/Routes/Profile'
 import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
-import { Main, GetPlaylist, NewPlaylist, AddSong } from 'src/client/backbone/Routes/Playlists'
+import { Main, GetPlaylist,
+  NewPlaylist, AddSong } from 'src/client/backbone/Routes/Playlists'
 import { saveAlbum, deleteAlbum } from 'src/client/backbone/Routes/saveAlbum'
 import { followArtist, unfollowArtist } from 'src/client/backbone/Routes/followArtist'
 import { loveSong, deleteSong } from 'src/client/backbone/Routes/loveSong'
-import { albumsChecker, artistsChecker, songChecker } from 'src/client/backbone/Routes/Checker'
-import { AlbumsLibrary, PlaylistsLibrary, ArtistsLibrary } from 'src/client/backbone/Routes/Library'
+import { albumsChecker,
+  artistsChecker,
+  songChecker } from 'src/client/backbone/Routes/Checker'
+import { AlbumsLibrary,
+  PlaylistsLibrary,
+  ArtistsLibrary,
+  MusicsLibrary } from 'src/client/backbone/Routes/Library'
 
 class Router extends Backbone.Router {
   get routes () {
@@ -42,6 +48,7 @@ class Router extends Backbone.Router {
       '@:username/library/artists': 'LibraryArtists',
       '@:username/library/albums': 'LibraryAlbums',
       '@:username/library/playlists': 'LibraryPlaylists',
+      '@:username/library/musics': 'LibraryMusics',
       '*notFound': 'notFound',
     }
   }
@@ -186,6 +193,11 @@ class Router extends Backbone.Router {
   LibraryPlaylists (username) {
     this.headerView.setTitle('Your Music / Playlists')
     return PlaylistsLibrary(username)
+  }
+
+  LibraryMusics (username) {
+    this.headerView.setTitle('Your Music / Musics')
+    return MusicsLibrary(username)
   }
 
   LoginOrSignIn (action) {

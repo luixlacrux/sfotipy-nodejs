@@ -1,0 +1,32 @@
+article.music
+  width 100%
+  border-bottom 1px solid
+  position relative
+
+  .name
+  .artist
+  .date
+    display inline-block
+    cursor pointer
+  .name
+    width 15em
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+  .artist
+    position absolute
+    left 60%
+    display none
+  .date
+    float right
+    color #171717
+    font-weight lighter
+
+@media screen and (min-width:1000px)
+  article.music
+    .artist
+      display inline-block
+    .name:hover
+      color rojo
+    &:hover
+      background white

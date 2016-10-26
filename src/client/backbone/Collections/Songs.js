@@ -5,7 +5,7 @@ import utils from 'src/client/backbone/Utils'
 
 class Songs extends Backbone.Collection {
   constructor(opts) {
-    super(opts)
+    super()
     this.model = Song
     this.url = opts && opts.url ? opts.url : null
   }
@@ -22,7 +22,7 @@ class Songs extends Backbone.Collection {
     return new Promise((resolve, reject) => {
       $.get(this.url).done((data) => {
         let songs = data.songs.sort((a, b) => {
-          return (b.album < a.album)
+          return (b.artist < a.artist) ? 1 : -1
         })
         songs.forEach(this.parseSongAlbum, this)
         return resolve()

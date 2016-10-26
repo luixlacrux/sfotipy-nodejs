@@ -16,21 +16,21 @@ class LibraryView extends Backbone.View {
   }
 
   render () {
-    let data = {
-      name: this.model.type,
-      something: this.model.something
-    }
+    let data = this.model
     this.$el.empty()
     this.$el.html(template(data))
   }
 
   order (e) {
     let value = $(e.target)[0].value
-    if (value == 1) {
-      $(".Library .song").sort(this.sort_ascending_name).appendTo('.Library')
+    if (value == "Name") {
+      $(".Library article").sort(this.sort_ascending_name).appendTo('.Library')
     }
-    else if (value == 2) {
-      $(".Library .song").sort(this.sort_ascending_date).appendTo('.Library')
+    else if (value == "Artist") {
+      $(".Library article").sort(this.sort_ascending_artist).appendTo('.Library')
+    }
+    else if (value == "Date") {
+      $(".Library article").sort(this.sort_ascending_date).appendTo('.Library')
     }
   }
 
@@ -40,6 +40,10 @@ class LibraryView extends Backbone.View {
 
   sort_ascending_date (a, b) {
     return ($(b).find('.author').text()) < ($(a).find('.author').text()) ? 1 : -1
+  }
+
+  sort_ascending_artist (a, b) {
+    return ($(b).find('.artist').text()) < ($(a).find('.artist').text()) ? 1 : -1
   }
 }
 

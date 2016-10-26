@@ -1,8 +1,9 @@
 <h2 class="Library-title">Library / {{ name }}s</h2>
 <div class="order-class">
     <select id="order">
-      <option value="1">Sort by {{ name }}</option>
-      <option value="2">Sort by {{ something }}</option>
+      {{#each order}}
+        <option value="{{ this }}">Sort by {{ this }}</option>
+      {{/each}}
     </select>
 </div>
 <section class="Library">
