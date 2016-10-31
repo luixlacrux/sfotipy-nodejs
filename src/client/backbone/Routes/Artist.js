@@ -12,13 +12,14 @@ import AlbumsCollection from 'src/client/backbone/Collections/Albums'
 // import Views
 import TopTracksView from 'src/client/backbone/Views/Artist/topTracks'
 import AlbumsArtistView from 'src/client/backbone/Views/Artist/albums'
+import { albumsChecker,
+  artistsChecker,
+  songChecker } from 'src/client/backbone/Routes/Checker'
+
 // function
 export default async function (id) {
   const $app = $('#app')
   const $player = $('#player')
-  const artist = new ArtistModel()
-  const songs = new TracksCollection()
-  const albums = new AlbumsCollection()
 
   $player.hide()
   $app.empty()
@@ -26,28 +27,42 @@ export default async function (id) {
 
   // Obtenemos toda la informacion del artist
   const data = await getData(id)
+  await render($app, data)
 
-  // parsemos info del artista
-  // definimos la vista y renderizamos
-  artist.setArtist(data.info)
-  const artistView = new ArtistView({ model: artist })
-  $app.find('.info-artist').html(artistView.render().el)
+  albumsChecker()
+  artistsChecker()
+  songChecker()
+}
 
-  // Agregamos cada cancion a la collection
-  // definimos la vista y renderizamos
-  data.topTracks.tracks.forEach(songs.parseSongTopTrack, songs)
-  const topTracksView = new TopTracksView({ collection: songs })
-  topTracksView.render()
+async function render ($app, data) {
+  const artist = new ArtistModel()
+  const songs = new TracksCollection()
+  const albums = new AlbumsCollection()
 
-  // Agregamos cada album a la collection
-  // definimos la vista y renderizamos
-  data.albums.items.forEach(addAlbum, this)
-  const albumsArtistView = new AlbumsArtistView({ collection: albums })
-  albumsArtistView.render()
+  return new Promise((resolve, reject) => {
+    // parsemos info del artista
+    // definimos la vista y renderizamos
+    artist.setArtist(data.info)
+    const artistView = new ArtistView({ model: artist })
+    $app.find('.info-artist').html(artistView.render().el)
 
-  function addAlbum(album) {
-    albums.addAlbumArtist(album, data.info)
-  }
+    // Agregamos cada cancion a la collection
+    // definimos la vista y renderizamos
+    data.topTracks.tracks.forEach(songs.parseSongTopTrack, songs)
+    const topTracksView = new TopTracksView({ collection: songs })
+    topTracksView.render()
+
+    // Agregamos cada album a la collection
+    // definimos la vista y renderizamos
+    data.albums.items.forEach(addAlbum, this)
+    const albumsArtistView = new AlbumsArtistView({ collection: albums })
+    albumsArtistView.render()
+
+    function addAlbum(album) {
+      albums.addAlbumArtist(album, data.info)
+    }
+    return resolve()
+  })
 }
 
 

@@ -26,9 +26,7 @@ import { Main, GetPlaylist,
 import { saveAlbum, deleteAlbum } from 'src/client/backbone/Routes/saveAlbum'
 import { followArtist, unfollowArtist } from 'src/client/backbone/Routes/followArtist'
 import { loveSong, deleteSong } from 'src/client/backbone/Routes/loveSong'
-import { albumsChecker,
-  artistsChecker,
-  songChecker } from 'src/client/backbone/Routes/Checker'
+import { songChecker } from 'src/client/backbone/Routes/Checker'
 import { AlbumsLibrary,
   PlaylistsLibrary,
   ArtistsLibrary,
@@ -150,15 +148,11 @@ class Router extends Backbone.Router {
 
   ArtistRoute (id) {
     this.headerView.setTitle('Artist')
-    albumsChecker()
-    artistsChecker()
-    songChecker()
     return ArtistRoute(id)
   }
 
   AlbumRoute (id) {
     this.headerView.setTitle('Album')
-    albumsChecker()
     return AlbumRoute(id)
   }
 
