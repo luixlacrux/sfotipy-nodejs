@@ -34,6 +34,17 @@ export function NewPlaylist (title) {
 }
 
 export function AddSong (playlist, song) {
+  song = {
+    id: song.id,
+    name: song.name,
+    song: song.source,
+    duration: song.duration_ms,
+    cover: song.cover,
+    id_album: song.album_id,
+    album: song.album,
+    id_artist: song.artists[0].id,
+    artist: song.artists[0].name
+  }
   const modelSong = new SongModel({ url: `/api/song/` })
   modelSong.addSongToPlaylist(playlist, song).then(() => {
     console.log(`${song.name} saved in ${playlist.title}`)
