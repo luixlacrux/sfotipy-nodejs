@@ -1,5 +1,6 @@
 import Backbone from 'backbone'
 import  $ from 'jquery'
+import utils from 'src/client/backbone/Utils'
 
 class PlayList extends Backbone.Model {
   constructor(opts) {
@@ -13,6 +14,14 @@ class PlayList extends Backbone.Model {
         console.log(data)
         return resolve()
       }).error((err) => reject(err))
+    })
+  }
+
+  getPlaylist (data) {
+    return new Promise((resolve, reject) => {
+      this.set(
+        Object.assign(utils.parsePlaylist(data))
+      )
     })
   }
 }

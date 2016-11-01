@@ -22,7 +22,7 @@ import SearchRoute from 'src/client/backbone/Routes/Search'
 import ProfileRoute from 'src/client/backbone/Routes/Profile'
 import ProfileEditRoute from 'src/client/backbone/Routes/ProfileEdit'
 import { Main, GetPlaylist,
-  NewPlaylist, AddSong } from 'src/client/backbone/Routes/Playlists'
+  NewPlaylist, AddSong, ViewPlaylist } from 'src/client/backbone/Routes/Playlists'
 import { saveAlbum, deleteAlbum } from 'src/client/backbone/Routes/saveAlbum'
 import { followArtist, unfollowArtist } from 'src/client/backbone/Routes/followArtist'
 import { loveSong, deleteSong } from 'src/client/backbone/Routes/loveSong'
@@ -39,6 +39,7 @@ class Router extends Backbone.Router {
       'play': 'PlayRoute',
       'artist/:id': 'ArtistRoute',
       'album/:id': 'AlbumRoute',
+      'playlist/:id': 'PlaylistRoute',
       'home/:action': 'LoginOrSignIn',
       'search/:query': 'SearchRoute',
       '@:username': 'ProfileRoute',
@@ -154,6 +155,11 @@ class Router extends Backbone.Router {
   AlbumRoute (id) {
     this.headerView.setTitle('Album')
     return AlbumRoute(id)
+  }
+
+  PlaylistRoute (id) {
+    this.headerView.setTitle('Playlist')
+    return ViewPlaylist(id)
   }
 
   SearchRoute (q) {

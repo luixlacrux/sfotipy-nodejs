@@ -12,7 +12,7 @@ class Songs extends Backbone.Collection {
 
   addSongs (album) {
     this.reset()
-    const songs = album.get('songs')
+    const songs = album.songs ? album.songs : album.get('songs')
     songs.forEach(song => {
       this.parseSongAlbum(song, album)
     })

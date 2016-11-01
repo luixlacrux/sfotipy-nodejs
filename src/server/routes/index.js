@@ -12,6 +12,7 @@ export default function (app, passport) {
   app.get('/@:username/edit', isLoggedIn, renderIndex)
   app.get('/@:username/library/:something', isLoggedIn, renderIndex)
   app.get('/album/:name', isLoggedIn, renderIndex)
+  app.get('/playlist/:id', isLoggedIn, renderIndex)
   app.get('/play', isLoggedIn, renderIndex)
   app.get('/album', isLoggedIn, renderIndex)
   app.get('/artist/:id', isLoggedIn, renderIndex)

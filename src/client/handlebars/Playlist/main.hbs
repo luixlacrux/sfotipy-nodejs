@@ -1,0 +1,22 @@
+<div class="ViewAlbum">
+  <div class="info-album">
+    <div class="photo-album" style="background-image: url('{{ cover }}')"></div>
+    <a href="#" class="btn btn-white btn-more-mobile">...</a>
+    <p class="type">{{ type }}</p>
+    <h2 class="name">{{ name }}</h2>
+    <p class="description">By <a href="/artist/{{ artist.id }}">
+      {{ artist.name }}</a> / {{ date }} / {{ total }} songs, {{ duration }}
+    </p>
+    <div class="options">
+      <a href="#" class="btn btn-white btn-play">Play</a>
+      <a href="#" class="btn btn-white btn-more">...</a>
+    </div>
+  </div>
+  <ul class="songs">
+    <li class="item item-fixed border-bottom">
+      <span class="number">#</span>
+      <span class="click">Song</span>
+      <span class="duration">x</span>
+    </li>
+  </ul>
+</div>

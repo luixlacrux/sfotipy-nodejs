@@ -8,7 +8,7 @@ class PlaylistView extends Backbone.View {
   get className() { return 'song' }
   get events () {
     return {
-      'click': 'algo'
+      'click .name': 'detail'
     }
   }
 
@@ -31,6 +31,12 @@ class PlaylistView extends Backbone.View {
     let html = template(playlist)
     this.$el.html(html)
     return this
+  }
+
+  detail (e) {
+    let id = this.model.toJSON().id
+    Sfotipy.navigate(`/playlist/${id}`, { trigger:true })
+    return false
   }
 }
 

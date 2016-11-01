@@ -70,8 +70,8 @@ export default {
   },
 
   parseSongAlbum (song, album) {
-		let index = album+1
-		if (Number.isInteger(album)) album = undefined
+		let index = album.playlist ? 1 : album+1
+		if (Number.isInteger(album) || album.playlist) album = undefined
 		let duration = song.duration_ms ? song.duration_ms : song.duration
 		let date = song.createdAt ? moment(song.createdAt).fromNow() : null
 		let artists = song.artists ? song.artists : [{
@@ -132,6 +132,17 @@ export default {
       followers: artist.followers ? artist.followers.total : null
     }
   },
+
+	parsePlaylist (playlist) {
+		return {
+      id: playlist.id,
+      name: playlist.title,
+			author: playlist.username,
+			date: playlist.updatedAt,
+      type: 'Playlist',
+      cover: 'http://www.andreagal.com/wp-content/themes/andreagal/images/no-track-image.png'
+    }
+	},
 
   cache: {
 		set (key, jsonData) {
