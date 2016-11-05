@@ -47,8 +47,8 @@ export default {
       id: album.id,
       name: album.name,
       cover: images.length ? images[1].url || images[0].url : album.cover,
+			songs: album.tracks ? album.tracks.items : null,
       artists: album.artists,
-      songs: album.tracks ? album.tracks.items : null,
       album: album.album_type,
 			total: album.tracks ? album.tracks.total : null,
 			type: album.album_type,
@@ -89,7 +89,8 @@ export default {
       album_id: album ? album.get('id') : song.id_album,
       cover: album ? album.get('cover') : song.cover,
       artists: artists,
-			date: date
+			date: date,
+			playlist_id: song.song_playlist ? song.song_playlist.playlistId : undefined
     }
   },
 

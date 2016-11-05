@@ -9,8 +9,8 @@ class Song extends SongView {
 
   select () {
     debugger
-    const { id, index } = this.model.attributes
-    Sfotipy.navigate(`play?playlist=${id}&song=${index}`, { trigger: true })
+    const { playlist_id, index } = this.model.attributes
+    Sfotipy.navigate(`play?playlist=${playlist_id}&song=${index}`, { trigger: true })
     return false
   }
 }

@@ -144,7 +144,10 @@ class Router extends Backbone.Router {
   PlayRoute (query) {
     this.headerView.setTitle('Player')
     songChecker()
-    return PlayRoute(query.album, query.song)
+    let id = query.album ? query.album : query.playlist
+    let song = query.song
+    let type = query.album ? 'album' : 'playlist'
+    return PlayRoute(type, id, song)
   }
 
   ArtistRoute (id) {

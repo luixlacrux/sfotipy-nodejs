@@ -1,7 +1,8 @@
 import $ from 'jquery'
 import PlayAlbumRoute from './PlayAlbum'
+import PlayPlaylistRoute from './PlayPlaylist'
 
-export default async function (id, index=1) {
+export default async function (type, id, index=1) {
   const $app = $('#app')
   const $player = $('#player')
   const $playerMin = $('#player-min')
@@ -13,7 +14,8 @@ export default async function (id, index=1) {
   $playerMin.hide()
 
   if (id) {
-    PlayAlbumRoute(id, index)
+    if (type == 'album') PlayAlbumRoute(id, index)
+    else PlayPlaylistRoute(id, index)
   } else {
     otherSomeFunction()
   }
