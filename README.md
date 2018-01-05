@@ -6,56 +6,59 @@ this is a improved version of [Sfotipy](https://github.com/proyectos-mejorandola
 made in the course of professional frontend in [Platzi](https://platzi.com/frontend/)
 
 ## Requirements
-##### Requires have installed on the computer:
-* [NodeJS](https://nodejs.org/en/)
-* [Postgresql](https://www.postgresql.org/)
-* [Redis](http://redis.io/)
 
-## Install gulp globally:
-If you have previously installed a version of gulp globally, please run npm rm --global gulp to make sure your old version doesn't collide with gulp-cli.
-```
-$ npm install -g gulp-cli
-```
-for more info visit the docs of [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
+### Requires have installed on the computer:
+* [Docker](https://www.docker.com/)
+* [Docker Compose](https://docs.docker.com/compose/)
 
-## Install nodemon globally (optional):
-Needed for server to development
-```
-$ npm install -g nodemon
-```
-## Clone
-```
+### Clone
+```sh
 $ git clone https://github.com/luixlacrux/sfotipy-nodejs.git
+
 $ cd sfotipy-nodejs
 ```
 
-## Environment variables
+### Environment variables
+
+* Create a **.env** file in the project root directory with the next content:
 ```sh
-  # database postgresql
-  NAME_DB
-  PASS_DB
-  USER_DB
+# database postgresql
+POSTGRES_DB=<db_name>
+POSTGRES_USER=<db_user>
+POSTGRES_PASSWORD=<db_password>
 
-  # Facebook auth
-  F_CLIENT
-  F_SECRET
+# Facebook auth
+F_CLIENT=<facebook_key>
+F_SECRET=<facebook_secret>
 
-  # Twitter auth
-  T_CLIENT
-  T_SECRET
+# Twitter auth
+T_CLIENT=<twitter_key>
+T_SECRET=<twitter_secret>
 
-  # Sfotipy auth
-  S_CLIENT
-  S_SECRET
+# Sfotipy auth
+S_CLIENT=<spotify_key>
+S_SECRET=<spotify_secret>
+
+# Server port
+PORT=80
 ```
-#### NOTE: If you wish, you can also set the environment variable  
-## Install dependecies
+
+### Build Docker Image
+```sh
+$ docker-compose build
 ```
-$ npm install
+
+### Run Project
+```sh
+$ docker-compose up
 ```
-### Generate the builds and start server
+
+### Stop Project
+```sh
+$ docker-compose stop
+# or
+$ docker-compose down
 ```
-$ npm start
-```
+
 ### Ready
-ready now open a new tab browser in url http://localhost:3000
+ready now open a new tab browser in url http://localhost/

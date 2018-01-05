@@ -23,7 +23,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(session({
-  store: new RedisStore({ host : "127.0.0.1", port : 6379, db : 2,}),
+  store: new RedisStore({ host : "redis", port : 6379, db : 2,}),
   secret: 'keyboard cat',
   resave: true,
   saveUninitialized: true

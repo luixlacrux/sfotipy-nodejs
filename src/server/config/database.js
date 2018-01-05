@@ -1,9 +1,9 @@
-const NAME = process.env.NAME_DB || 'sfotipy_1'
-const PASS = process.env.PASS_DB || 'sfotipy'
-const USER = process.env.USER_DB || 'sfotipy'
+const NAME = process.env.POSTGRES_DB || 'sfotipy_1'
+const USER = process.env.POSTGRES_USER || 'sfotipy'
+const PASS = process.env.POSTGRES_PASSWORD || 'sfotipy'
 
 const database = {
-  'url': `postgres://${USER}:${PASS}@localhost:5432/${NAME}`
+  'url': `postgres://${USER}:${PASS}@db:5432/${NAME}`
 }
 
 export default database
