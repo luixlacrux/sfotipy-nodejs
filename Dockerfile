@@ -7,5 +7,3 @@ COPY . .
 
 RUN npm install -g gulp-cli && npm install
 RUN npm run build && npm run dist
-
-EXPOSE 80
