@@ -10,7 +10,7 @@ services:
     image: redis:latest
     command: redis-server --appendonly yes
     volumes:
-    - ./data:/data
+      - ./.docker/redis:/var/lib/redis/data
   web:
     build: .
     env_file: ./.env
