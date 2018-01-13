@@ -43,16 +43,20 @@ S_SECRET=<spotify_secret>
 PORT=80
 ```
 
-### Build Docker Image (optional)
+### Build Docker Image
 ```sh
 $ docker-compose build
 ```
 
 ### Build Project
 ```sh
-$ docker-compose run web npm install
+$ npm install
+
 $ docker-compose run web npm run dist
 $ docker-compose run web npm run build
+# or
+$ npm run dist
+$ npm run build
 ```
 
 ### Run Project
