@@ -15,8 +15,6 @@ services:
     build: .
     env_file: ./.env
     command: npm run server
-    volumes:
-      - .:/usr/src/app
     links:
       - redis
     ports:
